@@ -21,6 +21,12 @@
         $('#user-form').hide()
         $('#user-table').show()
        })
+
+
+       $(document).on('click','.root-btn', function(e){
+        $(this).html(' <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"> </span>')
+
+       })
     })
    
 </script>

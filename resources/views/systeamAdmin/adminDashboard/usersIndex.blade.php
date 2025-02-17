@@ -38,25 +38,25 @@
                        <div class="col-sm-5">
                             <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-user"><i class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add User`s</span> </a>
                         </div>
-                        <div class="col-sm-7 d-none">
+                        <div class="col-sm-7 ">
                             <div class="text-sm-end">
-                                <button type="button" class="btn btn-success mb-2 me-1"><i
-                                        class="mdi mdi-cog-outline"></i></button>
-                                <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                <button type="button" class="btn btn-light mb-2">Export</button>
+                                <a href="{{ route('admin-dashboard')}}" class="btn btn- mb-2 me-1  text-light root-btn" style="background-color:rgb(24,4,24)"><i class="mdi mdi-arrow-left font-16"> Go Back</i></a>
+                             
                             </div>
                         </div><!-- end col-->
 
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        
+
+                        <table id="basic-datatable" class="table dt-responsive nowrap w-25">
                             <thead>
                                 <tr>
-                                    <th class="fw-normal text-info ">Name</th>
-                                    <th class="fw-normal text-info ">Email</th>
-                                    <th class="fw-normal text-info ">Date of Birth</th>
-                                    <th class="fw-normal text-info ">Age</th>
-                                    <th class="fw-normal text-info ">User role</th>
-                                    <th class="fw-normal text-info ">Address</th>
-                                    <th class="fw-normal text-info ">Gender</th>
+                                    <th class="f-13 text-info ">Name</th>
+                                    <th class="f-13 text-info ">Email</th>
+                                    <th class="f-13 text-info ">Date of Birth</th>
+                                    <th class="f-13 text-info ">Age</th>
+                                    <th class="f-13 text-info ">User role</th>
+                                    <th class="f-13 text-info ">Address</th>
+                                    <th class="f-13 text-info ">Gender</th>
                                     <th>Action</th>
 
 
@@ -67,13 +67,13 @@
 
                             <tbody>
                                 <tr>
-                                    <td class="fw-normal h5">Daniel MAthias</td>
-                                    <td class="fw-normal h5">dm@gmail.com</td>
-                                    <td class="fw-normal h5">17-12-1995</td>
-                                    <td class="fw-normal h5">61</td>
-                                    <td class="fw-normal h5">Admin</td>
-                                    <td class="fw-normal h5">Morogoro</td>
-                                    <td class="fw-normal h5">Male</td>
+                                    <td class="font-13">Daniel MAthias</td>
+                                    <td class="font-13">dm@gmail.com</td>
+                                    <td class="font-13">17-12-1995</td>
+                                    <td class="font-13">61</td>
+                                    <td class="font-13">Admin</td>
+                                    <td class="font-13">Morogoro</td>
+                                    <td class="font-13">Male</td>
                                     <td>
                                         <a href="javascript:void(0);"> <i class="mdi mdi-eye text-secondary"></i></a>
                                         <a href="javascript:void(0);"> <i class="mdi mdi-square-edit-outline text-secondary"></i></a>

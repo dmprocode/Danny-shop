@@ -15,8 +15,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/admin/dashboard', [UserController::class, 'adminDashboard']);
-Route::get('/admin/users', [UserController::class, 'userTable']);
+Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');
+Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
 
 
 

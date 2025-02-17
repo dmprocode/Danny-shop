@@ -35,7 +35,7 @@
             <div class="col-sm-3">
                 <div class="card widget-flat shadow rounded-3 border-0">
                     <div class="card-body">
-                        <h5 class="h4 text-center mt-0" title="Number of Customers"  data-bs-toggle="tooltip" data-bs-placement="top" >
+                        <h5 class="h4 text-center mt-0" title="Number of Customers"  data-bs-toogle="tooltip" data-bs-placement="top" >
                             User`s
                         </h5>
 
@@ -48,10 +48,10 @@
                         </span>
 
                         <!-- Footer Info -->
-                        <p class="mb-0 text-muted d-flex justify-content-center ">
+                        <a href="{{route('user-index')}}" class="mb-0 text-muted d-flex justify-content-center ">
                             <span class="text-nowrap h6 bg-info text-light px-3 py-1 rounded-pill shadow-sm" style="cursor:pointer">
                                 View More </span>
-                        </p>
+                        </a>
                     </div> <!-- end card-body -->
                 </div> <!-- end card -->
              </div> <!-- end col -->
