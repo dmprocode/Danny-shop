@@ -1,0 +1,14 @@
+HTTrack3.49-2 launched on Sun, 27 Feb 2022 13:40:27 at https://coderthemes.com/hyper_2/saas/form-advanced.html
+(httrack https://coderthemes.com/hyper_2/saas/form-advanced.html )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+13:45:05	Warning: 	Retry after error -4 (No data (connection closed)) at link https://coderthemes.com/hyper_2/saas/apps-email-inbox.html (from https://coderthemes.com/hyper_2/saas/form-advanced.html)
+13:46:51	Error: 	"Not Found" (404) at link https://coderthemes.com/hyper_2/saas/assets/fontsunicons.eot?34404611 (from https://coderthemes.com/hyper_2/saas/assets/css/icons.min.css)
+13:46:54	Error: 	"Not Found" (404) at link https://coderthemes.com/hyper_2/saas/assets/css/vendor/40px.png (from https://coderthemes.com/hyper_2/saas/assets/css/vendor/jstree.min.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 6 minutes 27 seconds : 334 links scanned, 330 files written (29827004 bytes overall) [14918284 bytes received at 38548 bytes/sec], 17924297 bytes transferred using HTTP compression in 222 files, ratio 16%, 6.8 requests per connection
+(2 errors, 1 warnings, 0 messages)
