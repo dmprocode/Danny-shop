@@ -117,13 +117,13 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Full Name:</label>
                                     <input type="text" id="simpleinput" class="form-control form-control-sm "placeholder=" John Doe" name="fullname">
-                                    <i class="text-danger message fullname fw-bold h4"></i>
+                                    <i class="text-danger message fullname font-16"></i>
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="example-email" class="form-label">Email:</label>
                                     <input type="email" id="example-email" class="form-control form-control-sm" placeholder="johndoe@gmail.com" name="email">
-                                    <i class="text-danger message email fw-bold h4"></i>
+                                    <i class="text-danger message email font-16"></i>
 
                                 </div>
 
@@ -135,13 +135,15 @@
                                             <span class="password-eye"></span>
                                         </div>
                                     </div>
-                                    <i class="text-danger message password fw-bold h4"></i>
+                                    <i class="text-danger message password font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6 position-relative" id="datepicker4">
                                     <label class="form-label">Date of Birth:</label>
                                     <input type="text" class="form-control form-control-sm" data-provide="datepicker" data-date-autoclose="true" data-date-container="#datepicker4"  data-date-format="d-M-yyyy" placeholder="Day-Mouth-Year" name="dob">
+                                    <i class="text-danger dob message role font-16"></i>
+
                                 </div>
 
                                 <div class="mb-3 col-md-6">
@@ -153,7 +155,7 @@
                                         <option value="customer">Customer</option>
                                         
                                     </select>
-                                    <i class="text-danger message role fw-bold h4"></i>
+                                    <i class="text-danger userRole message role font-16"></i>
 
                                 </div>
 
@@ -170,7 +172,7 @@
                                         <option value="Female">Female</option>
                                         
                                     </select>
-                                    <i class="text-danger message gender fw-bold h4"></i>
+                                    <i class="text-danger message gender font-16"></i>
 
                                 </div>
 
@@ -179,6 +181,8 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label ">User Image:</label>
                                     <input type="file" id="simpleinput" class="form-control form-control-sm" name="userImage">
+                                    <i class="text-danger message userImage font-16 "></i>
+
                                 </div>
 
                         </div>
