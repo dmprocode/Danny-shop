@@ -28,7 +28,7 @@ class UserController extends Controller
             'userImage'  => 'image|mimes:jpeg,png,jpg|max:2048',
             'gender'     => 'required|in:Male,Female',
         ], [
-            'fullname.required'   => 'Please enter your full name.',
+            'fullname.required'   => 'Please enter your fullname.',
             'fullname.min'        => 'Full name must be at least 3 characters.',
             'email.required'      => 'Email is required.',
             'email.email'         => 'Enter a valid email address.',
@@ -58,19 +58,19 @@ class UserController extends Controller
     
         // Create New User
         $user = User::create([
-            'name'     => $request->fullname,
+            'fullname'     => $request->fullname,
             'email'    => $request->email,
             'password' => $password,
-            'dob'      => $dob,
-            'role'     => $request->userRole,
+            'dob'=> $dob,
+            'userRole'=> $request->userRole,
             'address'  => $request->address,
             'gender'   => $request->gender,
-            'image'    => $imagePath,
+            'userImage'    => $imagePath,
         ]);
     
         return response()->json([
             'message' => 'User added successfully!',
-        ], 201);
+        ]);
     }
 }
         

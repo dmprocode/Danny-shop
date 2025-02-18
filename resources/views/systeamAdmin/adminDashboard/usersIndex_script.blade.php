@@ -46,7 +46,7 @@
                 console.log(res);
                 
             },
-            error:function(error){
+            error:function(error){  
                 console.log(error);
                 
              $('.fullname').html(error.responseJSON.errors.fullname)   
