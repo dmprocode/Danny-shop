@@ -44,12 +44,13 @@
                              
                             </div>
                         </div><!-- end col-->
-
-                        
-
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-25">
-                            <thead>
+                        @if($userTable['users']->isEmpty())
+                        <i class="text-danger font-16">No User Available</i>
+                        @else
+                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <thead>
                                 <tr>
+                                    <th class="f-13 text-info ">ID</th>
                                     <th class="f-13 text-info ">Name</th>
                                     <th class="f-13 text-info ">Email</th>
                                     <th class="f-13 text-info ">Date of Birth</th>
@@ -66,14 +67,16 @@
 
 
                             <tbody>
+                                @foreach($userTable['users'] as $key=>$user)
                                 <tr>
-                                    <td class="font-13">Daniel MAthias</td>
-                                    <td class="font-13">dm@gmail.com</td>
-                                    <td class="font-13">17-12-1995</td>
-                                    <td class="font-13">61</td>
-                                    <td class="font-13">Admin</td>
-                                    <td class="font-13">Morogoro</td>
-                                    <td class="font-13">Male</td>
+                                    <td class="font-13">{{$key + 1}}</td>
+                                    <td class="font-13">{{$user->fullname}}</td>
+                                    <td class="font-13">{{$user->email}}</td>
+                                    <td class="font-13">{{\Carbon\Carbon::parse($user->age)->format('M-j-Y')}}</td>
+                                    <td class="font-13">{{\Carbon\Carbon::parse($user->dob)->age }}</td>
+                                    <td class="font-13">{{$user->userRole}}</td>
+                                    <td class="font-13">{{$user->address}}</td>
+                                    <td class="font-13">{{$user->gender}}</td>
                                     <td>
                                         <a href="javascript:void(0);"> <i class="mdi mdi-eye text-secondary"></i></a>
                                         <a href="javascript:void(0);"> <i class="mdi mdi-square-edit-outline text-secondary"></i></a>
@@ -81,9 +84,11 @@
                                     </td>
                                    
                                 </tr>
+                                @endforeach
                                 
                             </tbody>
                         </table>
+                        @endif
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col -->

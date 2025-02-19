@@ -10,12 +10,18 @@ use Carbon\Carbon;
 class UserController extends Controller
 {
     public function adminDashboard(){
+       
+      
         return view('systeamAdmin.adminDashboard.dashboardindex');
 
     }
 
     public function userTable(){
-        return view('systeamAdmin.adminDashboard.usersIndex');
+        $user = User::latest()->get();
+        $userTable=[
+            'users'=> $user
+        ];
+        return view('systeamAdmin.adminDashboard.usersIndex',compact('userTable'));
     }
 
     public function addUsers(Request $request){

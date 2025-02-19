@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'dob',
         'gender',
-        'userRolegit ',
+        'userRole',
         'address',
         'userImage',
 

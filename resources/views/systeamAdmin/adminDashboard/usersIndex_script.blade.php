@@ -43,11 +43,19 @@
             processData:false,
             data:userData,
             success:function(res){
-                console.log(res);
+                Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: res.message,
+                showConfirmButton: false,
+                timer: 1500
+                });
+                setTimeout(() => {
+                    location.reload()
+                }, 1500);
                 
             },
             error:function(error){  
-                console.log(error);
                 
              $('.fullname').html(error.responseJSON.errors.fullname)   
              $('.email').html(error.responseJSON.errors.email)  
