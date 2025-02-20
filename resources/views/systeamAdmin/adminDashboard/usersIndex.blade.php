@@ -21,7 +21,7 @@
 
                     </form>
                 </div>
-                <h4 class="page-title fw-normal">Add User`s</h4>
+                <h4 class="page-title fw-normal" id="">Add User`s</h4>
             </div>
         </div>
     </div>
@@ -261,9 +261,9 @@
                             </div>
                         </div><!-- end col-->
                     </div>
-                    <form action="#" id="userFormData">
+                    <form action="#" id="updateFormData">
                         @csrf
-                        <input type="text" id="up_id">
+                        <input type="hidden" id="up_id" name="up_id">
 
                         <div class="row">
                             <div class="mb-3 col-md-6">

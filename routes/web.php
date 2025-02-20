@@ -17,7 +17,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');
 Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
-Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-product');
+Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-user');
+Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('update-user');
 
 
 

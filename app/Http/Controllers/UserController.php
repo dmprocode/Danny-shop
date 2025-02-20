@@ -78,6 +78,30 @@ class UserController extends Controller
             'message' => 'User added successfully!',
         ]);
     }
+
+    public function updateUser(Request $request){
+        $user_id = User::find($request->up_id);
+        if ($user_id) {
+            $user_id->update([
+                'fullname' => $request->fullname,
+                'email' => $request->email,
+                'dob' => $request->dob,
+                'gender' => $request->gender,
+                'userRole' => $request->userRole,
+                'address' => $request->address,
+
+            ]);
+            return response()->json([
+                'status'=>200,
+                'message' => 'User Updated Successfully'
+            ]);
+        }
+        return response()->json([
+            'message' => 'Something Same thing went wrong'
+        ]);
+
+        
+    }
 }
         
     
