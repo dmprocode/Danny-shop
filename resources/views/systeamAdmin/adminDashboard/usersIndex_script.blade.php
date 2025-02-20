@@ -8,12 +8,15 @@
         });
 
        $('#user-form').hide()
+       $('#update-user-form').hide()
+
 
        $(document).on('click','.add-user', function(e){
         e.preventDefault()
         $('#user-form').show()
         $('#user-table').hide()
        })
+
 
 
        $(document).on('click','.go-back-btn ', function(e){
@@ -73,8 +76,42 @@
 
         
         
-        
+
      })
+    })
+
+
+    // ===================Edit User ========================
+
+    $(document).on('click','.edit-user', function(e){
+        e.preventDefault()
+        let user_id = $(this).data('id')
+        let email = $(this).data('email')
+        let dob = $(this).data('dob')
+        let userRole = $(this).data('user-role')
+        let address = $(this).data('address')
+        let gender = $(this).data('gender')
+        let fullname = $(this).data('fullname')
+        
+        $('#up_id').val(user_id)
+        $('#fullname').val(fullname)
+        $('#user-email').val(email)
+        $('#user-role').val(userRole)
+        $('#address').val(address)
+        $('.gender').val(gender)
+        $('#dob').val(dob)
+
+        $(document).on('click','.update-user-btn',function(e){
+            e.preventDefault()
+            alert()
+          
+
+        })
+        
+
+
+
+        
     })
    
 </script>
