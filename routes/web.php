@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopkeeperController;
 
 
 /*
@@ -19,6 +20,11 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
 Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-user');
 Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('update-user');
+
+
+
+// ==============Shopkeeper ==================
+Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('admin-dashboard');
 
 
 
