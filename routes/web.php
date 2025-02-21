@@ -16,6 +16,10 @@ use App\Http\Controllers\ShopkeeperController;
 |
 */
 
+// =============================Login ================================
+Route::get('/',[UserController::class, 'loginIndex'])->name('login');
+// =================End of login===================================
+
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');
 Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
 Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-user');
@@ -25,6 +29,8 @@ Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('
 
 // ==============Shopkeeper ==================
 Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('admin-dashboard');
+
+
 
 
 

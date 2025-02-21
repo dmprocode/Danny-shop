@@ -9,6 +9,9 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
+    public function loginIndex(){
+        return view('Login.index');
+    }
     public function adminDashboard(){
        
       
