@@ -18,6 +18,7 @@ use App\Http\Controllers\ShopkeeperController;
 
 // =============================Login ================================
 Route::get('/',[UserController::class, 'loginIndex'])->name('login');
+Route::post('/login',[UserController::class,'loginForm'])->name('login-form');
 // =================End of login===================================
 
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');

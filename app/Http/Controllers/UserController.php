@@ -7,11 +7,27 @@ use Illuminate\Support\Facades\Hash;
 Use App\Models\User;
 use Carbon\Carbon;
 
+
 class UserController extends Controller
 {
     public function loginIndex(){
         return view('Login.index');
     }
+     
+
+    public function loginForm(Request $request){
+         $userLoginIn = User::where('email',$request->email)->first();
+         if ($userLoginIn && Hash::check($request->password , $userLoginIn->password)){
+            return response()->json([
+                'message' => 'Login Successfully'
+               ]);
+         }
+         
+    
+       return  redirect()->route('')->with('error','Invalide Credential');
+    }
+
+
     public function adminDashboard(){
        
       
