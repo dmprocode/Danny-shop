@@ -16,17 +16,25 @@ class UserController extends Controller
      
 
     public function loginForm(Request $request){
-         $userLoginIn = User::where('email',$request->email)->first();
-         if ($userLoginIn && Hash::check($request->password , $userLoginIn->password)){
-            return response()->json([
-                'message' => 'Login Successfully'
-               ]);
-         }
-         
-    
-       return  redirect()->route('')->with('error','Invalide Credential');
-    }
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:10'
 
+        ],[
+           'email.required' =>'User Email is Required',
+           'email.email' =>'Please Selecte Valid Email',
+           'password.required' => 'Password Field Is required',
+           'password.min' => 'Password can Not being Less than 6 characters',
+           'password.max' => 'Password can Not being exessed  10 character`s'
+        ]);
+        $userLoginIn = User::where('email', $request->email)->first();
+
+        if ($userLoginIn && Hash::check($request->password, $userLoginIn->password)) {
+            return redirect()->route('admin-dashboard')->with('success', 'Login Successfully');
+        }
+    
+        return redirect()->route('login')->with('error', 'Invalid Credentials');
+    }
 
     public function adminDashboard(){
        

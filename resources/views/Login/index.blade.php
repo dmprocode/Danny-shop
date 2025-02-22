@@ -38,12 +38,21 @@
                                     <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
                                     <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
                                 </div>
+                                <div class="div">
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>                              
+                                    
+                                    @endif
+                                </div>
 
                                 <form action="#" id="loginForm">
                                              @csrf
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
                                         <input class="form-control" type="email" id="emailaddress" name="email" placeholder="Enter your email">
+                                        <i class="text-danger message font-16" id="email"></i>
                                     </div>
 
                                     <div class="mb-3">
@@ -53,7 +62,11 @@
                                             <input type="password" id="password" class="form-control" placeholder="Enter your password" name="password">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
+
                                             </div>
+                                            <i class="text-danger message font-16 password w-100" id=""></i>
+
+
                                         </div>
                                     </div>
 
