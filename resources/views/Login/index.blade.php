@@ -15,6 +15,8 @@
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
         <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+        
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     </head>
 
@@ -40,15 +42,15 @@
                                 </div>
                                 <div class="div">
                                     @if(session('error'))
-                                        <div class="alert alert-danger">
-                                            {{ session('error') }}
+                                        <div class="alert alert-danger font-16">
+                                             {{ session('error') }}
                                         </div>                              
                                     
                                     @endif
                                 </div>
 
-                                <form action="#" id="loginForm">
-                                             @csrf
+                                <form action="{{route('login-data')}}" method="post">
+                                @csrf 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
                                         <input class="form-control" type="email" id="emailaddress" name="email" placeholder="Enter your email">

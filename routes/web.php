@@ -8,7 +8,7 @@ use App\Http\Controllers\ShopkeeperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------- 
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -18,7 +18,7 @@ use App\Http\Controllers\ShopkeeperController;
 
 // =============================Login ================================
 Route::get('/',[UserController::class, 'loginIndex'])->name('login');
-Route::post('/login',[UserController::class,'loginForm'])->name('login-form');
+Route::post('/login',[UserController::class,'loginForm'])->name('login-data');
 // =================End of login===================================
 
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');
@@ -29,7 +29,7 @@ Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('
 
 
 // ==============Shopkeeper ==================
-Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('admin-dashboard');
+Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('shopkeeper-dashboard');
 
 
 

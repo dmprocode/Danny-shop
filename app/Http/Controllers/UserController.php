@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 Use App\Models\User;
 use Carbon\Carbon;
 
@@ -16,25 +17,31 @@ class UserController extends Controller
      
 
     public function loginForm(Request $request){
-        $this->validate($request,[
+        $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|min:6|max:10'
-
-        ],[
-           'email.required' =>'User Email is Required',
-           'email.email' =>'Please Selecte Valid Email',
-           'password.required' => 'Password Field Is required',
-           'password.min' => 'Password can Not being Less than 6 characters',
-           'password.max' => 'Password can Not being exessed  10 character`s'
+        ], [
+            'email.required' => 'User Email is Required',
+            'email.email' => 'Please Select a Valid Email',
+            'password.required' => 'Password Field Is required',
+            'password.min' => 'Password cannot be less than 6 characters',
+            'password.max' => 'Password cannot exceed 10 characters'
         ]);
-        $userLoginIn = User::where('email', $request->email)->first();
-
-        if ($userLoginIn && Hash::check($request->password, $userLoginIn->password)) {
-            return redirect()->route('admin-dashboard')->with('success', 'Login Successfully');
-        }
     
-        return redirect()->route('login')->with('error', 'Invalid Credentials');
+        $userlogin = User::where('email', $request->email)->first();
+      if ($userlogin && Hash::check($request->password, $userlogin->password)) {
+        if ($userlogin->userRole =='admin'){
+            Auth::login($userlogin);
+            
+            return redirect()->route('admin-dashboard')->with('message','Welcame Admin');
+          
+        }
+        return redirect()->route('shopkeeper-dashboard')->with('message','Wellcame Shopkeeper');
+      }   
+      return redirect()->route('login')->with('error', 'Invalid Credentials');
+
     }
+    
 
     public function adminDashboard(){
        
