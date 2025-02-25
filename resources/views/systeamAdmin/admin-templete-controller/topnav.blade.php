@@ -170,8 +170,8 @@
                                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                     </span>
                                     <span>
-                                        <span class="account-user-name">Dominic Keller</span>
-                                        <span class="account-position">Founder</span>
+                                        <span class="account-user-name">{{$adminComponents['user']->fullname}}</span>
+                                        <span class="account-position">{{$adminComponents['user']->userRole}}</span>
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

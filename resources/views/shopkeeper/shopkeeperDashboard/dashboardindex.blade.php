@@ -1,6 +1,6 @@
-@include('systeamAdmin.admin-templete-controller.header')
-@include('systeamAdmin.admin-templete-controller.sidenave')
-@include('systeamAdmin.admin-templete-controller.topnav')
+@include('shopkeeper.shopkpeer-templete-controller.header')
+@include('shopkeeper.shopkpeer-templete-controller.sidenave')
+@include('shopkeeper.shopkpeer-templete-controller.topnav')
 
 
 <!-- Start Content-->
@@ -21,10 +21,7 @@
                    
                 </form>
             </div>
-            <h4 class="page-title fw-normal">Dashboard</h4>
-            @if(session('message'))
-            <span class="text-danger">{{session('message')}}</span>
-            @endif
+            <h4 class="page-title fw-normal">Shopkeeper Dashboard</h4>           
         </div>
     </div>
 </div>

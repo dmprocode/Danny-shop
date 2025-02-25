@@ -27,26 +27,41 @@ class UserController extends Controller
             'password.min' => 'Password cannot be less than 6 characters',
             'password.max' => 'Password cannot exceed 10 characters'
         ]);
-    
-        $userlogin = User::where('email', $request->email)->first();
-      if ($userlogin && Hash::check($request->password, $userlogin->password)) {
-        if ($userlogin->userRole =='admin'){
-            Auth::login($userlogin);
-            
-            return redirect()->route('admin-dashboard')->with('message','Welcame Admin');
+
+        if (auth()->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+           $user = auth()->user();
+           session(['user_role', $user->userRole]);
+           if ($user->userRole == 'admin') {
+
+              return redirect()->route('admin-dashboard')->with('message','Welcame Admin');
+            }
+            else if($user->userRole == 'shopkeeper'){
+                return redirect()->route('shopkeeper-dashboard')->with('message' ,'Hello Cathy');
+            }
+           
           
         }
-        return redirect()->route('shopkeeper-dashboard')->with('message','Wellcame Shopkeeper');
-      }   
-      return redirect()->route('login')->with('error', 'Invalid Credentials');
-
+    
     }
     
 
     public function adminDashboard(){
+        
+        if (auth()->check() && auth()->user()->userRole === 'admin') {
+            $user = auth()->user();
+            $adminComponents =[
+                'user' =>  $user
+            ];
+            return view('systeamAdmin.adminDashboard.dashboardindex',compact('adminComponents'));
+        } else {
+            return redirect()->route('unathorized')->with('error', 'You have no access to this page');
+        }
+        
        
       
-        return view('systeamAdmin.adminDashboard.dashboardindex');
 
     }
 

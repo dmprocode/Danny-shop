@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopkeeperController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -31,6 +32,8 @@ Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('
 // ==============Shopkeeper ==================
 Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('shopkeeper-dashboard');
 
+//===========Unauthorized==================
+Route::get('/unathorized',[LoginController::class,'unauthorized'])->name('unathorized');
 
 
 
