@@ -192,23 +192,17 @@
                                         <span>Settings</span>
                                     </a>
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="mdi mdi-lifebuoy me-1"></i>
-                                        <span>Support</span>
-                                    </a>
+                                    
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="mdi mdi-lock-outline me-1"></i>
-                                        <span>Lock Screen</span>
-                                    </a>
+                                    
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="mdi mdi-logout me-1"></i>
-                                        <span>Logout</span>
-                                    </a>
+                                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="document.getElementById('logout-form').submit();">
+                                            <i class="mdi mdi-logout me-1"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </form>
                                 </div>
                             </li>
 

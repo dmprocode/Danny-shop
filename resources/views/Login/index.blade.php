@@ -49,6 +49,15 @@
                                     @endif
                                 </div>
 
+                                <div class="div">
+                                    @if(session('success'))
+                                        <div class="alert alert-danger font-16">
+                                             {{ session('success') }}
+                                        </div>                              
+                                    
+                                    @endif
+                                </div>
+
                                 <form action="{{route('login-data')}}" method="post">
                                 @csrf 
                                     <div class="mb-3">

@@ -20,6 +20,7 @@ use App\Http\Controllers\LoginController;
 // =============================Login ================================
 Route::get('/',[UserController::class, 'loginIndex'])->name('login');
 Route::post('/login',[UserController::class,'loginForm'])->name('login-data');
+Route::post('/logout',[LoginController::class,'logout'])->name('logout');
 // =================End of login===================================
 
 
@@ -38,8 +39,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('update-user');
 });
 
-Route::middleware(['auth', 'role:shopkeeper'])->group(function () {
 // ==============Shopkeeper ==================
+
+Route::middleware(['auth', 'role:shopkeeper' ])->group(function () {
 Route::get('/shopkpeeper/dashboard',[ShopkeeperController::class, 'dashboardIndex'])->name('shopkeeper-dashboard');
 });
 

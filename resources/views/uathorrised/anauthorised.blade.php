@@ -1,1 +1,3 @@
-<h2>Wellcame Her</h2>
+@if(session('error'))
+<h2>{{session('error')}}</h2>
+@endif
