@@ -66,12 +66,17 @@ class UserController extends Controller
     }
 
     public function userTable(){
-        $user = User::latest()->get();
-        $userTable=[
-            'users'=> $user
-        ];
-        return view('systeamAdmin.adminDashboard.usersIndex',compact('userTable'));
-    }
+        if (session('user_role') && session()->get('user_role')== 'admin') {
+            $user = auth()->user();
+            $adminComponents=[
+                'user'=> $user
+            ];
+            return view('systeamAdmin.adminDashboard.usersIndex',compact('adminComponents'));
+    } 
+    return redirect()->route('login');
+        
+
+}
 
     public function addUsers(Request $request){
         $validatedData = $request->validate([
