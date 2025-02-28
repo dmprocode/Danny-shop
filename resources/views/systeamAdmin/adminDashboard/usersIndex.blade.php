@@ -47,9 +47,7 @@
 
                             </div>
                         </div><!-- end col-->
-                        @if($userTable['users']->isEmpty())
-                        <i class="text-danger font-16">No User Available</i>
-                        @else
+                       
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
@@ -70,8 +68,8 @@
 
 
                             <tbody>
-                                @foreach($userTable['users'] as $key=>$user)
-                                <tr>
+                            @foreach($adminComponents['users'] as $key => $user)
+                            <tr>
                                     <td class="font-13">{{$key + 1}}</td>
                                         @if(empty($user->userImage))
                                             @if($user->gender == 'male')
@@ -115,7 +113,6 @@
 
                             </tbody>
                         </table>
-                        @endif
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
             </div> <!-- end col -->

@@ -53,7 +53,7 @@ class UserController extends Controller
         if (auth()->check() && auth()->user()->userRole === 'admin') {
             $user = auth()->user();
             $adminComponents =[
-                'user' =>  $user
+                'user' =>  $user,
             ];
             return view('systeamAdmin.adminDashboard.dashboardindex',compact('adminComponents'));
         } else {
@@ -66,10 +66,12 @@ class UserController extends Controller
     }
 
     public function userTable(){
-        if (session('user_role') && session()->get('user_role')== 'admin') {
+        if (auth()->check() && auth()->user()->userRole == 'admin') {
             $user = auth()->user();
+            $systeamUser = User::latest()->get();
             $adminComponents=[
-                'user'=> $user
+                'user'=> $user,
+                 'users' => $systeamUser
             ];
             return view('systeamAdmin.adminDashboard.usersIndex',compact('adminComponents'));
     } 
