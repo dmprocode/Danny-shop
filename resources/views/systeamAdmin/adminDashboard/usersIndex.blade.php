@@ -34,6 +34,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+
+                @if($adminComponents['users']->isEmpty())
+                <i class="text-danger font-16">No customer Available</i>
+                @else
                     <div class="row mb-2">
                         <div class="col-sm-5">
                             <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-user"><i
@@ -114,6 +118,7 @@
                             </tbody>
                         </table>
                     </div> <!-- end card-body-->
+                    @endif
                 </div> <!-- end card-->
             </div> <!-- end col -->
         </div>

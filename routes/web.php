@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopkeeperController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CapitalModelController;
+
 
 
 /*
@@ -37,6 +39,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
     Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-user');
     Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('update-user');
+
+    // =======================Capital Route====================
+    Route::get('/admin/capital', [CapitalModelController::class, 'capitalIndex'])->name('   ');
+
 });
 
 // ==============Shopkeeper ==================

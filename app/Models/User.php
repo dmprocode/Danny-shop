@@ -50,4 +50,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function capital(){
+        return $this->hasMany(CapitalModel::class,'id', 'user_id');
+    }
 }
