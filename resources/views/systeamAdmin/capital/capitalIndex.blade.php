@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
-                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-user"><i
+                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-capital"><i
                                     class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add Capital</span> </a>
                         </div>
                         <div class="col-sm-7 ">
@@ -89,14 +89,14 @@
     <!-- ===============Capital form ======================-->
 
 
-    <div class="row" id="capita-form">
+    <div class="row" id="capital-form">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
-                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-user"><i
-                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add Capital</span> </a>
+                            <a href="javascript:void(0);" class="btn btn-outline-danger btn-sm text-info mb-2 go-back-btn"><i
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Go Back </span> </a>
                         </div>
                         <div class="col-sm-7 ">
                             <div class="text-sm-end">
@@ -114,14 +114,15 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Start Amouth:</label>
-                                    <input type="number" id="simpleinput" class="form-control form-control-sm " name="fullname">
-                                    <i class="text-danger message fullname font-16"></i>
+                                    <input type="text" id="simpleinput" class="form-control form-control-sm " name="start_amount">
+                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="example-email" class="form-label">Updated Amouth:</label>
-                                    <input type="number" id="updated-amouth" class="form-control form-control-sm" name="updatedAmouth">
-                                    <i class="text-danger message email font-16"></i>
+                                    <input type="text" id="updated-amouth" class="form-control form-control-sm" name="updatedAmouth">
+                                    <i class="text-danger fw-normal  email font-16"></i>
 
                                 </div>
 
@@ -134,13 +135,13 @@
                                         @endforeach
 
                                     </select>
-                                    <i class="text-danger userRole message role font-16"></i>
+                                    <i class="text-danger userRole fw-normal message role font-16"></i>
 
                                   </div>
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn- h4 fw-bold text-light add-user-btn w-50 "
+                                    <button class="btn btn- h4 fw-bold text-light add-capital-btn w-50 "
                                         style="background-color:teal">Add Capital <span class="uil-plus"></span></button>
                                 </div>
 
