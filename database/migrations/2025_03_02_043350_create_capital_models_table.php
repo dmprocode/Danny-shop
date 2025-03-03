@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('capital_models', function (Blueprint $table) {
             $table->id();
-            $table->string('start_amount');
+            $table->string('start_amount')->nullable();
             $table->string('update_amount')->nullable();
             $table->string('product_profit')->nullable();
             $table-> unsignedBigInteger('user_id');

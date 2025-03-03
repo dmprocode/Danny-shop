@@ -47,7 +47,9 @@
 
                             </div>
                         </div><!-- end col-->
-
+                        @if($adminComponents['capitalUser']->isEmpty())
+                          <i class="text-danger font-16">No Capital Available</i>
+                        @else
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
@@ -63,20 +65,38 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1 </td>
-                                    <td>100000 </td>
-                                    <td>120000</td>
-                                    <td>15000</td>
-                                    <td>Catherine Mathias</td>
-                                    <td>Delete</td>
+                                @foreach($adminComponents['capitalUser'] as $user)
+                                @foreach($user->capital as $key => $capital)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{number_format($capital->start_amount ,2) }}</td>
+                                        @if($capital->update_amount == '')
+                                        <td class="text-danger"> No Value</td>
+                                        @else
+                                        <td>{{ $capital->update_amount }}</td>
+                                        @endif
+                                        @if($capital->product_profit == '')
+                                        <td class ="text-danger">No Value</td>
+                                        @else
+                                        <td>{{ $capital->product_profit }}</td>
+                                        @endif
+                                        <td>{{ $user->fullname }}</td>
+                                        <td>
+                                        <span class="dtr-data">
+                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                             <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
 
-                                </tr>
                             </tbody>
 
 
 
                         </table>
+                        @endif
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
             </div> <!-- end col -->
@@ -116,13 +136,6 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Start Amouth:</label>
                                     <input type="text" id="simpleinput" class="form-control form-control-sm " name="start_amount">
                                     <i class="text-danger start_amount message fw-normal role font-16"></i>
-
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="example-email" class="form-label">Updated Amouth:</label>
-                                    <input type="text" id="updated-amouth" class="form-control form-control-sm" name="updatedAmouth">
-                                    <i class="text-danger fw-normal  email font-16"></i>
 
                                 </div>
 

@@ -51,7 +51,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function capital(){
-        return $this->hasMany(CapitalModel::class,'id', 'user_id');
+    public function capital()
+    {  
+       return $this->hasMany(CapitalModel::class, 'user_id', 'id');
     }
+
 }
