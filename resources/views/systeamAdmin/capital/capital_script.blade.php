@@ -7,6 +7,7 @@
             }
         });
         $('#capital-form').hide()
+        $('#update-capital-form').hide()
        
        
         $(document).on('click','.add-capital',function(e){
@@ -58,8 +59,23 @@
 
         })
             
-         })
-
+     })
+      
+     $(document).on('click','.edit-capital',function(e){
+        $('#capital-table').hide()
+        $('#update-capital-form').show()
+        e.preventDefault()
+        let id = $(this).data('id');
+        let start_amouth = $(this).data('start_amount');
+        let update_amount = $(this).data('update_amount');
+        let fullname = $(this).data('fullname');
+        
+        $('#start_amouth').val(start_amouth)
+        $('#up_id').val(id)
+        $('#userRole').val(fullname)
+        $('#update_amouth').val(update_amount)
+        
+     })
          
 
         

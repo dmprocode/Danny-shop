@@ -73,18 +73,23 @@
                                         @if($capital->update_amount == '')
                                         <td class="text-danger"> No Value</td>
                                         @else
-                                        <td>{{ $capital->update_amount }}</td>
+                                        <td>{{number_format($capital->update_amount,2) }}</td>
                                         @endif
                                         @if($capital->product_profit == '')
                                         <td class ="text-danger">No Value</td>
                                         @else
-                                        <td>{{ $capital->product_profit }}</td>
+                                        <td>{{number_format( $capital->product_profit ,2)}}</td>
                                         @endif
                                         <td>{{ $user->fullname }}</td>
                                         <td>
                                         <span class="dtr-data">
-                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                             <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline edit-capital"
+                                             data-id ="{{$capital->id}}"
+                                             data-start_amount ="{{$capital->start_amount}}"
+                                             data-update_amount ="{{$capital->update_amount}}"
+                                             data-fullname ="{{$user->fullname}}"
+
+                                             ></i></a>
                                              <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span>
                                         </td>
                                     </tr>
@@ -170,6 +175,79 @@
         </div>
     </div>
 
+
+    <!-- ====================Update Capital============= -->
+
+
+    <div class="row" id="update-capital-form">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-5">
+                            <a href="javascript:void(0);" class="btn btn-outline-danger btn-sm text-info mb-2 go-back-btn"><i
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Go Back </span> </a>
+                        </div>
+                        <div class="col-sm-7 ">
+                            <div class="text-sm-end">
+                                <a href="{{ route('admin-dashboard')}}" class="btn btn- mb-2 me-1  text-light root-btn"
+                                    style="background-color:rgb(24,4,24)"><i class="mdi mdi-arrow-left font-16"> Go
+                                        Back</i></a>
+
+                            </div>
+                        </div><!-- end col-->
+
+                        <form action="#" id="userFormData">
+                            @csrf
+
+                            <div class="row">
+                                <input type="hidden" id="up_id">
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Start Amouth:</label>
+                                    <input type="text" id="start_amouth" class="form-control form-control-sm " name="start_amount">
+                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="example-select" class="form-label">Added by:</label>
+                                    <select class="form-select" id="userRole" name="userRole">
+                                        <option>Select</option>
+                                        @foreach($adminComponents ['listOfUser'] as $user)
+                                        <option value="{{$user->id}}">{{$user->fullname}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <i class="text-danger userRole fw-normal message role font-16"></i>
+
+                                  </div>
+
+                                  <div class="mb-3 col-md-6">
+                                        <label for="simpleinput" class="form-label fw-normal fs-16 ">Update Amouth:</label>
+                                        <input type="text" id="update_amouth" class="form-control form-control-sm " name="start_amount">
+                                        <i class="text-danger start_amount message fw-normal role font-16"></i>
+
+                                  </div>
+                            </div>
+                            <center>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn- h4 fw-bold text-light add-capital-btn w-50 "
+                                        style="background-color:teal">Update Capital <span class="uil-edit"></span></button>
+                                </div>
+
+                            </center>
+
+                        </form>
+
+
+
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+    </div>
 
 
 
