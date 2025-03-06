@@ -93,7 +93,16 @@
             processData:false,
             data:userInput,
             success:function(res){
-                console.log(res);
+                Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title:res.message,
+                showConfirmButton: false,
+                timer: 1500
+                });
+                setTimeout(() => {
+                    location.reload()
+                }, 1500);
                 
             },
             error:function(error){

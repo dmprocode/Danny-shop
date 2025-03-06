@@ -77,7 +77,7 @@
 
                             <!-- Footer Info -->
                             <p class="mb-0 text-muted d-flex justify-content-center ">
-                            <a href="" class="text-nowrap h6 bg-info text-light px-3 py-1 rounded-pill shadow-sm" style="cursor:pointer">
+                            <a href="{{route('capital-index')}}" class="text-nowrap h6 bg-info text-light px-3 py-1 rounded-pill shadow-sm" style="cursor:pointer">
                             View More </a>
                             </p>
                         </div> <!-- end card-body -->

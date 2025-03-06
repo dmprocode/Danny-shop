@@ -41,7 +41,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/user-update', [UserController::class, 'updateUser'])->name('update-user');
 
     // =======================Capital Route====================
-    Route::get('/admin/capital', [CapitalModelController::class, 'capitalIndex'])->name('   ');
+    Route::get('/admin/capital', [CapitalModelController::class, 'capitalIndex'])->name('capital-index');
     Route::post('/admin/capital', [CapitalModelController::class, 'addCapital'])->name('add-capital');
     Route::post('/admin/update', [CapitalModelController::class, 'updateCapital'])->name('update-capital');
 
