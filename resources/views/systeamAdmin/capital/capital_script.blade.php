@@ -69,12 +69,40 @@
         let start_amouth = $(this).data('start_amount');
         let update_amount = $(this).data('update_amount');
         let fullname = $(this).data('fullname');
+        let user_id = $(this).data('user');
+        
+
         
         $('#start_amouth').val(start_amouth)
         $('#up_id').val(id)
-        $('#userRole').val(fullname)
+        $('#addedBy').val(fullname)
         $('#update_amouth').val(update_amount)
+        $('#user_id').val(user_id)
         
+     })
+
+
+     $(document).on('click','.up-capital-btn',function(e){
+        e.preventDefault()
+        let userData = document.getElementById('up-userFormData')
+        let userInput = new FormData(userData);
+        $.ajax({
+            url:"{{route('update-capital')}}",
+            method:"POST",
+            contentType:false,
+            processData:false,
+            data:userInput,
+            success:function(res){
+                console.log(res);
+                
+            },
+            error:function(error){
+                console.log(error);
+                
+            }
+
+
+     })
      })
          
 

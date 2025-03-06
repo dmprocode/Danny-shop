@@ -48,4 +48,28 @@ class CapitalModelController extends Controller
             'message' => 'Capital Added Suucessfully'
         ]);
     }
+    public function updateCapital(Request $request){
+
+        $update_id = User::with('capital')->find($request->up_id);
+        if ($update_id) {
+            $update_id->update([
+                'start_amount' => $request->start_amount,
+                'update_amount' => $request->update_amouth,
+
+            ]);
+            $user_id = User::find($request->user_id);
+            if ($user_id) {
+                $user_id->update([
+                    'fullname' => $request->addedBy
+
+                ]);
+                return response()->json([
+                    'message' => 'Data Updated Successfully'
+                ]);
+            }
+           
+            
+        }
+      
+    }
 }

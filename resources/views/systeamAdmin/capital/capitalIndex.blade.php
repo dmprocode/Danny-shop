@@ -68,7 +68,7 @@
                                 @foreach($adminComponents['capitalUser'] as $user)
                                 @foreach($user->capital as $key => $capital)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $capital->id }}</td>
                                         <td>{{number_format($capital->start_amount ,2) }}</td>
                                         @if($capital->update_amount == '')
                                         <td class="text-danger"> No Value</td>
@@ -85,6 +85,7 @@
                                         <span class="dtr-data">
                                              <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline edit-capital"
                                              data-id ="{{$capital->id}}"
+                                             data-user ="{{$user->id}}"
                                              data-start_amount ="{{$capital->start_amount}}"
                                              data-update_amount ="{{$capital->update_amount}}"
                                              data-fullname ="{{$user->fullname}}"
@@ -197,11 +198,13 @@
                             </div>
                         </div><!-- end col-->
 
-                        <form action="#" id="userFormData">
+                        <form action="#" id="up-userFormData">
                             @csrf
 
                             <div class="row">
-                                <input type="hidden" id="up_id">
+                                <input type="hidden" id="up_id" name="up_id">
+                                <input type="hidden" id="user_id" name="user_id" >
+
 
 
                                 <div class="mb-3 col-md-6">
@@ -212,28 +215,22 @@
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="example-select" class="form-label">Added by:</label>
-                                    <select class="form-select" id="userRole" name="userRole">
-                                        <option>Select</option>
-                                        @foreach($adminComponents ['listOfUser'] as $user)
-                                        <option value="{{$user->id}}">{{$user->fullname}}</option>
-                                        @endforeach
-
-                                    </select>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Added by:</label>
+                                    <input type="text"  class="form-control form-control-sm "  id="addedBy" name="addedBy">
                                     <i class="text-danger userRole fw-normal message role font-16"></i>
 
                                   </div>
 
                                   <div class="mb-3 col-md-6">
                                         <label for="simpleinput" class="form-label fw-normal fs-16 ">Update Amouth:</label>
-                                        <input type="text" id="update_amouth" class="form-control form-control-sm " name="start_amount">
+                                        <input type="text" id="update_amouth" class="form-control form-control-sm " name="update_amouth">
                                         <i class="text-danger start_amount message fw-normal role font-16"></i>
 
                                   </div>
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn- h4 fw-bold text-light add-capital-btn w-50 "
+                                    <button class="btn btn- h4 fw-bold text-light up-capital-btn w-50 "
                                         style="background-color:teal">Update Capital <span class="uil-edit"></span></button>
                                 </div>
 
