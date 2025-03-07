@@ -24,31 +24,39 @@
             $('.message').html('')
             $('#capital-form').show()
             $('#capital-table').hide()
+            
+
+        })
+        
+        $(document).on('click','#capitalValue',function(e){
+            e.preventDefault()
             let userInput = document.getElementById('userFormData');
             let userFormDateails = new FormData(userInput);
             $.ajax({
-                url: "{{route('add-capital')}}",
+                url: "{{route('add-capital-initial')}}",
                 method: "POST",
                 contentType: false,
                 processData: false,
                 data: userFormDateails,
                 success: function (res) {
                     Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: res.message,
-                        showConfirmButton: false,
-                        timer: 1500
+                    position: "top-end",
+                    icon: "success",
+                    title: res.message,
+                    showConfirmButton: false,
+                    timer: 1500
                     });
                     setTimeout(() => {
                         location.reload()
                     }, 1500);
 
+                    
+
                 },
                 error: function (error) {
                     if (error) {
-                        $('.userRole').html(error.responseJSON.errors.userRole)
                         $('.start_amount').html(error.responseJSON.errors.start_amount)
+                        $('.userRole').html(error.responseJSON.errors.userRole)
 
                     }
 
@@ -57,7 +65,6 @@
 
 
             })
-
         })
 
         $(document).on('click', '.edit-capital', function (e) {
@@ -116,11 +123,31 @@
 
         $(document).on('click','.change-capital-btn',function(e){
         e.preventDefault()
+        $('.message').html('')
         let changeAmouth = document.getElementById('changeCapital');
         let amouth = new FormData(changeAmouth)
 
         $.ajax({
-            
+            url :"{{route('add-capital')}}",
+            method:"POST",
+            contentType:false,
+            processData:false,
+            data:amouth,
+            success:function(res){
+                Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title:res.message,
+                showConfirmButton: false,
+                timer: 1500
+                });
+                
+            },
+            error:function(error){
+                console.log(error);
+                
+              $('.change-amouth').html(error.responseJSON.errors.change_amouth)                
+            }
         })
 
      })  

@@ -231,9 +231,7 @@
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn- h4 fw-bold text-light add-capital-btn w-50 "
-                                        style="background-color:teal">Add Capital <span
-                                            class="uil-plus"></span></button>
+                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id="capitalValue" style="background-color:teal">Add Capital <span class="uil-plus"></span></button>
                                 </div>
 
                             </center>

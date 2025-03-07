@@ -172,9 +172,9 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Add Amouth:</label>
-                                    <input type="text" id="change-amouth" class="form-control form-control-sm "
-                                        name="change-amouth">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="text" id="change_amouth" class="form-control form-control-sm "
+                                        name="change_amouth">
+                                    <i class="text-danger change-amouth message fw-normal role font-16"></i>
 
                                 </div>
 

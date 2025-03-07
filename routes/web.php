@@ -42,9 +42,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // =======================Capital Route====================
     Route::get('/admin/capital', [CapitalModelController::class, 'capitalIndex'])->name('capital-index');
-    Route::post('/admin/capital', [CapitalModelController::class, 'addCapital'])->name('add-capital');
+    Route::post('/admin/capital', [CapitalModelController::class, 'addCapital'])->name('add-capital-initial');
     Route::post('/admin/update', [CapitalModelController::class, 'updateCapital'])->name('update-capital');
     Route::get('/admin/update-capital', [CapitalModelController::class, 'changeCapital'])->name('change-capital');
+    Route::post('/admin/change-capital', [CapitalModelController::class, 'increaseCapital'])->name('add-capital');
+
 
 
 

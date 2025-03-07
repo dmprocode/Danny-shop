@@ -30,18 +30,19 @@ class CapitalModelController extends Controller
 
     public function addCapital(Request $request){
         $this->validate($request, [
-            'start_amount' => 'required|numeric',  
+            'start_amount' => 'required|numeric|min:0',  
             'userRole' => 'required|not_in:Select',
         ], [
             'start_amount.required' => 'The start amount is required.',
             'start_amount.numeric' => 'The start amount must be a number.',
+            'start_amount.min' => 'Negative number are not Allowed.',
+
             'userRole.required' => 'Please select a user role.',
             'userRole.not_in' => 'Invalid selection for user role.',
         ]);
         
-        $addCapital = CapitalModel::create([
+        $addCapitalData = CapitalModel::create([~
             'start_amount' => $request->start_amount,
-            'update_amount' => $request->updatedAmouth,
             'user_id' => $request->userRole,
         ]);
         return response()->json([
@@ -86,6 +87,25 @@ class CapitalModelController extends Controller
         }
         return redirect()->route('login');
         
+    }
+
+    public function increaseCapital(Request $request){
+        $this->validate( $request,[
+        'change_amouth'=> 'required|numeric|min:0'
+        ],[
+            'change_amouth.required' => 'This Field Is Required',
+            'change_amouth.numeric' => 'Please Select valid number',
+            'change_amouth.min' => 'Negative number are not Allowed',
+
+
+        ]);
+        $changeCapital =  CapitalModel::create([
+            'update_amount'=> $request->change_amouth
+        ]);
+        return response()->json([
+            'message' => 'Capital Changed Successfully'
+        ]);
+
     }
    
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('start_amount')->nullable();
             $table->string('update_amount')->nullable();
             $table->string('product_profit')->nullable();
-            $table-> unsignedBigInteger('user_id');
+            $table-> unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
