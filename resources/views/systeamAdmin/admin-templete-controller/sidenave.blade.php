@@ -110,16 +110,16 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="uil-envelope"></i>
-                                <span> Email </span>
+                                <span> Capital </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarEmail">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-email-inbox.html">Inbox</a>
+                                        <a href="{{route('capital-index')}}">Capital Table</a>
                                     </li>
                                     <li>
-                                        <a href="apps-email-read.html">Read Email</a>
+                                        <a href="{{route('change-capital')}}">Update Capital</a>
                                     </li>
                                 </ul>
                             </div>

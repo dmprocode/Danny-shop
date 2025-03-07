@@ -67,9 +67,25 @@ class CapitalModelController extends Controller
                     'message' => 'Data Updated Successfully'
                 ]);
             }
-           
+
+
             
         }
       
     }
+
+
+    public function changeCapital(){
+        if (auth()->check() && auth()->user()->userRole == 'admin') {
+             $user = auth()->user();
+             $adminComponents =[
+                'user' => $user,
+             ];
+             return view(' systeamAdmin.capital.capitalChange   ',compact('adminComponents'));
+
+        }
+        return redirect()->route('login');
+        
+    }
+   
 }
