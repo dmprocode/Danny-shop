@@ -41,7 +41,8 @@ class CapitalModelController extends Controller
             'userRole.not_in' => 'Invalid selection for user role.',
         ]);
         
-        $addCapitalData = CapitalModel::create([~
+        
+        $addCapitalData = CapitalModel::create([
             'start_amount' => $request->start_amount,
             'user_id' => $request->userRole,
         ]);
@@ -79,8 +80,11 @@ class CapitalModelController extends Controller
     public function changeCapital(){
         if (auth()->check() && auth()->user()->userRole == 'admin') {
              $user = auth()->user();
+             $listOfUser =User::where('userRole','admin')->get();
+
              $adminComponents =[
                 'user' => $user,
+                'listOfUser' => $listOfUser
              ];
              return view(' systeamAdmin.capital.capitalChange   ',compact('adminComponents'));
 
@@ -90,6 +94,7 @@ class CapitalModelController extends Controller
     }
 
     public function increaseCapital(Request $request){
+       
         $this->validate( $request,[
         'change_amouth'=> 'required|numeric|min:0'
         ],[
@@ -100,7 +105,9 @@ class CapitalModelController extends Controller
 
         ]);
         $changeCapital =  CapitalModel::create([
-            'update_amount'=> $request->change_amouth
+            'update_amount'=> $request->change_amouth,
+            'added_by' => $request->userRole,
+
         ]);
         return response()->json([
             'message' => 'Capital Changed Successfully'

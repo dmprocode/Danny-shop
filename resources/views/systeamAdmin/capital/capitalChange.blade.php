@@ -178,6 +178,19 @@
 
                                 </div>
 
+                                <div class="mb-3 col-md-6">
+                                    <label for="example-select" class="form-label">Added by:</label>
+                                    <select class="form-select" id="example-select" name="userRole">
+                                        <option>Select</option>
+                                        @foreach($adminComponents ['listOfUser'] as $user)
+                                        <option value="{{$user->id}}">{{$user->fullname}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <i class="text-danger userRole fw-normal message role font-16"></i>
+
+                                </div>
+
                                 
                             </div>
                             <center>

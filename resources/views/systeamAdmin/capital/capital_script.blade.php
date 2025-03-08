@@ -30,6 +30,7 @@
         
         $(document).on('click','#capitalValue',function(e){
             e.preventDefault()
+           
             let userInput = document.getElementById('userFormData');
             let userFormDateails = new FormData(userInput);
             $.ajax({
@@ -39,6 +40,7 @@
                 processData: false,
                 data: userFormDateails,
                 success: function (res) {
+                    console.log(res);
                     Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -46,6 +48,8 @@
                     showConfirmButton: false,
                     timer: 1500
                     });
+                    
+                    
                     setTimeout(() => {
                         location.reload()
                     }, 1500);
