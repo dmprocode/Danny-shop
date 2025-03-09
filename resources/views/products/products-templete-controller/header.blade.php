@@ -26,9 +26,9 @@
     <link href="{{ asset('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="{{ asset('js/loadingoverlay.js') }}"></script>
-    <script src="{{ asset('js/loadingoverlay.min.js') }}"></script>
+    
+    <link href="{{ asset('assets/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- =======Sweet Alert================ -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -36,7 +36,7 @@
     <!-- Datatables css -->
     <link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet')}}" type="text/css" />
-    
+
 
     
 </head>

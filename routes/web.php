@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopkeeperController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CapitalModelController;
+use App\Http\Controllers\ProductsController;
+
 
 
 
@@ -47,6 +49,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/update-capital', [CapitalModelController::class, 'changeCapital'])->name('change-capital');
     Route::post('/admin/change-capital', [CapitalModelController::class, 'increaseCapital'])->name('add-capital');
 
+
+
+    // =======================Products Routs====================
+    Route::get('/admin/products', [ProductsController::class, 'productIndex'])->name('product-index');
 
 
 
