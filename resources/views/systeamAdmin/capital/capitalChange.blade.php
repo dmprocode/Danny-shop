@@ -37,8 +37,10 @@
                     <div class="row">
                         <div class="row">
                             <div class="col-sm-5">
-                                <a href="javascript:void(0);" class="btn btn-outline-info btn-sm mb-2 add-capital-btn"><i
-                                        class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Change Capital</span> </a>
+                                <a href="javascript:void(0);"
+                                    class="btn btn-outline-info btn-sm mb-2 add-capital-btn"><i
+                                        class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Change Capital</span>
+                                </a>
                             </div>
                             <div class="col-sm-7 ">
                                 <div class="text-sm-end">
@@ -54,32 +56,42 @@
                         <div class="col-lg-8">
                             <div class="table-responsive">
                                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                    @if($adminComponents['userWithCapital']->isEmpty())
+                                    <i class="text-danger font-16">No Data Available</i>
+                                    @else
                                     <thead class="table-light">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Start Amouth</th>
-                                            <th>Update Amouth</th>
-                                            <th>Product Profit</th>
+                                            <th>Initial Investment</th>
+                                            <th>Added Amouth</th>
+                                            <th>User Add</th>
                                             <th>Added Date</th>
                                             <th>Updated Date</th>
-
-                                            <th class="f-13 text-info ">Added By</th>
-                                            <th class="f-13 text-info ">Action</th>
 
 
                                         </tr>
                                     </thead>
-                                  
-                                    <tbody>
-                                        
-                                        
 
+                                    <tbody>
+                                        @foreach($adminComponents['userWithCapital'] as $user)
+                                        @foreach($user->capital as $key=>$capital)
+                                        <tr>
+                                            <td>{{$key + 1}}</td>
+                                            <td>{{number_format($capital->start_amount,2)}}</td>
+                                            <td>{{number_format($capital->update_amount,2)}}</td>
+                                            <td>{{$user->fullname}}</td>
+                                            <td>{{\Carbon\carbon::parse($capital->created_at)->format('M-j-Y')}}</td>
+                                            <td>{{\Carbon\carbon::parse($capital->updated_at)->format('M-j-Y')}}</td>
+                                        </tr>
+                                        @endforeach
+                                        @endforeach
+                                      
                                     </tbody>
 
-
+                                    @endif
 
                                 </table>
-                                
+
                                 </table>
                             </div> <!-- end table-responsive-->
 
@@ -172,9 +184,8 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Add Amouth:</label>
-                                    <input type="text" id="change_amouth" class="form-control form-control-sm "
-                                        name="change_amouth">
-                                    <i class="text-danger change-amouth message fw-normal role font-16"></i>
+                                    <input type="text" id="change_amouth" class="form-control form-control-sm" name="change_amouth">
+                                    <i class="text-danger change-amouth messsage fw-normal role font-16"></i>
 
                                 </div>
 
@@ -187,11 +198,11 @@
                                         @endforeach
 
                                     </select>
-                                    <i class="text-danger userRole fw-normal message role font-16"></i>
+                                    <i class="text-danger userRole fw-normal messsage role font-16"></i>
 
                                 </div>
 
-                                
+
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">

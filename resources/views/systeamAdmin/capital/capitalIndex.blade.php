@@ -57,8 +57,7 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Start Amouth</th>
-                                            <th>Update Amouth</th>
+                                            <th>Initial Investment</th>
                                             <th>Product Profit</th>
                                             <th>Added Date</th>
                                             <th>Updated Date</th>
@@ -74,16 +73,10 @@
                                     @else
                                     <tbody>
                                         @foreach($adminComponents['capitalUser'] as $user)
-                                        @foreach($user->capital as $key => $capital)
+                                        @foreach($user->capital as $key=>$capital)
                                         <tr>
-                                            <td>{{ $capital->id }}</td>
+                                            <td>{{$capital->id}}</td>
                                             <td>{{number_format($capital->start_amount ,2) }}</td>
-                                            @if($capital->update_amount == '')
-                                            <td class="text-danger"> No Value</td>
-                                            @else
-                                            <td>{{number_format($capital->update_amount,2) }}</td>
-                                            @endif
-                                            
                                             @if($capital->product_profit == '')
                                             <td class="text-danger">No Value</td>
                                             @else

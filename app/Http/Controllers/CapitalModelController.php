@@ -17,18 +17,45 @@ class CapitalModelController extends Controller
         if (auth::check() && auth()->user()->userRole == 'admin') {
             $user = auth()->user();
             $listOfUser =User::where('userRole','admin')->get();
-            $capitalWithUser = User::with('capital')->get();
+            $capitalWithUser = User::whereHas('capital')->with('capital')->get();
             $adminComponents = [
                 'user' => $user,
                 'listOfUser' => $listOfUser,
-                'capitalUser' => $capitalWithUser
+                'capitalUser' => $capitalWithUser,
+            
             ];
             return view('systeamAdmin.capital.capitalIndex',compact('adminComponents'));
         }
         return redirect()->route('login');
     }
 
+    public function checkCapital(Request $request){
+
+        if (auth::check() && auth()->user()->userRole == 'admin') {
+            $user = auth()->user();
+            $initialInvstement = CapitalModel::sum('start_amount');
+            if($initialInvstement > 0){
+                return response()->json([
+                    'status' => 600,
+                    
+                ]);
+            }
+            $adminComponents = [
+                'user' => $user,
+                'initialInvstement' => $initialInvstement
+            
+            ];
+            return view('systeamAdmin.capital.capitalIndex',compact('adminComponents'));
+        }
+        return redirect()->route('login');
+        
+        
+    }
+
+  
+
     public function addCapital(Request $request){
+        
         $this->validate($request, [
             'start_amount' => 'required|numeric|min:0',  
             'userRole' => 'required|not_in:Select',
@@ -81,10 +108,12 @@ class CapitalModelController extends Controller
         if (auth()->check() && auth()->user()->userRole == 'admin') {
              $user = auth()->user();
              $listOfUser =User::where('userRole','admin')->get();
+              $userWithCapital = User::with('capital')->get();
 
              $adminComponents =[
                 'user' => $user,
-                'listOfUser' => $listOfUser
+                'listOfUser' => $listOfUser,
+                'userWithCapital' => $userWithCapital
              ];
              return view(' systeamAdmin.capital.capitalChange   ',compact('adminComponents'));
 
@@ -95,18 +124,22 @@ class CapitalModelController extends Controller
 
     public function increaseCapital(Request $request){
        
-        $this->validate( $request,[
-        'change_amouth'=> 'required|numeric|min:0'
-        ],[
-            'change_amouth.required' => 'This Field Is Required',
-            'change_amouth.numeric' => 'Please Select valid number',
-            'change_amouth.min' => 'Negative number are not Allowed',
-
-
+        $this->validate($request, [
+            'change_amouth' => 'required|numeric|min:0',
+            'userRole' => 'required|numeric|not_in:Select',
+        ], [
+            'change_amouth.required' => 'This field is required.',
+            'change_amouth.numeric' => 'Please enter a valid number.',
+            'change_amouth.min' => 'Negative numbers are not allowed.',
+            
+            'userRole.required' => 'The user role field is required.',
+            'userRole.numeric' => 'The user role must be a number.',
+            'userRole.not_in' => 'Please select a valid user role.',
         ]);
+        
         $changeCapital =  CapitalModel::create([
             'update_amount'=> $request->change_amouth,
-            'added_by' => $request->userRole,
+            'user_id' => $request->userRole
 
         ]);
         return response()->json([

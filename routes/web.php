@@ -48,7 +48,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/update', [CapitalModelController::class, 'updateCapital'])->name('update-capital');
     Route::get('/admin/update-capital', [CapitalModelController::class, 'changeCapital'])->name('change-capital');
     Route::post('/admin/change-capital', [CapitalModelController::class, 'increaseCapital'])->name('add-capital');
-
+    Route::get('/admin/check-capital',[CapitalModelController::class,'checkCapital'])->name('check-capital-status');
 
 
     // =======================Products Routs====================
