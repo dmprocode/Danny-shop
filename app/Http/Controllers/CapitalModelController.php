@@ -150,5 +150,30 @@ class CapitalModelController extends Controller
         ]);
 
     }
-   
+    public function updateCapitalDetails(Request $request)
+    {
+        $request->validate([
+            'up_id' => 'required|exists:capital_models,id',
+            'investiments' => 'required|numeric|min:0'
+        ]);
+    
+        $capital = CapitalModel::find($request->up_id);
+    
+        if ($capital) {
+            $capital->update([
+                'update_amount' => $request->investiments
+            ]);
+    
+            return response()->json([
+                'message' => 'Capital Updated Successfully',
+                'status' => 200
+            ]);
+        }
+    
+        return response()->json([
+            'message' => 'Capital record not found',
+            'status' => 404
+        ], 404);
+    }
+    
 }

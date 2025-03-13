@@ -7,6 +7,7 @@
         });
         $('#capital-form').hide()
         $('#update-capital-form').hide()
+        $('#upp-capital-form').hide()
 
 
         $(document).on('click', '.add-capital', function (e) {
@@ -40,7 +41,7 @@
                     }
                 },
                 error: function () {
-                    
+
                 }
             });
         });
@@ -169,18 +170,18 @@
             contentType: false,
             processData: false,
             data: amouth,
-            success: function (res) {                
+            success: function (res) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
                     title: res.message,
                     showConfirmButton: false,
                     timer: 1500,
-                   
+
                 });
                 setTimeout(() => {
-                        location.reload()
-                    }, 1500);
+                    location.reload()
+                }, 1500);
 
             },
             error: function (error) {
@@ -191,9 +192,60 @@
         })
 
     })
+    $(document).on('click', '.update-capital-btn', function (e) {
+        e.preventDefault()
+        $('#upp-capital-form').show()
+        $('#capital-table').hide()
+        let id = $(this).data('id')
+        let start_amount = $(this).data('start_amount');
+        let update_amount = $(this).data('update_amount');
+        console.log(update_amount);
+
+        $('#up_id').val(id)
+        $('#up_cpital_allocation').val(start_amount)
+        $('#added-investiments').val(update_amount)
+
+    })
+
+    $(document).on('click', '#change-capital-button', function (e) {
+        e.preventDefault()
+        let userInput = document.getElementById('updateCapitalData')
+        let capitalDetails = new FormData(userInput);
+
+        $.ajax({
+            url: "{{route('update-capital-details')}}",
+            method: "POST",
+            contentType: false,
+            processData: false,
+            data: capitalDetails,
+            success: function (res) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: res.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(() => {
+                    location.reload()
+                }, 1500);
+            },
+            error: function (error) {
+                console.log(error);
+                
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Something went wrong!",
+                    text: error.responseJSON?.message || "Please try again.",
+                    showConfirmButton: true
+                });
+            }
+        });
+
+    })
 
 
-    
 
 
 

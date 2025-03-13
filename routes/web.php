@@ -50,7 +50,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/update-capital', [CapitalModelController::class, 'changeCapital'])->name('change-capital');
     Route::post('/admin/change-capital', [CapitalModelController::class, 'increaseCapital'])->name('add-capital');
     Route::get('/admin/check-capital',[CapitalModelController::class,'checkCapital'])->name('check-capital-status');
-
+    Route::post('/admin/update-capital',[CapitalModelController::class,'updateCapitalDetails'])->name('update-capital-details');
 
     // =======================Products Routs====================
     Route::get('/admin/products', [ProductsController::class, 'productIndex'])->name('product-index');
