@@ -62,8 +62,8 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Initial Investment</th>
-                                            <th>Added Amouth</th>
+                                            <th class="">Capital Allocation</th>
+                                            <th>Further investment</th>
                                             <th>User Add</th>
                                             <th>Added Date</th>
                                             <th>Updated Date</th>
@@ -110,29 +110,30 @@
 
                         <div class="col-lg-4">
                             <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                <h4 class="header-title mb-3">Order Summary</h4>
+                                <h4 class="header-title mb-3">CAPITAL</h4>
 
                                 <div class="table-responsive">
                                     <table class="table mb-0">
                                         <tbody>
                                             <tr>
-                                                <td>Grand Total :</td>
-                                                <td>$1571.19</td>
+                                                <td>Capital Allocation :</td>
+                                                <td class="text-danger fw-bold">{{number_format($adminComponents['capitalAllocation'],2)}}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Further investment:</td>
+                                                <td class="text-danger  fw-bold">{{number_format($adminComponents['fatherInvestimeants'],2)}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Discount : </td>
-                                                <td>-$157.11</td>
+                                                <td>Standing Capital:  </td>
+                                                <td class="text-info fw-bold">{{number_format($adminComponents['capitalAllocation'] + $adminComponents['fatherInvestimeants'],2)}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Shipping Charge :</td>
-                                                <td>$25</td>
+                                                <th>Profit</th>
+                                                <th>$1458.3</th>
                                             </tr>
                                             <tr>
-                                                <td>Estimated Tax : </td>
-                                                <td>$19.22</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total :</th>
+                                                <th>Profit</th>
                                                 <th>$1458.3</th>
                                             </tr>
                                         </tbody>

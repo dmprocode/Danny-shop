@@ -34,7 +34,8 @@ Route::post('/logout',[LoginController::class,'logout'])->name('logout');
 
 //===========Unauthorized==================
 Route::get('/unathorized',[LoginController::class,'unauthorized'])->name('unathorized');
-
+Route::get('/admin/users', [UserController::class, 'userTable'])->name('user-index');
+Route::post('/admin/users', [UserController::class, 'addUsers'])->name('add-user');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin-dashboard');

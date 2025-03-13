@@ -109,11 +109,14 @@ class CapitalModelController extends Controller
              $user = auth()->user();
              $listOfUser =User::where('userRole','admin')->get();
               $userWithCapital = User::with('capital')->get();
-
+              $capitalAllocation = CapitalModel::sum('start_amount');
+             $fatherInvestimeants = CapitalModel::sum('update_amount');
              $adminComponents =[
                 'user' => $user,
                 'listOfUser' => $listOfUser,
-                'userWithCapital' => $userWithCapital
+                'userWithCapital' => $userWithCapital,
+                'capitalAllocation' =>  $capitalAllocation,
+                'fatherInvestimeants'=>$fatherInvestimeants
              ];
              return view(' systeamAdmin.capital.capitalChange   ',compact('adminComponents'));
 

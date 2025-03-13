@@ -118,18 +118,18 @@ class UserController extends Controller
         $dob = Carbon::parse($request->dob)->format('Y-m-d');
 
     
-        // Create New User
-        $user = User::create([
-            'fullname'     => $request->fullname,
-            'email'    => $request->email,
-            'password' => $password,
-            'dob'=> $dob,
-            'userRole'=> $request->userRole,
-            'address'  => $request->address,
-            'gender'   => $request->gender,
-            'userImage'    => $imagePath,
+        // Create New User        
+        User::create([
+            'fullname'  => 'John Doe',
+            'email'     => 'danielmathias@gmail.com',
+            'password'  => Hash::make('123456'), 
+            'dob'       => '1995-05-10',
+            'userRole'  => 'admin', 
+            'address'   => '123 Main St',
+            'gender'    => 'Male',
+            'userImage' => 'default.jpg',
         ]);
-    
+        
         return response()->json([
             'message' => 'User added successfully!',
         ]);
