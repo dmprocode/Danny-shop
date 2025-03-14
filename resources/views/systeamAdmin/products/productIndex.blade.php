@@ -21,21 +21,21 @@
 
                     </form>
                 </div>
-                <h4 class="page-title fw-normal" id="">Add Product`s</h4>
+                <h4 class="page-title fw-normal" id=""> Product`s Table</h4>
             </div>
         </div>
     </div>
     <!-- end page title -->
 
-    <div class="row" id="capital-form">
+    <div class="row" id="products-table">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
                             <a href="javascript:void(0);"
-                                class="btn btn-outline-danger btn-sm text-info mb-2 go-back-btn"><i
-                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Go Back </span> </a>
+                                class="btn btn-outline-info btn-sm  mb-2 add-products-btn"><i
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add Products </span> </a>
                         </div>
                         <div class="col-sm-7 ">
                             <div class="text-sm-end">
@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <div class="row" id="capital-form">
+    <div class="row" id="add-products-div">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -112,30 +112,30 @@
                             </div>
                         </div><!-- end col-->
 
-                        <form action="#" id="userFormData">
+                        <form action="#" id="productsFormData">
                             @csrf
 
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Name:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="text" id="product_name" class="form-control form-control-sm "
+                                        name="product_name">
+                                    <i class="text-danger product_name message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product         Image:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Image:</label>
+                                    <input type="file" id="product_image" class="form-control form-control-sm "
+                                        name="product_image">
+                                    <i class="text-danger product_image message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Category:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
+                                    <input type="text" id="product_" class="form-control form-control-sm "
                                         name="start_amount">
                                     <i class="text-danger start_amount message fw-normal role font-16"></i>
 
@@ -143,59 +143,68 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Price:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="number" id="product_price" class="form-control form-control-sm "
+                                        name="product_price">
+                                    <i class="text-danger product_price message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Quantity:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="number" id="product_quantity" class="form-control form-control-sm "
+                                        name="product_quantity">
+                                    <i class="text-danger product_quantity message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Iteams:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="number" id="product_iteams" class="form-control form-control-sm "
+                                        name="product_iteams">
+                                    <i class="text-danger product_iteams message fw-normal role font-16"></i>
 
                                 </div>
 
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Price per Iteams:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="number" id="price_per_iteams" class="form-control form-control-sm "
+                                        name="price_per_iteams">
+                                    <i class="text-danger price_per_iteams message fw-normal role font-16"></i>
 
                                 </div>
 
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Iteam:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="number" id="selling_price" class="form-control form-control-sm "
+                                        name="selling_price">
+                                    <i class="text-danger selling_price message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Classfication:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                        <label for="example-select" class="form-label">Product Classfication:</label>
+                                        <select name="category" class="form-select form-select-sm" id="product-category" required>
+                                            <option value="" disabled selected>Select Product Category</option>
+                                            <option value="electronics">Electronics</option>
+                                            <option value="glass">Glassware</option>
+                                            <option value="ceramics">Ceramics (Vyombo vya Udongo)</option>
+                                            <option value="plastic">Plastic</option>
+                                            <option value="metal">Metal (Chuma)</option>
+                                            <option value="bone_china">Bone China (Vyombo vya Mfupa)</option>
+
+                                        </select>
+
+                                    <i class="text-danger products_Classfication message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Color:</label>
-                                    <input type="text" id="simpleinput" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
+                                    <input type="text" id="color" class="form-control form-control-sm "
+                                        name="color">
+                                    <i class="text-danger color message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -206,8 +215,8 @@
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id="capitalValue"
-                                        style="background-color:teal">Add Capital <span
+                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id="addProducts"
+                                        style="background-color:teal">Add Product <span
                                             class="uil-plus"></span></button>
                                 </div>
 
@@ -224,5 +233,5 @@
     </div>
 
     <!-- container -->
-    <!-- @include('systeamAdmin.capital.capital_script') -->
+    @include('systeamAdmin.products.productScript')
     @include('systeamAdmin.admin-templete-controller.footer')
