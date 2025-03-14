@@ -74,13 +74,13 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                                 <i class="uil-store"></i>
-                                <span> Ecommerce </span>
+                                <span> Products </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-ecommerce-products.html">Products</a>
+                                        <a href="{{route('add-products')}}">Products List</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-products-details.html">Products Details</a>
@@ -109,7 +109,7 @@
 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                                <i class="uil-envelope"></i>
+                                <i class=" uil-moneybag-alt"></i>
                                 <span> Capital </span>
                                 <span class="menu-arrow"></span>
                             </a>

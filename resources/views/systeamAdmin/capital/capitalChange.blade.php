@@ -260,7 +260,7 @@
                             @csrf
 
                             <div class="row">
-                                <input type="text" id ="up_id" name="up_id">
+                                <input type="hidden" id ="up_id" name="up_id">
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Add Amouth:</label>

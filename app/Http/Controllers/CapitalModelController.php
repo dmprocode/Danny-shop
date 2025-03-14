@@ -158,17 +158,19 @@ class CapitalModelController extends Controller
         ]);
     
         $capital = CapitalModel::find($request->up_id);
-    
-        if ($capital) {
-            $capital->update([
-                'update_amount' => $request->investiments
-            ]);
-    
-            return response()->json([
-                'message' => 'Capital Updated Successfully',
-                'status' => 200
-            ]);
-        }
+      
+            if ($capital) {
+                $capital->update([
+                    'update_amount' => $request->investiments
+                ]);
+        
+                return response()->json([
+                    'message' => 'Capital Updated Successfully',
+                    'status' => 200
+                ]);
+            }
+        
+        
     
         return response()->json([
             'message' => 'Capital record not found',
