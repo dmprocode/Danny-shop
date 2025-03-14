@@ -131,15 +131,7 @@
                                         name="product_image">
                                     <i class="text-danger product_image message fw-normal role font-16"></i>
 
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Category:</label>
-                                    <input type="text" id="product_" class="form-control form-control-sm "
-                                        name="start_amount">
-                                    <i class="text-danger start_amount message fw-normal role font-16"></i>
-
-                                </div>
+                                </div>              
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Price:</label>
@@ -162,24 +154,6 @@
                                     <input type="number" id="product_iteams" class="form-control form-control-sm "
                                         name="product_iteams">
                                     <i class="text-danger product_iteams message fw-normal role font-16"></i>
-
-                                </div>
-
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Price per Iteams:</label>
-                                    <input type="number" id="price_per_iteams" class="form-control form-control-sm "
-                                        name="price_per_iteams">
-                                    <i class="text-danger price_per_iteams message fw-normal role font-16"></i>
-
-                                </div>
-
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Iteam:</label>
-                                    <input type="number" id="selling_price" class="form-control form-control-sm "
-                                        name="selling_price">
-                                    <i class="text-danger selling_price message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -207,6 +181,17 @@
                                     <i class="text-danger color message fw-normal role font-16"></i>
 
                                 </div>
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Size:</label>
+                                    <input type="number" id="size" class="form-control form-control-sm "
+                                        name="size">
+                                    <i class="text-danger color message fw-normal role font-16"></i>
+
+                                </div>
+
+
 
 
 

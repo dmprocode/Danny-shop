@@ -18,4 +18,10 @@ class ProductsController extends Controller
         }
         return redirect()->route('unathorized');
     }
+
+    public function addProducts(Request $request){
+        return response()->json([
+            'message' => $request->all()
+        ]);
+    }
 }

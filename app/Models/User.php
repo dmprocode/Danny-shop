@@ -55,5 +55,8 @@ class User extends Authenticatable
     {  
        return $this->hasMany(CapitalModel::class, 'user_id', 'id');
     }
+    public function product(){
+        return $this->hasMany(Product::class,'user_id','id');
+    }
 
 }
