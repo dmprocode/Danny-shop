@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
+use App\Models\ProductModel;
 
 class ProductsController extends Controller
 {
@@ -19,32 +20,37 @@ class ProductsController extends Controller
         return redirect()->route('unathorized');
     }
 
-    public function addProducts(Request $request){
-        $this->validate($request,[
-                'product_name' =>'required|string|max:255|unique:products,name',
-                'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'category' => 'required|string|max:255',
-                'product_price' => 'required|numeric|min:0',
-                'product_quantity' => 'required|integer|min:1',
-                'product_iteams' => 'required|integer|min:1',
-                'classification' => 'nullable|string|max:255',
-                'color' => 'nullable|string|max:50',
-                'size' => 'nullable|string|max:50',
-            ], [
-                'product_name.required' => 'The product name is required.',
-                'product_name.unique' => 'This product name already exists. Please use a different name.',                'category.required' => 'Please select a valid category.',
-                'product_price.required' => 'Product price is required.',
-                'product_price.numeric' => 'Price must be a valid number.',
-                'product_price.min' => 'Price cannot be negative.',
-                'product_quantity.required' => 'Product quantity is required.',
-                'product_quantity.integer' => 'Quantity must be a whole number.',
-                'product_quantity.min' => 'Quantity must be at least 1.',
-                'product_iteams.required' => 'Number of items is required.',
-                'product_iteams.integer' => 'Items must be a whole number.',
-                'imaproduct_imagege.image' => 'Uploaded file must be an image.',
-                'product_image.mimes' => 'Only JPEG, PNG, JPG, GIF, and SVG images are allowed.',
-                'product_image.max' => 'Image size must not exceed 2MB.',
-        ]);
-        
-    }
+    public function addProducts(Request $request)
+{
+    $validatedData = $request->validate([
+        'product_name' => 'required|string|unique:products,name|max:255',
+        'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max
+        'category' => 'required|not_in:Select Product Category|string|max:100',
+        'price' => 'required|numeric|min:0',
+        'price_per_item' => 'nullable|numeric|min:0',
+        'selling_price_per_item' => 'nullable|numeric|min:0',
+        'number_of_set' => 'nullable|integer|min:0',
+        'number_of_catton' => 'required|integer|min:1',
+        'number_of_pieces' => 'required|integer|min:1',
+        'color' => 'nullable|string|max:50',
+        'size' => 'nullable|string|max:50',
+        'user_id' => 'nullable|exists:users,id', // Ensures the user exists
+    ], [
+        'product_name.required' => 'Product name is required.',
+        'product_name.unique' => 'This product name already exists.',
+        'product_image.image' => 'The file must be an image.',
+        'category.required' => 'Please select a product category.',
+        'category.not_in' => 'Please select Valid product category.',
+        'price.required' => 'Price is required.',
+        'price.numeric' => 'Price must be a valid number.',
+        'number_of_catton.required' => 'Number of cartons is required.',
+        'number_of_pieces.required' => 'Number of pieces is required.',
+    ]);
+
+    // Store product
+    // $product = Product::create($validatedData);
+
+    return response()->json(['message' => 'Product added successfully!', 'product' => $product]);
+}
+
 }

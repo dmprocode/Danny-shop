@@ -11,18 +11,19 @@ class Product extends Model
     protected $table = ['products'];
 
     protected $fillable = [
-        'name', 
-        'image', 
-        'category', 
-        'price', 
-        'quantity', 
+        'name',
+        'image',
+        'category',
+        'price',
         'price_per_item',
         'selling_price_per_item',
-        'items',
+        'number_of_set',
+        'number_catton',
+        'number_of_pieces',
         'classification',
-        'color', 
+        'color',
         'size',
-        'user_id'
+        'user_id',
     ];
 
     public function user(){

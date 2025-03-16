@@ -134,26 +134,26 @@
                                 </div>              
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Price:</label>
-                                    <input type="number" id="product_price" class="form-control form-control-sm "
-                                        name="product_price">
-                                    <i class="text-danger product_price message fw-normal role font-16"></i>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of Catton:</label>
+                                    <input type="number" id="number_of_catton" class="form-control form-control-sm "
+                                        name="number_of_catton">
+                                    <i class="text-danger number_of_catton message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Quantity:</label>
-                                    <input type="number" id="product_quantity" class="form-control form-control-sm "
-                                        name="product_quantity">
-                                    <i class="text-danger product_quantity message fw-normal role font-16"></i>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of  Set:</label>
+                                    <input type="number" id="number_of_set" class="form-control form-control-sm "
+                                        name="number_of_set">
+                                    <i class="text-danger number_of_set message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Iteams:</label>
-                                    <input type="number" id="product_iteams" class="form-control form-control-sm "
-                                        name="product_iteams">
-                                    <i class="text-danger product_iteams message fw-normal role font-16"></i>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Picess:</label>
+                                    <input type="number" id="picess" class="form-control form-control-sm "
+                                        name="number_of_pieces">
+                                    <i class="text-danger number_of_pieces message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -170,9 +170,12 @@
 
                                         </select>
 
-                                    <i class="text-danger products_Classfication message fw-normal role font-16"></i>
+                                    <i class="text-danger category message fw-normal role font-16"></i>
 
                                 </div>
+
+                                
+
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Color:</label>

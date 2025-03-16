@@ -24,8 +24,9 @@
         $(document).on('click','#addProducts', function(e){
             e.preventDefault()
             $('.message').html('')
-             let productData = document.getElementById('productsFormData')
+             let productData = document.getElementById('productsFormData')             
              let productInputDetails = new FormData(productData)
+             
              $.ajax({
                 url:"{{route('product-index')}}",
                 method:"POST",
@@ -37,14 +38,16 @@
                     
                 },
                 error:function(error){
+                    console.log(error);
+                    
                    if (error) {
                     $('.product_name').html(error.responseJSON.errors.product_name)
                     $('.product_image').html(error.responseJSON.errors.product_image)
                     $('.product_price').html(error.responseJSON.errors.product_price)
                     $('.product_price').html(error.responseJSON.errors.product_price)
-                    $('.product_quantity').html(error.responseJSON.errors.product_quantity)
-                    $('.product_iteams').html(error.responseJSON.errors.product_iteams)
-                    $('.product_iteams').html(error.responseJSON.errors.product_iteams)
+                    $('.number_of_catton').html(error.responseJSON.errors.number_of_catton)
+                    $('.number_of_pieces').html(error.responseJSON.errors.number_of_pieces)
+                    $('.category').html(error.responseJSON.errors.category)
                     $('.product_iteams').html(error.responseJSON.errors.product_iteams)
 
                    }
