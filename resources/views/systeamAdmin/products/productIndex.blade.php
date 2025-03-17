@@ -78,15 +78,15 @@
                                     <td class="text-danger">No Value</td>
                                     @endif
                                     <td>{{$product->number_of_pieces}}</td>
-                                    @if($product->set == '')
+                                    @if($product->number_of_set == '')
                                     <td class="text-danger">No Value</td>
                                     @else
-                                    <td>{{$product->set}}</td>
+                                    <td>{{$product->number_of_set}}</td>
                                     @endif
                                     @if($product->price_per_item == '')
                                     <td class="text-danger">No Value</td>
                                     @else
-                                    <td>{{$product->price_per_item}}</td>
+                                    <td>{{number_format($product->price_per_item,2)}}</td>
                                     @endif
                                     @if($product->selling_price_per_item == '')
                                        <td class="text-danger">No Value</td>
