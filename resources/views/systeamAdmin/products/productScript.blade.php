@@ -34,7 +34,16 @@
                 contentType:false,
                 processData:false,
                 success:function(res){
-                    console.log(res);
+                    Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title:res.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(() => {
+                    location.reload()
+                }, 1500);
                     
                 },
                 error:function(error){
@@ -49,6 +58,8 @@
                     $('.number_of_pieces').html(error.responseJSON.errors.number_of_pieces)
                     $('.category').html(error.responseJSON.errors.category)
                     $('.product_iteams').html(error.responseJSON.errors.product_iteams)
+                    $('.buying_price').html(error.responseJSON.errors.buying_price)
+
 
                    }
                     
