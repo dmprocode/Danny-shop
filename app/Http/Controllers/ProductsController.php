@@ -13,9 +13,11 @@ class ProductsController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $products = Product::latest()->get();
+            $sumProducts = Product::sum('price');
             $adminComponents =[
                 'products' =>  $products,
                 'user'=> $user,
+                'sumProducts' => $sumProducts
             ];
             return view('systeamAdmin.products.productIndex',compact('adminComponents'));
         }
@@ -72,5 +74,12 @@ class ProductsController extends Controller
     return response()->json(['message' => 'Product added successfully!']);
     
 }
+
+    public function updateProducts(Request $request){
+        return response()->json([
+            'message' => $request->all()
+        ]);
+        
+    }
 
 }

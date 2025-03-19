@@ -70,6 +70,52 @@
         
         
 
+        // ==================Update Products=====================
+        $(document).on('click','.edit-products', function(e){
+            let id = $(this).data('id')
+            let name = $(this).data('name')
+            let price = $(this).data('price')
+            let number_catton = $(this).data('number_catton')
+            let number_of_pieces = $(this).data('number_of_pieces')
+            let number_of_set = $(this).data('number_of_set')
+            let price_per_item = $(this).data('price_per_item')
+            let category = $(this).data('category')
+            let size =$(this).data('size')
+            let color = $(this).data('color')
+            $('#up-productname').val(name)
+            $('#id').val(id);
+            $('#up-buying_price').val(price)
+            $('#up-number_of_catton').val(number_catton)
+            $('#up-number_of_set').val(number_of_set)
+            $('#up-picess').val(number_of_pieces)
+            $('#up-category').val(category)
+            $('#up-color').val(color)
+            $('#up-size').val(size)
+
+        })
+        $(document).on('click','#updateProduct-btn', function(e){
+            e.preventDefault()
+            let updateproductData = document.getElementById('productsFormData')
+            let productsInputs = new FormData(updateproductData)
+
+            $.ajax({
+                url:"{{route('update-product')}}",
+                method:"POST",
+                contentType:false,
+                processData:false,
+                data:productsInputs,
+                success:function(res){
+                    console.log(res);
+                    
+                },
+                error:function(error){
+                    console.log(error);
+                    
+                }
+        })
+            
+        })
+
 
         
         
