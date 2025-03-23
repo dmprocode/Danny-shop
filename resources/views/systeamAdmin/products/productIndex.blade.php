@@ -55,8 +55,8 @@
                                     <th>Price</th>
                                     <th>Catton</th>
                                     <th>Picess</th>
-                                    <th>Set</th>
                                     <th>Price Per Iteams</th>
+                                    <th>Set</th>
                                     <th>Seeling Price per Iteams</th>
                                     <th> Category</th>
                                     <th>Color</th>
@@ -70,6 +70,7 @@
                             <tbody>
                                 @foreach($adminComponents['products'] as $key=>$product)
                                 <tr>
+                                    
                                     <td>{{$key + 1}}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{number_format($product->price,2)}}</td>
@@ -111,6 +112,9 @@
                                                     data-price_per_item ="{{$product->price_per_item}}"
                                                     data-selling_price_per_item ="{{$product->selling_price_per_item}}"
                                                     data-category ="{{$product->category}}"
+                                                    data-price_per_item ="{{$product->price_per_item}}"
+
+
                                                     data-color ="{{$product->color}}"></i></a>
                                             <a href="javascript:void(0);" class="action-icon"> <i
                                                     class="mdi mdi-delete"></i></a></span>
@@ -476,6 +480,25 @@
                                     <i class="text-danger up-buying_price message fw-normal role font-16"></i>
 
                                 </div>
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Price Per Iteams:</label>
+                                    <input type="text" id="up-price-perIteams" class="form-control form-control-sm "
+                                        name="up-buying_price">
+                                    <i class="text-danger up-buying_price message fw-normal role font-16"></i>
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price:</label>
+                                    <input type="text" id="up-selling-price" class="form-control form-control-sm "
+                                        name="up-selling-price">
+                                    <i class="text-danger up-selling-price message fw-normal role font-16"></i>
+
+                                </div>
+
+
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of
