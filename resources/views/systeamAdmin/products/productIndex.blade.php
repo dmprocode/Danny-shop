@@ -529,13 +529,13 @@
 
                                 </div>
 
-                                <div class="mb-3 col-md-6">
+                                <!-- <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of Set:</label>
                                     <input type="number" id="up-number_of_set" class="form-control form-control-sm "
                                         name="up-number_of_set">
                                     <i class="text-danger up-number_of_set message fw-normal role font-16"></i>
 
-                                </div>
+                                </div> -->
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Picess:</label>

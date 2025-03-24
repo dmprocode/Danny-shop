@@ -24,38 +24,35 @@ class ProductsController extends Controller
 
     public function addProducts(Request $request)
 {
-    // $validatedData = $request->validate([
-    //     'product_name' => 'required|string|unique:products,name|max:255',
-    //     'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max
-    //     'category' => 'required|not_in:Select Product Category|string|max:100',
-    //     'buying_price' => 'required|numeric|min:0',
-    //     'price_per_item' => 'nullable|numeric|min:0',
-    //     'selling_price_pice' => 'nullable|numeric|min:0',
-    //     'number_of_set' => 'nullable|integer|min:0',
-    //     'number_of_catton' => 'required|integer|min:1',
-    //     'number_of_pieces' => 'required|integer|min:1',
-    //     'number_of_set' => 'nullable|integer|min:1',
+    $validatedData = $request->validate([
+        'product_name' => 'required|string|unique:products,name|max:255',
+        'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max
+        'category' => 'required|not_in:Select Product Category|string|max:100',
+        'buying_price' => 'required|numeric|min:0',
+        'price_per_item' => 'nullable|numeric|min:0',
+        'selling_price_pice' => 'nullable|numeric|min:0',
+        'number_of_set' => 'nullable|integer|min:0',
+        'number_of_catton' => 'required|integer|min:1',
+        'number_of_pieces' => 'required|integer|min:1',
+        'number_of_set' => 'nullable|integer|min:1',
 
-    //     'color' => 'nullable|string|max:50',
-    //     'size' => 'nullable|string|max:50',
-    //     'user_id' => 'nullable|exists:users,id', // Ensures the user exists
-    // ], [
-    //     'product_name.required' => 'Product name is required.',
-    //     'product_name.unique' => 'This product name already exists.',
-    //     'product_image.image' => 'The file must be an image.',
-    //     'category.required' => 'Please select a product category.',
-    //     'category.not_in' => 'Please select Valid product category.',
-    //     'buying_price.required' => 'Price is required.',
-    //     'buying_price.numeric' => 'Price must be a valid number.',
-    //     'number_of_catton.required' => 'Number of cartons is required.',
-    //     'number_of_pieces.required' => 'Number of pieces is required.',
-    //     'selling_price_pice.numeric' => 'The selling price per piece must be a valid number.',
-    //     'selling_price_pice.min' => 'The selling price per piece cannot be a negative value.',
-    // ]);
-    
-  
- 
-
+        'color' => 'nullable|string|max:50',
+        'size' => 'nullable|string|max:50',
+        'user_id' => 'nullable|exists:users,id', // Ensures the user exists
+    ], [
+        'product_name.required' => 'Product name is required.',
+        'product_name.unique' => 'This product name already exists.',
+        'product_image.image' => 'The file must be an image.',
+        'category.required' => 'Please select a product category.',
+        'category.not_in' => 'Please select Valid product category.',
+        'buying_price.required' => 'Price is required.',
+        'buying_price.numeric' => 'Price must be a valid number.',
+        'number_of_catton.required' => 'Number of cartons is required.',
+        'number_of_pieces.required' => 'Number of pieces is required.',
+        'selling_price_pice.numeric' => 'The selling price per piece must be a valid number.',
+        'selling_price_pice.min' => 'The selling price per piece cannot be a negative value.',
+    ]);
+   
   
     if ($request->hasFile('product_image')) {
         $imagePath = $request->file('product_image')->store('products', 'public');
@@ -65,14 +62,20 @@ class ProductsController extends Controller
     
     $product = Product::create([
         'name' => $request->product_name,
-        'image' => $imagePath, 
+        'image' => $imagePath,
         'number_catton' => $request->number_of_catton,
-        'number_of_set' => $request->number_of_set,
-        'number_of_pieces' => $request->number_of_pieces,
-        'category' => $request->category,
+        'number_of_set' => $request->numset,
+        'number_pieces' => $request->number_of_pieces,
+        'category' =>$request->category,
         'color' => $request->color,
         'size' => $request->size,
-        'price' => $request->buying_price,
+        'price' =>$request->price,
+        'buying_price' => $request->buying_price,
+        'number_caton' => $request->number_of_catton,
+        'number_dozen' => $request->number_of_set,
+        'price_per_dozen' => $request->selling_price_per_dozen,
+        'selling_price_per_piece' => $request->selling_price_pice,
+        'selling_price_per_dozen' => $request->selling_price_per_dozen,
         
     ]);
     

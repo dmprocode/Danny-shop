@@ -38,23 +38,23 @@ class Product extends Model
     {
         parent::boot();
 
-        static::saving(function ($product) {
-            if ($product->number_of_pieces > 0) {
-                $product->price_per_item = round(($product->price * $product->number_catton) / $product->number_of_pieces, 2);
-            } else {
-                $product->price_per_item = 0; 
-            }
-        });
+        // static::saving(function ($product) {
+        //     if ($product->number_of_pieces > 0) {
+        //         $product->price_per_item = round(($product->price * $product->number_catton) / $product->number_of_pieces, 2);
+        //     } else {
+        //         $product->price_per_item = 0; 
+        //     }
+        // });
 
        
         
-            static::saving(function ($product) {
-                if ($product->number_of_pieces > 0) {
-                    $product->price_per_item = round(($product->price * $product->number_catton) /  $product->number_of_pieces, 2);
-                } else {
-                    $product->price_per_item = 0; 
-                }
-            });
+        //     static::saving(function ($product) {
+        //         if ($product->number_of_pieces > 0) {
+        //             $product->price_per_item = round(($product->price * $product->number_catton) /  $product->number_of_pieces, 2);
+        //         } else {
+        //             $product->price_per_item = 0; 
+        //         }
+        //     });
         
 
             
