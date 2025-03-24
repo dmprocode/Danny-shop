@@ -423,6 +423,19 @@
                                 </div>
 
 
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Pice:</label>
+                                    <input type="number" id="selling_price_pice" class="form-control form-control-sm " name="selling_price_pice">
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Dezeen:</label>
+                                    <input type="number" id="selling_price_per_dozen" class="form-control form-control-sm " name="selling_price_per_dozen">
+
+                                </div>
+
+
 
 
 
