@@ -52,32 +52,31 @@ class ProductsController extends Controller
         'selling_price_pice.numeric' => 'The selling price per piece must be a valid number.',
         'selling_price_pice.min' => 'The selling price per piece cannot be a negative value.',
     ]);
+
    
-  
-    if ($request->hasFile('product_image')) {
-        $imagePath = $request->file('product_image')->store('products', 'public');
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('products', 'public');
     } else {
         $imagePath = null;
     }
-    
+
     $product = Product::create([
         'name' => $request->product_name,
         'image' => $imagePath,
-        'number_catton' => $request->number_of_catton,
-        'number_of_set' => $request->numset,
+        'category' => $request->category,
+        'buying_price' => $request->buying_price,
+        'number_carton' => $request->number_of_catton,
         'number_pieces' => $request->number_of_pieces,
-        'category' =>$request->category,
+        'number_dozen' => $request->number_dozen,
+        'price_per_dozen' => $request->price_per_dozen,
+        'selling_price_per_piece' => $request->selling_price_per_piece,
+        'selling_price_per_dozen' => $request->selling_price_per_dozen,
         'color' => $request->color,
         'size' => $request->size,
-        'price' =>$request->price,
-        'buying_price' => $request->buying_price,
-        'number_caton' => $request->number_of_catton,
-        'number_dozen' => $request->number_of_set,
-        'price_per_dozen' => $request->selling_price_per_dozen,
-        'selling_price_per_piece' => $request->selling_price_pice,
-        'selling_price_per_dozen' => $request->selling_price_per_dozen,
-        
+        'user_id' => auth()->id(),
     ]);
+
+    
     
     return response()->json(['message' => 'Product added successfully!']);
     

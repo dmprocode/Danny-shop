@@ -15,7 +15,7 @@ class Product extends Model
         'image',
         'category',
         'buying_price',
-        'number_caton',
+        'number_carton',
         'number_dozen',
         'price_per_dozen',
         'number_of_set',
@@ -30,34 +30,21 @@ class Product extends Model
     
 
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id','id   ');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     protected static function boot()
     {
         parent::boot();
 
-        // static::saving(function ($product) {
-        //     if ($product->number_of_pieces > 0) {
-        //         $product->price_per_item = round(($product->price * $product->number_catton) / $product->number_of_pieces, 2);
-        //     } else {
-        //         $product->price_per_item = 0; 
-        //     }
-        // });
-
-       
-        
-        //     static::saving(function ($product) {
-        //         if ($product->number_of_pieces > 0) {
-        //             $product->price_per_item = round(($product->price * $product->number_catton) /  $product->number_of_pieces, 2);
-        //         } else {
-        //             $product->price_per_item = 0; 
-        //         }
-        //     });
-        
-
-            
-        
+        static::saving(function ($product) {
+            if ($product->number_pieces > 0) {
+                $product->price_per_item = round(($product->buying_price * $product->number_catton) / $product->number_pieces, 2);
+            } else {
+                $product->price_per_item = 0; 
+            }
+        });
     }
 }

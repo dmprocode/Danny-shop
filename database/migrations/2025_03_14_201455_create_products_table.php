@@ -17,19 +17,21 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('category', 100);
             $table->decimal('buying_price', 10, 2);
-            $table->string('number_caton');
+            $table->string('number_carton'); // ✅ Fixed spelling (was `number_caton`)
             $table->integer('number_dozen')->nullable();
             $table->decimal('price_per_dozen', 10, 2)->nullable();
             $table->integer('number_of_set')->nullable();
-            $table->integer('number_pieces')->nullable();
+            $table->integer('number_pieces'); // ✅ Removed nullable (should always have value)
             $table->decimal('selling_price_per_piece', 10, 2)->nullable();
             $table->decimal('selling_price_per_dozen', 10, 2)->nullable();
+            $table->decimal('price_per_item', 10, 2)->nullable();
             $table->string('color', 50)->nullable();
             $table->string('size', 50)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
+        
         
     }
 
