@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name', 255)->unique();
             $table->string('image')->nullable();
-            $table->string('category'); 
-            $table->decimal('price', 10, 2);
-            $table->decimal('price_per_item', 10, 2)->nullable();
-            $table->decimal('selling_price_per_item', 10, 2)->nullable();
+            $table->string('category', 100);
+            $table->decimal('buying_price', 10, 2);
+            $table->string('number_caton');
+            $table->integer('number_dozen')->nullable();
+            $table->decimal('price_per_dozen', 10, 2)->nullable();
             $table->integer('number_of_set')->nullable();
-            $table->unsignedInteger('number_catton'); 
-            $table->unsignedInteger('number_of_pieces');
-            $table->string('classification')->nullable(); 
-            $table->string('color')->nullable();
-            $table->string('size')->nullable(); 
+            $table->integer('number_pieces');
+            $table->decimal('selling_price_per_piece', 10, 2)->nullable();
+            $table->decimal('selling_price_per_dozen', 10, 2)->nullable();
+            $table->string('color', 50)->nullable();
+            $table->string('size', 50)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

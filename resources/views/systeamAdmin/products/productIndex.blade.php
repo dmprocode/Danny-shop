@@ -127,7 +127,7 @@
 
 
                     </div> <!-- end card-body-->
-                    <h2>Tatal :{{number_format($adminComponents['sumProducts'],2)}}</h2>
+                    <h2>Total</h2>
                 </div> <!-- end card-->
             </div> <!-- end col -->
         </div>
@@ -364,10 +364,17 @@
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of Set:</label>
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of Dozen:</label>
                                     <input type="number" id="number_of_set" class="form-control form-control-sm "
                                         name="number_of_set">
                                     <i class="text-danger number_of_set message fw-normal role font-16"></i>
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 "> Number of Set:</label>
+                                    <input type="text" id="numset" class="form-control form-control-sm " name="numset">
+                                    <i class="text-danger numset message fw-normal role font-16"></i>
 
                                 </div>
 

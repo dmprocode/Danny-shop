@@ -13,11 +13,9 @@ class ProductsController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $products = Product::latest()->get();
-            $sumProducts = Product::sum('price');
             $adminComponents =[
                 'products' =>  $products,
                 'user'=> $user,
-                'sumProducts' => $sumProducts
             ];
             return view('systeamAdmin.products.productIndex',compact('adminComponents'));
         }
@@ -35,7 +33,9 @@ class ProductsController extends Controller
         'selling_price_per_item' => 'nullable|numeric|min:0',
         'number_of_set' => 'nullable|integer|min:0',
         'number_of_catton' => 'required|integer|min:1',
-        'number_of_pieces' => 'required|integer|min:1',
+        'number_of_pieces' => 'nullable|integer|min:1',
+        'number_of_set' => 'nullable|integer|min:1',
+
         'color' => 'nullable|string|max:50',
         'size' => 'nullable|string|max:50',
         'user_id' => 'nullable|exists:users,id', // Ensures the user exists

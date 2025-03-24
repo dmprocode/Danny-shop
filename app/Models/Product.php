@@ -14,17 +14,21 @@ class Product extends Model
         'name',
         'image',
         'category',
-        'price',
-        'price_per_item',
-        'selling_price_per_item',
+        'buying_price',
+        'number_caton',
+        'number_dozen',
+        'price_per_dozen',
         'number_of_set',
-        'number_catton',
-        'number_of_pieces',
-        'classification',
+        'number_pieces',
+        'selling_price_per_piece',
+        'selling_price_per_dozen',
+        'selling_price_per_set', 
         'color',
         'size',
         'user_id',
     ];
+    
+
 
     public function user(){
         return $this->belongsTo(User::class,'user_id','id   ');
