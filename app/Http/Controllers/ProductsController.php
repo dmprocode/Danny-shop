@@ -54,8 +54,8 @@ class ProductsController extends Controller
     ]);
 
    
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('products', 'public');
+    if ($request->hasFile('product_image')) {
+        $imagePath = $request->file('product_image')->store('products', 'public');
     } else {
         $imagePath = null;
     }
@@ -67,13 +67,11 @@ class ProductsController extends Controller
         'buying_price' => $request->buying_price,
         'number_carton' => $request->number_of_catton,
         'number_pieces' => $request->number_of_pieces,
-        'number_dozen' => $request->number_dozen,
         'price_per_dozen' => $request->price_per_dozen,
         'selling_price_per_piece' => $request->selling_price_per_piece,
         'selling_price_per_dozen' => $request->selling_price_per_dozen,
         'color' => $request->color,
         'size' => $request->size,
-        'user_id' => auth()->id(),
     ]);
 
     
