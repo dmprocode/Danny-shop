@@ -47,82 +47,81 @@
                         @if($adminComponents['products']->isEmpty())
                         <i class="text-danger fw-bold h4">No Products Available</i>
                         @else
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Catton</th>
-                                    <th>Picess</th>
-                                    <th>Price Per Iteams</th>
-                                    <th>Set</th>
-                                    <th>Seeling Price per Iteams</th>
-                                    <th> Category</th>
-                                    <th>Color</th>
-                                    <th>Size</th>
-                                    <th>Action</th>
-
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                @foreach($adminComponents['products'] as $key=>$product)
-                                <tr>
-                                    
-                                    <td>{{$key + 1}}</td>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{number_format($product->price,2)}}</td>
-                                    <td>{{$product->number_catton}}</td>
-                                    @if($product->number_catton == '')
-                                    <td class="text-danger">No Value</td>
-                                    @endif
-                                    <td>{{$product->number_of_pieces}}</td>
-                                    @if($product->number_of_set == '')
-                                    <td class="text-danger">No Value</td>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    @if($adminComponents['products']->isEmpty())
+                                    <i class="text-danger fw-bold h4">No Products Available</i>
                                     @else
-                                    <td>{{$product->number_of_set}}</td>
-                                    @endif
-                                    @if($product->price_per_item == '')
-                                    <td class="text-danger">No Value</td>
-                                    @else
-                                    <td>{{number_format($product->price_per_item,2)}}</td>
-                                    @endif
-                                    @if($product->selling_price_per_item == '')
-                                    <td class="text-danger">No Value</td>
-                                    @else
-                                    <td>{{$product->selling_price_per_item}}</td>
-                                    @endif
-                                    <td>{{$product->category}}</td>
-                                    <td>{{$product->color}}</td>
-                                    <td>{{$product->size}}</td>
-                                    <td>
-                                        <span class="dtr-data"><a href="javascript:void(0);" class="action-icon"> <i
-                                                    class="mdi mdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="action-icon"> <i
-                                                    class="mdi mdi-square-edit-outline edit-products"
-                                                    data-id ="{{$product->id}}"
-                                                    data-size ="{{$product->size}}"
-                                                    data-name ="{{$product->name}}"
-                                                    data-price ="{{$product->price}}"
-                                                    data-number_catton ="{{$product->number_catton}}"
-                                                    data-number_of_pieces ="{{$product->number_of_pieces}}"
-                                                    data-number_of_set ="{{$product->number_of_set}}"
-                                                    data-price_per_item ="{{$product->price_per_item}}"
-                                                    data-selling_price_per_item ="{{$product->selling_price_per_item}}"
-                                                    data-category ="{{$product->category}}"
-                                                    data-price_per_item ="{{$product->price_per_item}}"
+                                    <table id="basic-datatable" class="table table-centered table-nowrap mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Image</th>
+                                                <th>Category</th>
+                                                <th>Buying Price</th>
+                                                <th>No of Cutton</th>
+                                                <th>No Of Dozeen</th>
+                                                <th>Price per Dazeen</th>
+                                                <th>No of Pices</th>
+                                                <th>Selling Price per picess</th>
+                                                <th>Selling Price per Dozeen</th>
+                                                <th>Price Per Iteams</th>
+                                                <th>Color</th>
+                                                <th>Size</th>
+                                                <td>Action</td>
+
+                                            </tr>
+                                        </thead>
 
 
-                                                    data-color ="{{$product->color}}"></i></a>
-                                            <a href="javascript:void(0);" class="action-icon"> <i
-                                                    class="mdi mdi-delete"></i></a></span>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        <tbody>
+                                            @foreach($adminComponents['products'] as $key=>$product)
+                                            <tr>
+                                                <td>{{$key + 1}}</td>
+                                                <td>{{$product->name}}</td>
+                                                @if($product->image == "")
+                                                <td>
+                                                    <img src="{{ asset('assets/myImage/santa-claus-red-sleigh-and-green-gift-boxes-16911.png') }}" alt="Product Image" width="50" height="50">
+                                                </td>
+                                                @else
+                                                <td>   
+                                                     <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" width="50" height="50">
+                                                </td>
+                                                @endif
+                                                <td>{{$product->category}}</td>
+                                                <td>{{number_format($product->buying_price,2)}}</td>
+                                                <td>{{$product->number_carton}}</td>
+                                                <td>{{$product->number_dozen}}</td>
+                                                <td>{{$product->price_per_dozen}}</td>
+                                                <td>{{$product->number_pieces}}</td>
+                                                @if($product->selling_price_per_piece  == "")
+                                                <td class="text-danger">No Value</td>
+                                                @else
+                                                <td>{{number_format($product->selling_price_per_piece)}}</td>
+                                                @endif
+                                                @if($product->selling_price_per_dozen == "")
+                                                <td class="text-danger">No Value</td>
+                                                @else
+                                                <td>{{number_format($product->selling_price_per_dozen)}}</td>
+                                                @endif
+                                                <td>{{$product->price_per_item}}</td>
+                                                <td>{{$product->color}}</td>
+                                                <td>{{$product->size}}</td>
+                                                <td class="__web-inspector-hide-shortcut__">
+                                                            <a href="javascript:void(0);" class="action-icon __web-inspector-hide-shortcut__"> <i class="mdi mdi-eye"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    @endif
+                                </div> <!-- end table-responsive-->
+                            </div> <!-- end col -->
+                        </div>
                         @endif
 
 
@@ -194,75 +193,7 @@
 
                         <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="table-responsive">
-                                    @if($adminComponents['products']->isEmpty())
-                                    <i class="text-danger fw-bold h4">No Products Available</i>
-                                    @else
-                                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Price</th>
-                                                <th>Catton</th>
-                                                <th>Picess</th>
-                                                <th>Set</th>
-                                                <th>Price Per Iteams</th>
-                                                <th>Seeling Price per Iteams</th>
-                                                <th> Category</th>
-                                                <th>Color</th>
-                                                <th>Action</th>
-
-                                            </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                            @foreach($adminComponents['products'] as $key=>$product)
-                                            <tr>
-                                                <td>{{$key + 1}}</td>
-                                                <td>{{$product->name}}</td>
-                                                <td>{{number_format($product->price,2)}}</td>
-                                                <td>{{$product->number_catton}}</td>
-                                                @if($product->number_catton == '')
-                                                <td class="text-danger">No Value</td>
-                                                @endif
-                                                <td>{{$product->number_of_pieces}}</td>
-                                                @if($product->number_of_set == '')
-                                                <td class="text-danger">No Value</td>
-                                                @else
-                                                <td>{{$product->number_of_set}}</td>
-                                                @endif
-                                                @if($product->price_per_item == '')
-                                                <td class="text-danger">No Value</td>
-                                                @else
-                                                <td>{{number_format($product->price_per_item,2)}}</td>
-                                                @endif
-                                                @if($product->selling_price_per_item == '')
-                                                <td class="text-danger">No Value</td>
-                                                @else
-                                                <td>{{$product->selling_price_per_item}}</td>
-                                                @endif
-                                                <td>{{$product->category}}</td>
-                                                <td>{{$product->color}}</td>
-                                                <td>
-                                                    <span class="dtr-data"><a href="javascript:void(0);"
-                                                            class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-delete"></i></a></span>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    @endif
-                                </div> <!-- end table-responsive-->
-                            </div> <!-- end col -->
-                        </div>
+                        
                         <!-- end row -->
 
                         <div class="row">
