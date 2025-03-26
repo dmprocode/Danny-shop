@@ -25,6 +25,8 @@ class Product extends Model
         'selling_price_per_set', 
         'color',
         'size',
+        'measerments',
+        'price_per_set',
         'user_id',
     ];
     
@@ -35,60 +37,44 @@ class Product extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+
     protected static function boot()
     {
         parent::boot();
-
+    
         static::saving(function ($product) {
-            $number_pieces = isset($product->number_pieces) ? $product->number_pieces : 1; // Avoid division by zero
-            $number_carton = isset($product->number_carton) ? $product->number_carton : 1;
-            // ===========Price per iteams ===============
-            if ($number_pieces > 0 && $number_carton > 0) {
-                $product->price_per_item = round(($product->buying_price * $number_carton) / $number_pieces, 2);
-            } else {
-                $product->price_per_item = 0; 
+            // Default values to avoid errors
+            $product->price_per_item = 0;
+            $product->price_per_dozen = 0;
+            $product->price_per_set = 0;
+    
+            if ($product->number_pieces > 0 && $product->number_carton > 0) {
+                switch ($product->measerments) {
+                    case 'Piecess':
+                        $product->price_per_item = round(($product->buying_price * $product->number_carton) / $product->number_pieces, 2);
+                        break;
+    
+                    case 'Dazeen':
+                        $product->number_dozen = round($product->number_pieces / 12, 2);
+                        if ($product->number_dozen > 0) {
+                            $product->price_per_dozen = round(($product->buying_price * $product->number_carton) / $product->number_dozen, 2);
+                        }
+                        break;
+    
+                    case 'Set':
+                        // When measurement is 'Set', prices remain 0
+                        break;
+    
+                    default:
+                        // In case measurement is invalid
+                        $product->price_per_item = 0;
+                        $product->price_per_dozen = 0;
+                        $product->price_per_set = 0;
+                        break;
+                }
             }
         });
-
-
-        static::saving(function ($product) {
-            $number_pieces = isset($product->number_pieces) ? $product->number_pieces : 1; // Avoid division by zero
-            $number_carton = isset($product->number_carton) ? $product->number_carton : 1;
-            
-            if ($number_pieces > 0 && $number_carton > 0) {
-                $product->price_per_item = round(($product->buying_price * $number_carton) / $number_pieces, 2);
-            } else {
-                $product->price_per_item = 0; 
-            }
- 
-            
-
-        });
-
-
-       
-
-
-        // static::saving(function ($product) {
-        //     // Calculate number of dozens from number of pieces
-        //     if ($product->number_pieces > 0) {
-        //         $product->number_dozen = round($product->number_pieces / 12, 2);
-        //     } else {
-        //         $product->number_dozen = 0;
-        //     }
-        
-        //     // Calculate price per dozen only if number_dozen is greater than 0
-        //     if ($product->number_dozen > 0) {
-        //         $product->price_per_dozen = round($product->buying_price / $product->number_dozen, 2);
-        //     } else {
-        //         $product->price_per_dozen = 0;
-        //     }
-        // });
-        
-        
-
-
-      
-        
     }
+    
+    
 }

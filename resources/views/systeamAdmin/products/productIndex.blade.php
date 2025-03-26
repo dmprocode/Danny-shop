@@ -295,12 +295,21 @@
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of Dozen:</label>
-                                    <input type="number" id="number_of_set" class="form-control form-control-sm "
-                                        name="number_of_set">
-                                    <i class="text-danger number_of_set message fw-normal role font-16"></i>
+                                    <label for="example-select" class="form-label">Product Measerment:</label>
+                                    <select name="measerments" class="form-select form-select-sm" id="measerments"
+                                        required>
+                                        <option value="" disabled selected>Select Product Measerment</option>
+                                        <option value="Piecess">Piecess</option>
+                                        <option value="Dazeen">Dazeen</option>
+                                        <option value="Set">Set</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                    <i class="text-danger measerments message fw-normal role font-16"></i>
 
                                 </div>
+
+
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 "> Number of Set:</label>
@@ -322,12 +331,12 @@
                                     <select name="category" class="form-select form-select-sm" id="product-category"
                                         required>
                                         <option value="" disabled selected>Select Product Category</option>
-                                        <option value="electronics">Electronics</option>
-                                        <option value="glass">Glassware</option>
-                                        <option value="ceramics">Ceramics (Vyombo vya Udongo)</option>
-                                        <option value="plastic">Plastic</option>
-                                        <option value="metal">Metal (Chuma)</option>
-                                        <option value="bone_china">Bone China (Vyombo vya Mfupa)</option>
+                                        <option value="Electronics">Electronics</option>
+                                        <option value="Glass">Glassware</option>
+                                        <option value="Ceramics">Ceramics (Vyombo vya Udongo)</option>
+                                        <option value="Plastic">Plastic</option>
+                                        <option value="Metal">Metal (Chuma)</option>
+                                        <option value="Bone china">Bone China (Vyombo vya Mfupa)</option>
 
                                     </select>
 
