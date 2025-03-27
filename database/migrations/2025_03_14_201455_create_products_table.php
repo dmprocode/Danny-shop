@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('number_dozen')->nullable();
             $table->decimal('price_per_dozen', 10, 2)->nullable();
             $table->integer('number_of_set')->nullable();
-            $table->integer('number_pieces'); 
+            $table->integer('number_pieces')->nullable();
             $table->string('measerments'); 
             $table->decimal('price_per_set', 10, 2)->nullable();
             $table->decimal('selling_price_per_piece', 10, 2)->nullable();

@@ -51,19 +51,30 @@ class Product extends Model
             if ($product->number_pieces > 0 && $product->number_carton > 0) {
                 switch ($product->measerments) {
                     case 'Piecess':
-                        $product->price_per_item = round(($product->buying_price * $product->number_carton) / $product->number_pieces, 2);
+                        $product->price_per_item = round($product->buying_price / $product->number_pieces, 2);
                         break;
+                    
     
-                    case 'Dazeen':
-                        $product->number_dozen = round($product->number_pieces / 12, 2);
-                        if ($product->number_dozen > 0) {
-                            $product->price_per_dozen = round(($product->buying_price * $product->number_carton) / $product->number_dozen, 2);
-                        }
-                        break;
+                        case 'Dazeen':
+                            // Ensure we are working with valid numbers
+                            $product->number_dozen = round(floatval($product->number_pieces) / 12, 2);
+                            
+                            if ($product->number_dozen > 0) {
+                                // Calculate price per dozen
+                                $total_buying_price = floatval($product->buying_price) * floatval($product->number_carton);
+                                $product->price_per_dozen = round($total_buying_price / $product->number_dozen, 2);
+                        
+                                // Calculate price per item
+                                $product->price_per_item = round($product->price_per_dozen / 12, 2);
+                            } else {
+                                $product->price_per_dozen = 0;
+                                $product->price_per_item = 0;
+                            }
+                            break;
+                        
     
-                    case 'Set':
-                        // When measurement is 'Set', prices remain 0
-                        break;
+                        
+                        
     
                     default:
                         // In case measurement is invalid

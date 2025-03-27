@@ -22,6 +22,8 @@
             $('#add-products-div').hide()
 
         })
+        
+      
 
         $(document).on('click', '#addProducts', function (e) {
             e.preventDefault()
@@ -35,9 +37,7 @@
                 data: productInputDetails,
                 contentType: false,
                 processData: false,
-                success: function (res) {
-                    console.log(res);
-                    
+                success: function (res) {                    
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -45,6 +45,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    location.reload()
                     
 
                 },
@@ -132,8 +133,6 @@ $(document).on('click', '#updateProduct-btn', function (e) {
             priceperIteams:priceperIteams       
         },
         success: function (res) {
-            console.log(res);
-            
             Swal.fire({
                 icon: "success",
                 title: "Product Updated Successfully",

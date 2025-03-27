@@ -33,7 +33,7 @@ class ProductsController extends Controller
         'selling_price_pice' => 'nullable|numeric|min:0',
         'number_of_dazzen' => 'nullable|integer|min:0',
         'number_of_catton' => 'required|integer|min:1',
-        'number_of_pieces' => 'required|integer|min:1',
+        'number_of_pieces' => 'nullable|integer|min:1',
 
         'color' => 'nullable|string|max:50',
         'size' => 'nullable|string|max:50',
@@ -47,7 +47,6 @@ class ProductsController extends Controller
         'buying_price.required' => 'Price is required.',
         'buying_price.numeric' => 'Price must be a valid number.',
         'number_of_catton.required' => 'Number of cartons is required.',
-        'number_of_pieces.required' => 'Number of pieces is required.',
         'selling_price_pice.numeric' => 'The selling price per piece must be a valid number.',
         'selling_price_pice.min' => 'The selling price per piece cannot be a negative value.',
     ]);
@@ -72,6 +71,7 @@ class ProductsController extends Controller
         'selling_price_per_dozen' => $request->selling_price_per_dozen,
         'color' => $request->color,
         'size' => $request->size,
+        'number_of_set' => $request->numset,
     ]);
 
     

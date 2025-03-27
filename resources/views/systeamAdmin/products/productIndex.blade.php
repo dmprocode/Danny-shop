@@ -126,7 +126,6 @@
 
 
                     </div> <!-- end card-body-->
-                    <h2>Total</h2>
                 </div> <!-- end card-->
             </div> <!-- end col -->
         </div>
@@ -299,7 +298,7 @@
                                     <select name="measerments" class="form-select form-select-sm" id="measerments"
                                         required>
                                         <option value="" disabled selected>Select Product Measerment</option>
-                                        <option value="Piecess">Piecess</option>
+                                        <option value="Piecess" id="picesses">Piecess</option>
                                         <option value="Dazeen">Dazeen</option>
                                         <option value="Set">Set</option>
                                         <option value="Other">Other</option>
@@ -363,7 +362,7 @@
                                 </div>
 
 
-                                <div class="mb-3 col-md-6">
+                                <!-- <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Pice:</label>
                                     <input type="number" id="selling_price_pice" class="form-control form-control-sm " name="selling_price_pice">
 
@@ -373,7 +372,7 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Dezeen:</label>
                                     <input type="number" id="selling_price_per_dozen" class="form-control form-control-sm " name="selling_price_per_dozen">
 
-                                </div>
+                                </div> -->
 
 
 
