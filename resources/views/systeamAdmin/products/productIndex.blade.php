@@ -427,15 +427,15 @@
                                <input type="hidden" id="id" name="id">
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Name:</label>
-                                    <input type="text" id="up-productname" class="form-control form-control-sm "
+                                    <input type="text" id="up_productname" class="form-control form-control-sm "
                                         name="up_productname">
-                                    <i class="text-danger up-productname message fw-normal role font-16"></i>
+                                    <i class="text-danger up_productname message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price:</label>
-                                    <input type="text" id="up-buying_price" class="form-control form-control-sm "
+                                    <input type="text" id="up_buying_price" class="form-control form-control-sm "
                                         name="up_buying_price">
                                     <i class="text-danger up-buying_price message fw-normal role font-16"></i>
 
@@ -444,8 +444,8 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Price Per Iteams:</label>
-                                    <input type="text" id="up-price-perIteams" class="form-control form-control-sm "
-                                        name="up-buying_price">
+                                    <input type="text" id="up_price_perIteams" class="form-control form-control-sm "
+                                        name="up_price_perIteams">
                                     <i class="text-danger up-buying_price message fw-normal role font-16"></i>
 
                                 </div>
@@ -457,8 +457,8 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Number of
                                         Catton:</label>
-                                    <input type="number" id="up-number_of_catton" class="form-control form-control-sm "
-                                        name="up-number_of_catton">
+                                    <input type="number" id="up_number_of_catton" class="form-control form-control-sm "
+                                        name="up_number_of_catton">
                                     <i class="text-danger up-number_of_catton message fw-normal role font-16"></i>
 
                                 </div>
@@ -473,15 +473,15 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Picess:</label>
-                                    <input type="number" id="up-picess" class="form-control form-control-sm "
-                                        name="up-picess">
+                                    <input type="number" id="up_picess" class="form-control form-control-sm "
+                                        name="up_picess">
                                     <i class="text-danger up-picess message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="example-select" class="form-label">Product Classfication:</label>
-                                    <select name="up-category" class="form-select form-select-sm" id="up-category"
+                                    <select name="up_category" class="form-select form-select-sm" id="up_category"
                                         required>
                                         <option value="" disabled selected>Select Product Category</option>
                                         <option value="electronics">Electronics</option>
@@ -498,11 +498,27 @@
                                 </div>
 
 
+                                <div class="mb-3 col-md-6">
+                                    <label for="example-select" class="form-label">Product Measerment:</label>
+                                    <select name="up_measerments" class="form-select form-select-sm" id="up_measerments"
+                                        required>
+                                        <option value="" disabled selected>Select Product Measerment</option>
+                                        <option value="Piecess" id="picesses">Piecess</option>
+                                        <option value="Dazeen">Dazeen</option>
+                                        <option value="Set">Set</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                    <i class="text-danger up_measerments message fw-normal role font-16"></i>
+
+                                </div>
+
+
 
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Color:</label>
-                                    <input type="text" id="up-color" class="form-control form-control-sm " name="color">
+                                    <input type="text" id="up_color" class="form-control form-control-sm " name="up_color">
                                     <i class="text-danger color message fw-normal role font-16"></i>
 
                                 </div>
@@ -510,7 +526,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Size:</label>
-                                    <input type="text" id="up-size" class="form-control form-control-sm " name="size">
+                                    <input type="text" id="up_size" class="form-control form-control-sm " name="up_size">
                                     <i class="text-danger size message fw-normal role font-16"></i>
 
                                 </div>

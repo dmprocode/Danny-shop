@@ -55,7 +55,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // =======================Products Routs====================
     Route::get('/admin/products', [ProductsController::class, 'productIndex'])->name('product-index');
     Route::post('/admin/products', [ProductsController::class, 'addProducts'])->name('add-products');
-    Route::post('/update/products', [ProductsController::class, 'updateProducts'])->name('update-product');
+    Route::post('/Update/products', [ProductsController::class, 'updateProducts'])->name('update-product');
 
 
 

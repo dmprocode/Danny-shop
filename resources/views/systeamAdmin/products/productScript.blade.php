@@ -87,18 +87,17 @@
             let number_pieces = $(this).data('number_pieces');
             let color = $(this).data('color');
             let size = $(this).data('size');
-            let price_per_dozen = $(this).data('price_per_dozen');
             let price_per_item = $(this).data('price_per_item')
             // console.log(id,name,buying_price,number_carton,number_pieces,size,color,price_per_dozen,price_per_item);
             $('#id').val(id);
-            $('#up-productname').val(name)
-            $('#up-buying_price').val(buying_price)
-            $('#up-number_of_catton').val(number_carton)
-            $('#up-picess').val(number_pieces)
-            $('#up-category').val(category)
-            $('#up-price-perIteams').val(price_per_item)
-            $('#up-color').val(color)
-            $('#up-size').val(size)
+            $('#up_productname').val(name)
+            $('#up_buying_price').val(buying_price)
+            $('#up_number_of_catton').val(number_carton)
+            $('#up_picess').val(number_pieces)
+            $('#up_category').val(category)
+            $('#up_price_perIteams').val(price_per_item)
+            $('#up_color').val(color)
+            $('#up_size').val(size)
 
 
         });
@@ -115,30 +114,40 @@
             let picess = $('#up-picess').val()
             let color = $('#up-color').val();
             let size = $('#up-size');
+            // console.log(id,name,buying_price,number_of_catton,category,picess,color,size);
+            let formData = document.getElementById('up-productsFormData')
+             let newUpdateData = new FormData(formData)
+             
             $.ajax({
-                url:"{{route('update-product')}}",
-                method:"POST",
-                data:{
-                    id:id,
-                    name:name,
-                    buying_price:buying_price,
-                    number_of_catton:number_of_catton,
-                    category:category,
-                    picess:picess,
-                    color:color,
-                    size:size
-                    
+            url: "{{route('update-product')}}",
+            method: "POST",
+            contentType:false,
+            processData:false,
+            data:newUpdateData,
+            
+            success: function(res) {
+                console.log(res);
+                Swal.fire({
+                    icon: "success",
+                    title: "Product Updated Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            },
+    error: function(error) {
+        console.log(error);
+        Swal.fire({
+            icon: "error",
+            title: "Update Failed",
+            text: "Please check your inputs"
+        });
+    }
+});
 
-                },
-                success:function(res){
-                    console.log(res);
-                    
-                },
-                error:function(error){
-                    console.log(error);
-                    
-                }
-            })
+
             
 
         })

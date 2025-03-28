@@ -81,9 +81,24 @@ class ProductsController extends Controller
 }
 
     public function updateProducts(Request $request){
-        return response()->json([
-            'message' => $request->all()
-        ]);
+        $productId = Product::find($request->id);
+       
+        if ($productId) {
+            $productId->update([
+                'name' => $request->up_productname,
+                'category' => $request->up_category,
+                'buying_price' => $request->up_buying_price,
+                'number_carton' => $request->up_number_of_catton,
+                'number_pieces' => $request->up_picess,
+                'color' => $request->up_color,
+                'size' => $request->up_size,
+                'measerments'  =>  $request->up_measerments,
+            ]);
+            return response()->json([
+                'message' => 'Product Updated Successfully'
+            ]);
+        }
+       
         
         
     }
