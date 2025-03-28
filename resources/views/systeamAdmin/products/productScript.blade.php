@@ -105,27 +105,27 @@
     })
 
     $(document).on('click', '#updateProduct-btn', function (e) {
-            e.preventDefault()
-            let id = $('#id').val()
-            let name = $('#up-productname').val()
-            let buying_price = $('#up-buying_price').val()
-            let number_of_catton = $('#up-number_of_catton').val()
-            let category = $('#up-category').val()
-            let picess = $('#up-picess').val()
-            let color = $('#up-color').val();
-            let size = $('#up-size');
-            // console.log(id,name,buying_price,number_of_catton,category,picess,color,size);
-            let formData = document.getElementById('up-productsFormData')
-             let newUpdateData = new FormData(formData)
-             
-            $.ajax({
+        e.preventDefault()
+        let id = $('#id').val()
+        let name = $('#up-productname').val()
+        let buying_price = $('#up-buying_price').val()
+        let number_of_catton = $('#up-number_of_catton').val()
+        let category = $('#up-category').val()
+        let picess = $('#up-picess').val()
+        let color = $('#up-color').val();
+        let size = $('#up-size');
+        // console.log(id,name,buying_price,number_of_catton,category,picess,color,size);
+        let formData = document.getElementById('up-productsFormData')
+        let newUpdateData = new FormData(formData)
+
+        $.ajax({
             url: "{{route('update-product')}}",
             method: "POST",
-            contentType:false,
-            processData:false,
-            data:newUpdateData,
-            
-            success: function(res) {
+            contentType: false,
+            processData: false,
+            data: newUpdateData,
+
+            success: function (res) {
                 console.log(res);
                 Swal.fire({
                     icon: "success",
@@ -137,31 +137,18 @@
                     location.reload();
                 }, 1500);
             },
-    error: function(error) {
-        console.log(error);
-        Swal.fire({
-            icon: "error",
-            title: "Update Failed",
-            text: "Please check your inputs"
+            error: function (error) {
+                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Update Failed",
+                    text: "Please check your inputs"
+                });
+            }
         });
-    }
-});
-
-
-            
-
-        })
 
 
 
 
-
-
-
-
-
-
-
-
-
+    })
 </script>
