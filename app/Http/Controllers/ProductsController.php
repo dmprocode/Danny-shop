@@ -84,23 +84,7 @@ class ProductsController extends Controller
         return response()->json([
             'message' => $request->all()
         ]);
-        $product_id = Product::find($request->id);
-        if ($product_id) {
-            $product_id->update([
-                'name' => $request->productname,
-                'category' => $request->category,
-                'price' =>  $request->price,
-                'price_per_item' =>  $request->buying_price,
-                'selling_price_per_item' =>  $request->price,
-                'price' =>  $request->price,
-                'price' =>  $request->price,
-                'price' =>  $request->price,
-
-            ]);
-        }
-        return response()->json([
-            'message' => $product_id,
-        ]);
+        
         
     }
 

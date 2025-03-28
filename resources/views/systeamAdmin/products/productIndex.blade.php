@@ -53,7 +53,7 @@
                                     @if($adminComponents['products']->isEmpty())
                                     <i class="text-danger fw-bold h4">No Products Available</i>
                                     @else
-                                    <table id="basic-datatable" class="table table-centered table-nowrap mb-0">
+                                    <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -65,8 +65,6 @@
                                                 <th>No Of Dozeen</th>
                                                 <th>Price per Dazeen</th>
                                                 <th>No of Pices</th>
-                                                <th>Selling Price per picess</th>
-                                                <th>Selling Price per Dozeen</th>
                                                 <th>Price Per Iteams</th>
                                                 <th>Color</th>
                                                 <th>Size</th>
@@ -96,22 +94,24 @@
                                                 <td>{{$product->number_dozen}}</td>
                                                 <td>{{$product->price_per_dozen}}</td>
                                                 <td>{{$product->number_pieces}}</td>
-                                                @if($product->selling_price_per_piece  == "")
-                                                <td class="text-danger">No Value</td>
-                                                @else
-                                                <td>{{number_format($product->selling_price_per_piece)}}</td>
-                                                @endif
-                                                @if($product->selling_price_per_dozen == "")
-                                                <td class="text-danger">No Value</td>
-                                                @else
-                                                <td>{{number_format($product->selling_price_per_dozen)}}</td>
-                                                @endif
                                                 <td>{{$product->price_per_item}}</td>
                                                 <td>{{$product->color}}</td>
                                                 <td>{{$product->size}}</td>
                                                 <td class="__web-inspector-hide-shortcut__">
                                                             <a href="javascript:void(0);" class="action-icon __web-inspector-hide-shortcut__"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline edit-product-btn"
+                                                            data-id ="{{$product->id}}",
+                                                            data-name ="{{$product->name}}",
+                                                            data-category ="{{$product->category}}",
+                                                            data-buying_price ="{{$product->buying_price}}",
+                                                            data-number_carton ="{{$product->number_carton}}",
+                                                            data-number_pieces ="{{$product->number_pieces}}",
+                                                            data-color ="{{$product->color}}",
+                                                            data-size ="{{$product->size}}",
+                                                            data-price_per_dozen ="{{$product->price_per_dozen}}",
+                                                            data-price_per_item = "{{$product->price_per_item}}",
+                                                            data-number_pieces ="{{$product->number_pieces}}"
+                                                            ></i></a>
                                                             <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
@@ -336,6 +336,7 @@
                                         <option value="Plastic">Plastic</option>
                                         <option value="Metal">Metal (Chuma)</option>
                                         <option value="Bone china">Bone China (Vyombo vya Mfupa)</option>
+                                        <option value="Wood">Wood</option>
 
                                     </select>
 
@@ -356,7 +357,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Size:</label>
-                                    <input type="number" id="size" class="form-control form-control-sm " name="size">
+                                    <input type="text" id="size" class="form-control form-control-sm " name="size">
                                     <i class="text-danger color message fw-normal role font-16"></i>
 
                                 </div>
@@ -423,7 +424,7 @@
                             @csrf
 
                             <div class="row">
-                               <input type="text" id="id" name="id">
+                               <input type="hidden" id="id" name="id">
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Name:</label>
                                     <input type="text" id="up-productname" class="form-control form-control-sm "
@@ -435,7 +436,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price:</label>
                                     <input type="text" id="up-buying_price" class="form-control form-control-sm "
-                                        name="up-buying_price">
+                                        name="up_buying_price">
                                     <i class="text-danger up-buying_price message fw-normal role font-16"></i>
 
                                 </div>
@@ -449,13 +450,7 @@
 
                                 </div>
 
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price:</label>
-                                    <input type="text" id="up-selling-price" class="form-control form-control-sm "
-                                        name="up-selling-price">
-                                    <i class="text-danger up-selling-price message fw-normal role font-16"></i>
-
-                                </div>
+                               
 
 
 
@@ -507,7 +502,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Color:</label>
-                                    <input type="text" id="color" class="form-control form-control-sm " name="color">
+                                    <input type="text" id="up-color" class="form-control form-control-sm " name="color">
                                     <i class="text-danger color message fw-normal role font-16"></i>
 
                                 </div>
@@ -515,7 +510,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Size:</label>
-                                    <input type="number" id="size" class="form-control form-control-sm " name="size">
+                                    <input type="text" id="up-size" class="form-control form-control-sm " name="size">
                                     <i class="text-danger size message fw-normal role font-16"></i>
 
                                 </div>
