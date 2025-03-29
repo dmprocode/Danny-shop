@@ -103,4 +103,11 @@ class ProductsController extends Controller
         
     }
 
+    public function deleteProduct(Request $request){
+        $productId = Product::find($request->delete_id)->delete();
+        return response()->json([
+            'message' => 'Product Deleted Successfully'
+        ]);
+    }
+
 }

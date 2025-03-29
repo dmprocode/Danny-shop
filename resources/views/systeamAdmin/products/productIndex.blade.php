@@ -112,7 +112,7 @@
                                                             data-price_per_item = "{{$product->price_per_item}}",
                                                             data-number_pieces ="{{$product->number_pieces}}"
                                                             ></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete delete-product-id" data-id="{{$product->id}}"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
