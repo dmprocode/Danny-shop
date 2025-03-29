@@ -83,7 +83,7 @@
                                         <a href="{{route('add-products')}}">Products List</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-products-details.html">Products Details</a>
+                                        <a href="{{route('products-price')}}">Products Price</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-orders.html">Orders</a>

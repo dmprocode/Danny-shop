@@ -110,4 +110,22 @@ class ProductsController extends Controller
         ]);
     }
 
+
+    //================+++Set products Price ================================
+
+
+    public function productsPrice(){
+        if (auth()->check() && auth()->user()->userRole =='admin') {
+            $user = auth()->user();
+            $productPrice = Product::latest()->get();
+            $adminComponents =[
+                'user'=> $user,
+                'productPrice' => $productPrice,
+            ];
+            return view('systeamAdmin.products.productsPrice',compact('adminComponents','productPrice'));
+        }
+        return redirect()->route('unathorized');
+    }
+
+
 }
