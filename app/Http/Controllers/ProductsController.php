@@ -127,5 +127,28 @@ class ProductsController extends Controller
         return redirect()->route('unathorized');
     }
 
+    public function setProductprice(Request $request){
+        $validatedData = $request->validate([
+            'sellingprice' => 'nullable|numeric|min:0',
+            'priceper_dazeen' => 'nullable|numeric|min:0',
+        ], [
+            'sellingprice.numeric' => 'Selling price must be a valid number.',
+            'sellingprice.min' => 'Selling price cannot be negative.',
+    
+            'priceper_dazeen.numeric' => 'Selling price per dozen must be a valid number.',
+            'priceper_dazeen.min' => 'Selling price per dozen cannot be negative.',
+        ]);
+       $productid = Product::find($request->id);
+       if ($productid) {
+         $productid->update([
+            'selling_price_per_piece'=> $request->sellingprice,
+            'selling_price_per_dozen' => $request->priceper_dazeen,
+       ]);
+       return response()->json([
+        'message' => 'Product Price Updated Successfully',
+       ]);
+    }
+    }
+
 
 }

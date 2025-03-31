@@ -8,7 +8,6 @@
         $('#add-products-div').hide()
         $('#up-products-div').hide();
 
-
         $(document).on('click', '.add-products-btn', function (e) {
             e.preventDefault()
             $('#products-table').hide()

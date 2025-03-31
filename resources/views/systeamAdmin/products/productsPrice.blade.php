@@ -147,7 +147,7 @@
                                <input type="hidden" id="id" name="id">
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Product Name:</label>
-                                    <input type="text" id="up_productname" class="form-control form-control-sm "
+                                    <input type="text" id="productname" class="form-control form-control-sm "
                                         name="up_productname">
                                     <i class="text-danger up_productname message fw-normal role font-16"></i>
 
@@ -164,17 +164,17 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Piece:</label>
-                                    <input type="text" id="up_price_perIteams" class="form-control form-control-sm "
+                                    <input type="text" id="selling_price_piece" class="form-control form-control-sm "
                                         name="up_price_perIteams">
-                                    <i class="text-danger up-buying_price message fw-normal role font-16"></i>
+                                    <i class="text-danger sellingprice  message fw-normal role font-16"></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price per Dazeen:</label>
-                                    <input type="text" id="up_price_perIteams" class="form-control form-control-sm "
+                                    <input type="text" id="up_price_perDazeen" class="form-control form-control-sm "
                                         name="up_price_perIteams">
-                                    <i class="text-danger up-buying_price message fw-normal role font-16"></i>
+                                    <i class="text-danger  selling-price-dzn message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -182,7 +182,7 @@
                             </div>
                             <center>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id=""
+                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id="up-product-price"
                                         style="background-color:teal">Update Product  Price <span
                                             class="uil-plus"></span></button>
                                 </div>
