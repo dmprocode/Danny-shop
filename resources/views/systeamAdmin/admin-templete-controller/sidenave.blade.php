@@ -86,7 +86,7 @@
                                         <a href="{{route('products-price')}}">Products Price</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-orders.html">Orders</a>
+                                        <a href="{{route('products-sales')}}">Products Sales</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-orders-details.html">Order Details</a>

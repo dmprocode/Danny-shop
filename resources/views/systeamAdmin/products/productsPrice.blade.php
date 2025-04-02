@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
-                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm  mb-2 add-products-btn"><i
+                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm  mb-2 add-products-btn d-none"><i
                                     class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add Products </span> </a>
                         </div>
                         <div class="col-sm-7 ">
@@ -69,11 +69,12 @@
                                     <tbody>
                                         @foreach($adminComponents['productPrice'] as $key=>$price)
                                         <tr>
+                                        
                                             <td>{{$key + 1}}</td>
-                                            <td>{{$price->name}} </td>
+                                                <td>{{ $price->name }}</td>
                                             <td>{{number_format($price->buying_price,2)}}</td>
                                             @if($price->number_pieces == '')
-                                            <td class="text-danger fw-bold">No Value</td>
+                                            <td class="text-danger fw-bold ">No Value</td>
                                             @else
                                             <td>{{$price->number_pieces}}</td>
                                             @endif

@@ -87,5 +87,12 @@ class Product extends Model
         });
     }
     
+
+    public function costomers()
+    {
+        return $this->belongsToMany(Product::class, 'customer_products', 'customer_id', 'product_id')
+                    ->withPivot('selling_price','product_quantity') 
+                    ->withTimestamps(); 
+    }
     
 }

@@ -61,6 +61,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/products-price',[ProductsController::class,'productsPrice'])->name('products-price');
     Route::post('/admin/set-price',[ProductsController::class,'setProductprice'])->name('set-product-price');
 
+    //===============Products Sales ================================
+    Route::get('/admin/products-sales',[ProductsController::class,'productSalesIndex'])->name('products-sales');
+
 });
 
 // ==============Shopkeeper ==================

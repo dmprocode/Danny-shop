@@ -151,4 +151,22 @@ class ProductsController extends Controller
     }
 
 
+
+    // ======================Products Sales ========================
+
+    public function productSalesIndex(){
+        if (auth()->check() && auth()->user()->userRole =='admin') {
+            $user = auth()->user();
+            $productPrice = Product::latest()->get();
+            $adminComponents =[
+                'user'=> $user,
+                'productPrice' => $productPrice,
+            ];
+            return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
+        }
+        return redirect()->route('unathorized');
+    }
+    
+
+
 }
