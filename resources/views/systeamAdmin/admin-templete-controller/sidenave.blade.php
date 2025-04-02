@@ -86,6 +86,9 @@
                                         <a href="{{route('products-price')}}">Products Price</a>
                                     </li>
                                     <li>
+                                        <a href="{{route('customers-index')}}">Add Customer</a>
+                                    </li>
+                                    <li>
                                         <a href="{{route('products-sales')}}">Products Sales</a>
                                     </li>
                                     <li>

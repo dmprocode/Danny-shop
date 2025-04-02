@@ -127,9 +127,10 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Products Name:</label>
                                     <select class="form-control select2" data-toggle="select2">
                                         <option>Select</option>
-                                        <optgroup label="Alaskan/Hawaiian Time Zone">
-                                            <option value="AK">Alaska</option>
-                                            <option value="HI">Hawaii</option>
+                                        <optgroup label="Select Products Based On ite Name">
+                                            @foreach($adminComponents['product'] as $product)
+                                            <option value="{{$product->id}}">{{$product->name}}</option>
+                                            @endforeach
                                         </optgroup>
                                     </select>
 

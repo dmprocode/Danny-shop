@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 
 class ProductsController extends Controller
 {
@@ -118,6 +119,7 @@ class ProductsController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $productPrice = Product::latest()->get();
+            
             $adminComponents =[
                 'user'=> $user,
                 'productPrice' => $productPrice,
@@ -145,7 +147,7 @@ class ProductsController extends Controller
             'selling_price_per_dozen' => $request->priceper_dazeen,
        ]);
        return response()->json([
-        'message' => 'Product Price Updated Successfully',
+        'message' => 'Customer Added Successfully',
        ]);
     }
     }
@@ -158,13 +160,57 @@ class ProductsController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $productPrice = Product::latest()->get();
+            $productList = Product::latest()->get();
+            
             $adminComponents =[
                 'user'=> $user,
                 'productPrice' => $productPrice,
+                'product' => $productList,
             ];
             return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
         }
         return redirect()->route('unathorized');
+    }
+
+
+    public function customerIndex(){
+        if (auth()->check() && auth()->user()->userRole =='admin') {
+            $user = auth()->user();
+            $customer = User::where('userRole','customer')->get();
+            
+            $adminComponents =[
+                'user'=> $user,
+                'customers' => $customer,
+            ];
+            return view('systeamAdmin.productsSales.CustmerIndex',compact('adminComponents'));
+        }
+    }
+
+    public function addCustomer(Request $request){
+        $this->validate($request, [
+            'customerName' => 'required|string|max:255',
+            'phonenumber' => 'nullable|string|regex:/^[0-9+\-\s]+$/|min:7|max:15',
+        ], [
+            'customerName.required' => 'Customer name is required.',
+            'customerName.string' => 'Customer name must be a valid string.',
+            'customerName.max' => 'Customer name should not exceed 255 characters.',
+            
+            'phonenumber.regex' => 'Phone number can only contain numbers, spaces, dashes, and the plus sign.',
+            'phonenumber.min' => 'Phone number must be at least 7 digits long.',
+            'phonenumber.max' => 'Phone number should not exceed 15 digits.',
+        ]);
+        
+        $userRole = 'customer';
+        $customer=User::create([
+            'fullname' => $request->customerName,
+            'userRole' => $userRole,
+        
+        ]);
+        return response()->json([
+            'message' => 'Products Updated Successfully'
+        ]);
+        
+        
     }
     
 

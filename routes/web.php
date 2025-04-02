@@ -63,7 +63,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //===============Products Sales ================================
     Route::get('/admin/products-sales',[ProductsController::class,'productSalesIndex'])->name('products-sales');
-
+    Route::get('/admin/customer-index',[ProductsController::class,'customerIndex'])->name('customers-index');
+    Route::post('/admin/add-customer',[ProductsController::class,'addCustomer'])->name('add-product');
 });
 
 // ==============Shopkeeper ==================
