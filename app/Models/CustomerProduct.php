@@ -15,7 +15,8 @@ class CustomerProduct extends Model
         'customer_id',
         'product_id',
         'selling_price',
-        'product_quantity'
+        'product_quantity',
+        'customer_quantity'
     ];
 
     public $timestamps = true; 

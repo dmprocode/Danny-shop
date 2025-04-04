@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductsController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +66,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/products-sales',[ProductsController::class,'productSalesIndex'])->name('products-sales');
     Route::get('/admin/customer-index',[ProductsController::class,'customerIndex'])->name('customers-index');
     Route::post('/admin/add-customer',[ProductsController::class,'addCustomer'])->name('add-product');
+    Route::post('/admin/find-productPrice',[ProductsController::class,'findProductprice'])->name('find-product-price');
+    Route::post('/admin/sellProduct',[ProductsController::class,'sellProducts'])->name('add-product-sold');
+
 });
 
 // ==============Shopkeeper ==================

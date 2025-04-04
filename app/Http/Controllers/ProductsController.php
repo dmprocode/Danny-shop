@@ -161,11 +161,14 @@ class ProductsController extends Controller
             $user = auth()->user();
             $productPrice = Product::latest()->get();
             $productList = Product::latest()->get();
+            $customer = User::where('userRole','customer')->latest()->get();
+           
             
             $adminComponents =[
                 'user'=> $user,
                 'productPrice' => $productPrice,
                 'product' => $productList,
+                'customers' => $customer
             ];
             return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
         }
@@ -176,8 +179,7 @@ class ProductsController extends Controller
     public function customerIndex(){
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
-            $customer = User::where('userRole','customer')->get();
-            
+            $customer = User::where('userRole','customer')->latest()->get();            
             $adminComponents =[
                 'user'=> $user,
                 'customers' => $customer,
@@ -210,6 +212,40 @@ class ProductsController extends Controller
             'message' => 'Products Updated Successfully'
         ]);
         
+        
+    }
+
+    public function findProductprice(Request $request){
+
+        $product_id = Product::find($request->productId);
+        return response()->json([
+            'message' => $product_id
+        ]);
+    }
+
+    public function sellProducts(Request $request){
+
+
+    $validated = $request->validate([
+        'customer_id' => 'required|exists:users,id',
+        'product_id' => 'required|exists:products,id',
+        'customer_quantity' => 'required|integer|min:1',
+        'selling_price' => 'required|numeric|min:0'
+    ], [
+        'customer_id.required' => 'Please select a customer.',
+        'customer_id.exists' => 'The selected customer is not valid.',
+        
+        'product_id.required' => 'Please select a product.',
+        'product_id.exists' => 'The selected product is not valid.',
+
+        'customer_quantity.required' => 'Please enter the quantity.',
+        'customer_quantity.integer' => 'Quantity must be a whole number.',
+        'customer_quantity.min' => 'Quantity must be at least 1.',
+
+        'selling_price.required' => 'Please enter the selling price.',
+        'selling_price.numeric' => 'Selling price must be a valid number.',
+        'selling_price.min' => 'Selling price cannot be negative.',
+    ]);
         
     }
     
