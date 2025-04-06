@@ -62,15 +62,24 @@
 
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Daniel Mathias </td>
-                                    <td>Maharage</td>
-                                    <td>5000</td>
-                                    <td>1000</td>
-                                    <td>1000</td>
-                                    <td>Delete</td>
+                            @foreach($adminComponents['productsSales'] as $user)
+                            @foreach($user->products as $key =>  $productsale)
+
+                            <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$user->fullname}} </td>
+                                    <td>{{$productsale->name}}</td>
+                                    <td>{{number_format($productsale->price_per_item,2)}}</td>
+                                    <td>{{number_format($productsale->pivot->selling_price)}}</td>
+                                    <td>{{number_format($productsale->pivot->product_profit, 2) }}</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                    </td>
                                 </tr>
+                                @endforeach
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -122,7 +131,7 @@
                                         </optgroup>
                                     </select>
 
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
+                                    <i class="text-danger customer_name message fw-normal role font-16"></i>
 
                                 </div>
                                 <div class="mb-3 col-md-6">
@@ -153,7 +162,6 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece   :</label>
                                      <input type="text" class="form-control form-control-sm" id ="buyingPrice">
 
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -161,7 +169,7 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity   :</label>
                                      <input type="number" class="form-control form-control-sm" id="customer_quantity">
 
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
+                                    <i class="text-danger customer_quantity message fw-normal role font-16"></i>
 
                                 </div>
 
@@ -170,7 +178,7 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price   :</label>
                                      <input type="text" class="form-control form-control-sm" id="sellingPrice">
 
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
+                                    <i class="text-danger sellingprice message fw-normal role font-16"></i>
 
                                 </div>
                             </div>

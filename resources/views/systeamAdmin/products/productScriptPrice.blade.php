@@ -38,7 +38,7 @@
           $('.message').html('')
         let id = $('#up_id').val()
         let buyingPrice = $('#up_buying_price').val()
-        let sellingprice = $('#selling_price_piece').val();
+        let sellingprice = $('#sellingPrice').val();
         let productname = $('#productname').val()
         let priceper_dazeen = $('#up_price_perDazeen').val()
         $.ajax({

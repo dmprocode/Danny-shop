@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+Use App\Models\CustomerProduct;
 
 class ProductsController extends Controller
 {
@@ -162,13 +163,15 @@ class ProductsController extends Controller
             $productPrice = Product::latest()->get();
             $productList = Product::latest()->get();
             $customer = User::where('userRole','customer')->latest()->get();
-           
+            $productsSales = User::with('products')->where('userRole','customer')->get();
+            
             
             $adminComponents =[
                 'user'=> $user,
                 'productPrice' => $productPrice,
                 'product' => $productList,
-                'customers' => $customer
+                'customers' => $customer,
+                'productsSales' => $productsSales
             ];
             return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
         }
@@ -224,13 +227,13 @@ class ProductsController extends Controller
     }
 
     public function sellProducts(Request $request){
-
+     
 
     $validated = $request->validate([
         'customer_id' => 'required|exists:users,id',
         'product_id' => 'required|exists:products,id',
         'customer_quantity' => 'required|integer|min:1',
-        'selling_price' => 'required|numeric|min:0'
+        'sellingPrice' => 'required|numeric|min:0'
     ], [
         'customer_id.required' => 'Please select a customer.',
         'customer_id.exists' => 'The selected customer is not valid.',
@@ -242,10 +245,26 @@ class ProductsController extends Controller
         'customer_quantity.integer' => 'Quantity must be a whole number.',
         'customer_quantity.min' => 'Quantity must be at least 1.',
 
-        'selling_price.required' => 'Please enter the selling price.',
-        'selling_price.numeric' => 'Selling price must be a valid number.',
-        'selling_price.min' => 'Selling price cannot be negative.',
+        'sellingPrice.required' => 'Please enter the selling price.',
+        'sellingPrice.numeric' => 'Selling price must be a valid number.',
+        'sellingPrice.min' => 'Selling price cannot be negative.',
     ]);
+    if ($validated) {
+        $customer_product= CustomerProduct::create([
+         'customer_id' =>$request->customer_id,
+         'product_id' => $request->product_id,
+         'selling_price' => $request->sellingPrice,
+         'product_quantity' => $request->customer_quantity
+        ]);
+
+        return response()->json([
+            'message' => 'Product Solid Successfuly'
+        ]);
+
+        return response()->json([
+            'message' => 'Same thing went wrong'
+        ]);
+    }
         
     }
     
