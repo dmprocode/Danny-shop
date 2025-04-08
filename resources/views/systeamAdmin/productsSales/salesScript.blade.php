@@ -140,4 +140,18 @@ $(document).on('click','#sell-product-button', function(e){
    
 })
 
+$(document).on('click','#edit-product-sell', function(e){
+    e.preventDefault()
+    let user_id = $(this).data('id');
+    let fullname = $(this).data('fullname')
+    let productname = $(this).data('name')
+    let price_per_item = $(this).data('price_per_item')
+    let selling_price = $(this).data('selling_price')
+
+
+     $('#up_id').val(user_id)
+    console.log(user_id,fullname,productname,price_per_item,selling_price   );
+    
+})
+
 </script>

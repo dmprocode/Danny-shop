@@ -73,7 +73,14 @@
                     <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>
                     <td>
                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline" id="edit-product-sell"
+                         data-id = "{{$user->id}}",
+                         data-fullname ="{{$user->fullname}}"
+                         data-name ="{{$productsale->name}}"
+                         data-price_per_item ="{{$productsale->price_per_item}}"
+                         data-selling_price ="{{$productsale->pivot->selling_price}}"
+
+                        ></i></a>
                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                     </td>
                 </tr>
@@ -127,6 +134,110 @@
                                         @endforeach
 
                                         </optgroup>
+                                    </select>
+
+                                    <i class="text-danger customer_name message fw-normal role font-16"></i>
+
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Products Name:</label>
+                                    <select class="form-control select2 product_id" data-toggle="select2" id="product-name">
+                                        <option>Select</option>
+                                        <optgroup label="Select Products Based On it`s Name" id ="">
+                                            @foreach($adminComponents['product'] as $product)
+                                            <option value="{{$product->id}}" >{{$product->name}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+
+                                    <i class="text-danger product_name message fw-normal role font-16"></i>
+
+                                </div>
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Remain Quantity Stock   :</label>
+                                     <input type="text" class="form-control form-control-sm quantityStock" id="quantityStock">
+
+                                    <i class="text-danger product_name message fw-normal role font-16"></i>
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece   :</label>
+                                     <input type="text" class="form-control form-control-sm" id ="buyingPrice">
+
+
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity   :</label>
+                                     <input type="number" class="form-control form-control-sm" id="customer_quantity">
+
+                                    <i class="text-danger customer_quantity message fw-normal role font-16"></i>
+
+                                </div>
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price   :</label>
+                                     <input type="text" class="form-control form-control-sm" id="sellingPrice">
+
+                                    <i class="text-danger sellingprice message fw-normal role font-16"></i>
+
+                                </div>
+                            </div>
+                            <center>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn- h4 fw-bold text-light  w-50 " id="sell-product-button"
+                                        style="background-color:teal">Sell Product`s <span
+                                            class=" uil-money-insert"></span></button>
+                                </div>
+
+                            </center>
+
+                        </form>
+
+
+
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+    </div>
+
+
+    <!-- ======================Update Products Sales=================== -->
+
+
+    <div class="row" id="Update-products-sales">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-5">
+                            <a href="javascript:void(0);"
+                                class="btn btn-outline-danger btn-sm text-info mb-2 go-back-btn"><i
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Go Back </span> </a>
+                        </div>
+                        <div class="col-sm-7 ">
+                            <div class="text-sm-end">
+                                <a href="{{ route('admin-dashboard')}}" class="btn btn- mb-2 me-1  text-light root-btn"
+                                    style="background-color:rgb(24,4,24)"><i class="mdi mdi-arrow-left font-16"> Go
+                                        Back</i></a>
+
+                            </div>
+                        </div><!-- end col-->
+
+                        <form action="#" id="productsFormData">
+                            @csrf
+
+                            <div class="row">
+                               <input type="text" id="up_id">
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Name:</label>
+                                    <input type="text" class="form-control   form-control-sm">
+                                        
                                     </select>
 
                                     <i class="text-danger customer_name message fw-normal role font-16"></i>
