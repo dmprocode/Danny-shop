@@ -163,7 +163,7 @@ class ProductsController extends Controller
             $productPrice = Product::latest()->get();
             $productList = Product::latest()->get();
             $customer = User::where('userRole','customer')->latest()->get();
-            $productsSales = User::with('products')->where('userRole','customer')->get();
+            $productsSales = User::with('products')->where('userRole','customer')->latest()->get();
             
             
             $adminComponents =[

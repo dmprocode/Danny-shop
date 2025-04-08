@@ -48,41 +48,39 @@
 
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Customer Name</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Selling Price</th>
-                                    <th>Profit</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer Name</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Selling Price</th>
+            <th>Profit</th>
+            <th>Action</th>
+        </tr>
+    </thead>
 
-
-                            <tbody>
-                            @foreach($adminComponents['productsSales'] as $user)
-                            @foreach($user->products as $key =>  $productsale)
-
-                            <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$user->fullname}} </td>
-                                    <td>{{$productsale->name}}</td>
-                                    <td>{{number_format($productsale->price_per_item,2)}}</td>
-                                    <td>{{number_format($productsale->pivot->selling_price)}}</td>
-                                    <td>{{number_format($productsale->pivot->product_profit, 2) }}</td>
-                                    <td>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endforeach
-
-                            </tbody>
-                        </table>
+    <tbody>
+        @php $row = 1; @endphp
+        @foreach($adminComponents['productsSales'] as $user)
+            @foreach($user->products as $productsale)
+                <tr>
+                    <td>{{ $row++ }}</td>
+                    <td>{{ $user->fullname }}</td>
+                    <td>{{ $productsale->name }}</td>
+                    <td>{{ number_format($productsale->price_per_item, 2) }}</td>
+                    <td>{{ number_format($productsale->pivot->selling_price, 2) }}</td>
+                    <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+            @endforeach
+        @endforeach
+    </tbody>
+</table>
 
 
 
