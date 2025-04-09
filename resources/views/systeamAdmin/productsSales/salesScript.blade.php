@@ -100,11 +100,13 @@ $(document).ready(function() {
 $(document).on('click','#sell-product-button', function(e){
     e.preventDefault()
     $('.message').html('')
-    let product_id = $('.product_id').val()
+    let product_id = $('#product-name').val()
     let customer_id = $('.customer_id').val()
     let quantityStock = $('.quantityStock').val()
     let customer_quantity = $('#customer_quantity').val()
     let sellingPrice = $('#sellingPrice').val()
+    console.log(product_id);
+    
     $.ajax({
         url:"{{route('add-product-sold')}}",
         method:"POST",
@@ -115,6 +117,8 @@ $(document).on('click','#sell-product-button', function(e){
             sellingPrice:sellingPrice,
         },
         success:function(res){
+            
+            
             Swal.fire({
             position: "top-end",
             icon: "success",
@@ -123,11 +127,14 @@ $(document).on('click','#sell-product-button', function(e){
             timer: 1500
             });
             setTimeout(() => {
-                location().reload()
-            }, 1500);
+                location.reload();
+            }, 150);
+
             
         },
         error:function(error){
+            console.log(error);
+            
           $('.customer_name').html(error.responseJSON.errors.customer_id)
           $('.product_name').html(error.responseJSON.errors.product_id)
           $('.customer_quantity').html(error.responseJSON.errors.customer_quantity)

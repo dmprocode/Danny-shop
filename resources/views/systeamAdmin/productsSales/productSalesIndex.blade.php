@@ -48,46 +48,48 @@
 
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Customer Name</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Selling Price</th>
-            <th>Profit</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Piece</th>
+                                    <th>Selling Price</th>
+                                    <th>Profit</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-    <tbody>
-        @php $row = 1; @endphp
-        @foreach($adminComponents['productsSales'] as $user)
-            @foreach($user->products as $productsale)
-                <tr>
-                    <td>{{ $row++ }}</td>
-                    <td>{{ $user->fullname }}</td>
-                    <td>{{ $productsale->name }}</td>
-                    <td>{{ number_format($productsale->price_per_item, 2) }}</td>
-                    <td>{{ number_format($productsale->pivot->selling_price, 2) }}</td>
-                    <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>
-                    <td>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline" id="edit-product-sell"
-                         data-id = "{{$user->id}}",
-                         data-fullname ="{{$user->fullname}}"
-                         data-name ="{{$productsale->name}}"
-                         data-price_per_item ="{{$productsale->price_per_item}}"
-                         data-selling_price ="{{$productsale->pivot->selling_price}}"
-
-                        ></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                    </td>
-                </tr>
-            @endforeach
-        @endforeach
-    </tbody>
-</table>
+                            <tbody>
+                                @php $row = 1; @endphp
+                                @foreach($adminComponents['productsSales'] as $user)
+                                @foreach($user->products as $productsale)
+                                <tr>
+                                    <td>{{ $row++ }}</td>
+                                    <td>{{ $user->fullname }}</td>
+                                    <td>{{ $productsale->name }}</td>
+                                    <td>{{ number_format($productsale->price_per_item, 2) }}</td>
+                                    <td>{{$productsale->pivot->product_quantity}}</td>
+                                    <td>{{ number_format($productsale->pivot->selling_price, 2) }}</td>
+                                    <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-eye"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-square-edit-outline" id="edit-product-sell"
+                                                data-id="{{$user->id}}" , data-fullname="{{$user->fullname}}"
+                                                data-name="{{$productsale->name}}"
+                                                data-price_per_item="{{$productsale->price_per_item}}"
+                                                data-selling_price="{{$productsale->pivot->selling_price}}"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
 
 
 
@@ -126,12 +128,13 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Name:</label>
-                                    <select class="form-control select2 customer_id" data-toggle="select2" id="customer_id">
+                                    <select class="form-control select2 customer_id" data-toggle="select2"
+                                        id="customer_id">
                                         <option>Select</option>
                                         <optgroup label="Select Castomer name">
-                                        @foreach($adminComponents['customers'] as $customer)
+                                            @foreach($adminComponents['customers'] as $customer)
                                             <option value="{{ $customer->id }}">{{ $customer->fullname }}</option>
-                                        @endforeach
+                                            @endforeach
 
                                         </optgroup>
                                     </select>
@@ -139,40 +142,45 @@
                                     <i class="text-danger customer_name message fw-normal role font-16"></i>
 
                                 </div>
+                                <!-- Single Select -->
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Products Name:</label>
-                                    <select class="form-control select2 product_id" data-toggle="select2" id="product-name">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 product_id">Products
+                                        Name:</label>
+                                    <select class="form-control select2" id="product-name" data-toggle="select2">
                                         <option>Select</option>
-                                        <optgroup label="Select Products Based On it`s Name" id ="">
+                                        <optgroup label="Select Products Based On it`s Name" id="">
                                             @foreach($adminComponents['product'] as $product)
-                                            <option value="{{$product->id}}" >{{$product->name}}</option>
+                                            <option value="{{$product->id}}">{{$product->name}}</option>
                                             @endforeach
                                         </optgroup>
+
                                     </select>
+                                </div>
+
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Remain Quantity Stock
+                                        :</label>
+                                    <input type="text" class="form-control form-control-sm quantityStock"
+                                        id="quantityStock">
 
                                     <i class="text-danger product_name message fw-normal role font-16"></i>
 
                                 </div>
 
-
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Remain Quantity Stock   :</label>
-                                     <input type="text" class="form-control form-control-sm quantityStock" id="quantityStock">
-
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
-
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece   :</label>
-                                     <input type="text" class="form-control form-control-sm" id ="buyingPrice">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece
+                                        :</label>
+                                    <input type="text" class="form-control form-control-sm" id="buyingPrice">
 
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity   :</label>
-                                     <input type="number" class="form-control form-control-sm" id="customer_quantity">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity
+                                        :</label>
+                                    <input type="number" class="form-control form-control-sm" id="customer_quantity">
 
                                     <i class="text-danger customer_quantity message fw-normal role font-16"></i>
 
@@ -180,8 +188,8 @@
 
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price   :</label>
-                                     <input type="text" class="form-control form-control-sm" id="sellingPrice">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price :</label>
+                                    <input type="text" class="form-control form-control-sm" id="sellingPrice">
 
                                     <i class="text-danger sellingprice message fw-normal role font-16"></i>
 
@@ -233,50 +241,54 @@
                             @csrf
 
                             <div class="row">
-                               <input type="text" id="up_id">
+                                <input type="text" id="up_id">
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Name:</label>
                                     <input type="text" class="form-control   form-control-sm">
-                                        
+
                                     </select>
 
                                     <i class="text-danger customer_name message fw-normal role font-16"></i>
 
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Products Name:</label>
-                                    <select class="form-control select2 product_id" data-toggle="select2" id="product-name">
-                                        <option>Select</option>
-                                        <optgroup label="Select Products Based On it`s Name" id ="">
+                                    <label for="product-name" class="form-label fw-normal fs-16">Product Name:</label>
+                                    <select class="form-control select2 product_id" id="product-name" data-toggle="select2">
+                                        <option value="">Select</option>
+                                        <optgroup label="Select Products Based On Name">
                                             @foreach($adminComponents['product'] as $product)
-                                            <option value="{{$product->id}}" >{{$product->name}}</option>
+                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
                                             @endforeach
                                         </optgroup>
                                     </select>
+                                
+                                    <small class="text-danger product_name message fw-normal role font-16"></small>
+                                </div>
+                                
+
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Remain Quantity Stock
+                                        :</label>
+                                    <input type="text" class="form-control form-control-sm quantityStock"
+                                        id="quantityStock">
 
                                     <i class="text-danger product_name message fw-normal role font-16"></i>
 
                                 </div>
 
-
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Remain Quantity Stock   :</label>
-                                     <input type="text" class="form-control form-control-sm quantityStock" id="quantityStock">
-
-                                    <i class="text-danger product_name message fw-normal role font-16"></i>
-
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece   :</label>
-                                     <input type="text" class="form-control form-control-sm" id ="buyingPrice">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Buying Price Per Piece
+                                        :</label>
+                                    <input type="text" class="form-control form-control-sm" id="buyingPrice">
 
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity   :</label>
-                                     <input type="number" class="form-control form-control-sm" id="customer_quantity">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Customer Quantity
+                                        :</label>
+                                    <input type="number" class="form-control form-control-sm" id="customer_quantity">
 
                                     <i class="text-danger customer_quantity message fw-normal role font-16"></i>
 
@@ -284,8 +296,8 @@
 
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price   :</label>
-                                     <input type="text" class="form-control form-control-sm" id="sellingPrice">
+                                    <label for="simpleinput" class="form-label fw-normal fs-16 ">Selling Price :</label>
+                                    <input type="text" class="form-control form-control-sm" id="sellingPrice">
 
                                     <i class="text-danger sellingprice message fw-normal role font-16"></i>
 
@@ -310,7 +322,7 @@
         </div>
     </div>
 
-  
+
     <!-- container -->
     @include('systeamAdmin.productsSales.salesScript')
     @include('systeamAdmin.admin-templete-controller.footer')

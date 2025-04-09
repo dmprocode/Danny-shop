@@ -228,6 +228,7 @@ class ProductsController extends Controller
 
     public function sellProducts(Request $request){
      
+        
 
     $validated = $request->validate([
         'customer_id' => 'required|exists:users,id',
