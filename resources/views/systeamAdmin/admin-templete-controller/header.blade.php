@@ -38,5 +38,21 @@
     <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet')}}" type="text/css" />
     
 
+    <style>
+    @media print {
+        .watermark-print {
+            position: fixed;
+            top: 40%;
+            left: 30%;
+            font-size: 60px;
+            color: rgba(0, 0, 0, 0.1);
+            transform: rotate(-30deg);
+            z-index: 9999;
+            pointer-events: none;
+        }
+    }
+</style>
+
+
     
 </head>

@@ -17,7 +17,8 @@ class CustomerProduct extends Model
         'selling_price',
         'product_quantity',
         'customer_quantity',
-        'product_profit'
+        'product_profit',
+        'pieceSellingPrice',
     ];
 
     public $timestamps = true; 
@@ -37,8 +38,21 @@ class CustomerProduct extends Model
     
                 $productProfit->product_profit = $profit;
             }
+
+
+
         });
+
+
+        static::saving(function($piecePrice){
+            $piecePrice->pieceSellingPrice =($piecePrice->selling_price * $piecePrice->product_quantity);
+
+
+        });
+
+
     }
+    
     
 
 

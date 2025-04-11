@@ -51,12 +51,13 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Customer Name</th>
-                                    <th>Product Name</th>
+                                    <th>Product </th>
                                     <th>Price</th>
-                                    <th>Piece</th>
                                     <th>Selling Price</th>
+                                    <th>Total </th>
                                     <th>Profit</th>
+                                    <th>Customer </th>
+                                    <th>Piece</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -67,12 +68,14 @@
                                 @foreach($user->products as $productsale)
                                 <tr>
                                     <td>{{ $row++ }}</td>
-                                    <td>{{ $user->fullname }}</td>
                                     <td>{{ $productsale->name }}</td>
                                     <td>{{ number_format($productsale->price_per_item, 2) }}</td>
-                                    <td>{{$productsale->pivot->product_quantity}}</td>
                                     <td>{{ number_format($productsale->pivot->selling_price, 2) }}</td>
+                                    <td>{{number_format($productsale->pivot->pieceSellingPrice ,2)}}</td>
                                     <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>
+                                    <td>{{ $user->fullname }}</td>
+                                    <td>{{$productsale->pivot->product_quantity}}</td>
+
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"> <i
                                                 class="mdi mdi-eye"></i></a>
@@ -90,9 +93,29 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end gap-3 my-3">
+                            <div class="p-3 bg-gradient bg-info text-white rounded shadow-sm">
+                                <h5 class="mb-0">
+                                    <i class="mdi mdi-cash-multiple me-2"></i>
+                                    <strong>Today’s Sales:</strong> {{ number_format($adminComponents['todaySelling'],
+                                    2) }}
+                                </h5>
+                            </div>
+                            <div class="p-3 bg-gradient bg-danger text-white rounded shadow-sm">
+                                <h5 class="mb-0">
+                                    <i class="mdi mdi-trending-up me-2"></i>
+                                    <strong>Today’s Profit:</strong> {{ number_format($adminComponents['todayProfit'],
+                                    2) }}
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i>
+                                Print</a>
+                            <a href="javascript: void(0);" class="btn btn-info">Submit</a>
+                        </div>
 
-
-
+                        <div class="watermark-print"> CSD - Management Information Systems (MIS) </div>
 
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
@@ -146,7 +169,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 product_id">Products
                                         Name:</label>
-                                    <select class="form-control select2" id="product-name" data-toggle="select2">
+                                    <select class="form-control select2" data-toggle="select2" id="product-name">
                                         <option>Select</option>
                                         <optgroup label="Select Products Based On it`s Name" id="">
                                             @foreach($adminComponents['product'] as $product)
@@ -253,18 +276,18 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="product-name" class="form-label fw-normal fs-16">Product Name:</label>
-                                    <select class="form-control select2 product_id" id="product-name" data-toggle="select2">
+                                    <select class="form-control select2 product_id" id="" data-toggle="select2">
                                         <option value="">Select</option>
                                         <optgroup label="Select Products Based On Name">
                                             @foreach($adminComponents['product'] as $product)
-                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
                                             @endforeach
                                         </optgroup>
                                     </select>
-                                
+
                                     <small class="text-danger product_name message fw-normal role font-16"></small>
                                 </div>
-                                
+
 
 
                                 <div class="mb-3 col-md-6">

@@ -8,7 +8,8 @@
         
     })
 
-    $('#sales-products-div').hide()
+    $('#sales-products-div').hide() 
+    $('#Update-products-sales').hide()
     $(document).on('click','.sale-products-btn',function(e){
         e.preventDefault()
         $('#sales-products-div').show()
@@ -149,6 +150,7 @@ $(document).on('click','#sell-product-button', function(e){
 
 $(document).on('click','#edit-product-sell', function(e){
     e.preventDefault()
+    $('#sales-product-table').hide()
     let user_id = $(this).data('id');
     let fullname = $(this).data('fullname')
     let productname = $(this).data('name')

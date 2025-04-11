@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('selling_price');
             $table->string('product_quantity');
             $table->string('product_profit');
+            $table->decimal('pieceSellingPrice',8,2);
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
     

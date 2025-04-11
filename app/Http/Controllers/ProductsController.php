@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 Use App\Models\CustomerProduct;
+use Carbon\Carbon;
+
 
 class ProductsController extends Controller
 {
@@ -164,14 +166,20 @@ class ProductsController extends Controller
             $productList = Product::latest()->get();
             $customer = User::where('userRole','customer')->latest()->get();
             $productsSales = User::with('products')->where('userRole','customer')->latest()->get();
-            
+
+
+            $todaySelling = CustomerProduct::whereDate('created_at', Carbon::today())->sum('pieceSellingPrice');
+            $todayProfit = CustomerProduct::whereDate('created_at', Carbon::today())->sum('product_profit');
+
             
             $adminComponents =[
                 'user'=> $user,
                 'productPrice' => $productPrice,
                 'product' => $productList,
                 'customers' => $customer,
-                'productsSales' => $productsSales
+                'productsSales' => $productsSales,
+                'todaySelling' => $todaySelling,
+                'todayProfit' => $todayProfit
             ];
             return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
         }
