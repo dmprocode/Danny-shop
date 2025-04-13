@@ -12,6 +12,7 @@
     $('#Update-products-sales').hide()
     $(document).on('click','.sale-products-btn',function(e){
         e.preventDefault()
+        $('#Update-products-sales').hide()
         $('#sales-products-div').show()
         $('#sales-product-table').hide()
     })
@@ -19,6 +20,7 @@
         e.preventDefault()
         $('#sales-products-div').hide()
         $('#sales-product-table').show()
+        $('#Update-products-sales').hide()
     })
 
 
@@ -151,16 +153,101 @@ $(document).on('click','#sell-product-button', function(e){
 $(document).on('click','#edit-product-sell', function(e){
     e.preventDefault()
     $('#sales-product-table').hide()
+    $('#Update-products-sales').show()
     let user_id = $(this).data('id');
     let fullname = $(this).data('fullname')
     let productname = $(this).data('name')
     let price_per_item = $(this).data('price_per_item')
     let selling_price = $(this).data('selling_price')
-
-
+    let product_id = $(this).data('product_id')
+    let product_quantity = $(this).data('product_quantity')
+    
      $('#up_id').val(user_id)
-    console.log(user_id,fullname,productname,price_per_item,selling_price   );
+     $('#product_id').val(product_id)
+     $('#customert_name').val(fullname)
+     $('#product_name').val(productname)
+     $('#up_buyingPrice').val(price_per_item)
+     $('#up_productQuantity').val(product_quantity)
+     $('#up_sellingPrice').val(selling_price)
+})
+
+$(document).on('click','#update-product-sell', function(e){
+    e.preventDefault()
+    let user_id=$('#up_id').val()
+    let products_id = $('#product_id').val()
+    let customername = $('#customert_name').val()
+    let product_name = $('#product_name').val()
+    let up_buyingPrice = $('#up_buyingPrice').val()
+    let up_productQuantity = $('#up_productQuantity').val()
+    let up_sellingPrice = $('#up_sellingPrice').val()
+
+    $.ajax({
+        url:"{{route('update-products-sales')}}",
+        method:"post",
+        data:{
+            user_id:user_id,
+            products_id:products_id,
+            customername:customername,
+            product_name:product_name,
+            up_buyingPrice:up_buyingPrice,
+            up_productQuantity:up_productQuantity,
+            up_sellingPrice:up_sellingPrice
+            
+            
+            
+        },
+        success:function(res){
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: res.message,
+            showConfirmButton: false,
+            timer: 1500
+            });
+            setTimeout(() => {
+                location.reload()
+            }, 1500);
+            
+        },
+        error:function(error){
+            console.log(error);
+            
+        }
+    })
+    
+
+})
+
+
+$(document).on('click','#delete_products_sell',function(e){
+    e.preventDefault()
+    let product_id = $(this).data('id');
+    let user_id = $(this).data('user')
+    
+    $.ajax({
+        url:"{{route('delete-products')}}",
+        method:"POST",
+        data:{
+            product_id:product_id,
+            user_id:user_id
+        },
+        success:function(res){
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: res.message,
+            showConfirmButton: false,
+            timer: 1500
+            });
+            
+        },
+        error:function(error){
+            console.log(error);
+            
+        }
+    })
     
 })
+
 
 </script>

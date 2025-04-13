@@ -68,6 +68,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/add-customer',[ProductsController::class,'addCustomer'])->name('add-product');
     Route::post('/admin/find-productPrice',[ProductsController::class,'findProductprice'])->name('find-product-price');
     Route::post('/admin/sellProduct',[ProductsController::class,'sellProducts'])->name('add-product-sold');
+    Route::post('/admin/updateProducts',[ProductsController::class,'updateProductsSell'])->name('update-products-sales');
+    Route::post('/admin/deleteProducts',[ProductsController::class,'deleteSellProducts'])->name('delete-products');
+
 
 });
 

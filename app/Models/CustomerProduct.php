@@ -27,22 +27,24 @@ class CustomerProduct extends Model
     {
         parent::boot();
     
+
         static::saving(function ($productProfit) {
             $product = \App\Models\Product::find($productProfit->product_id);
-    
+
             if ($product) {
-                $pricePerItem = $product->price_per_item;
+                if ($product) {
+                    $pricePerItem = $product->price_per_item;
     
-                $profit = ($productProfit->selling_price * $productProfit->product_quantity) 
-                        - ($pricePerItem * $productProfit->product_quantity);
+                    $productProfit->pieceSellingPrice = $productProfit->selling_price * $productProfit->product_quantity;
     
-                $productProfit->product_profit = $profit;
+                    $profit = ($productProfit->selling_price * $productProfit->product_quantity)
+                            - ($pricePerItem * $productProfit->product_quantity);
+    
+                    $productProfit->product_profit = round($profit, 2);
+                }
             }
-
-
-
         });
-
+    
 
         static::saving(function($piecePrice){
             $piecePrice->pieceSellingPrice =($piecePrice->selling_price * $piecePrice->product_quantity);

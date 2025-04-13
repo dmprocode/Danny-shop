@@ -165,12 +165,21 @@ class ProductsController extends Controller
             $productPrice = Product::latest()->get();
             $productList = Product::latest()->get();
             $customer = User::where('userRole','customer')->latest()->get();
-            $productsSales = User::with('products')->where('userRole','customer')->latest()->get();
 
+            $productsSales = User::where('userRole', 'customer')
+                ->whereHas('products', function ($query) {
+                    $query->whereDate('customer_products.created_at', Carbon::today());
+                })
+                ->with(['products' => function ($query) {
+                    $query->whereDate('customer_products.created_at', Carbon::today());
+                }])
+                ->latest()
+                ->get();
+            
 
             $todaySelling = CustomerProduct::whereDate('created_at', Carbon::today())->sum('pieceSellingPrice');
             $todayProfit = CustomerProduct::whereDate('created_at', Carbon::today())->sum('product_profit');
-
+            
             
             $adminComponents =[
                 'user'=> $user,
@@ -179,7 +188,7 @@ class ProductsController extends Controller
                 'customers' => $customer,
                 'productsSales' => $productsSales,
                 'todaySelling' => $todaySelling,
-                'todayProfit' => $todayProfit
+                'todayProfit' => $todayProfit,
             ];
             return view('systeamAdmin.productsSales.productSalesIndex',compact('adminComponents'));
         }
@@ -275,6 +284,54 @@ class ProductsController extends Controller
         ]);
     }
         
+    }
+
+    public function updateProductsSell(Request $request)
+    {
+        // Validate request (optional but recommended)
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'products_id' => 'required|exists:products,id',
+            'up_sellingPrice' => 'required|numeric',
+            'up_productQuantity' => 'required|integer',
+            'customername' => 'required|string'
+        ]);
+    
+        // Update pivot data
+        $user = User::find($request->user_id);
+        if ($user) {
+            $user->products()->updateExistingPivot($request->products_id, [
+                'selling_price' => $request->up_sellingPrice,
+                'product_quantity' => $request->up_productQuantity,
+            ]);
+    
+            // Update customer name
+            $user->update([
+                'fullname' => $request->customername
+            ]);
+        }
+    
+        return response()->json([
+            'message' => "Sales record updated successfully"
+        ]);
+    }
+
+
+    public function deleteSellProducts(Request $request){
+        $userId = $request->user_id;
+        $productId = $request->product_id; 
+    
+        $user = User::find($userId);
+    
+        if ($user) {
+            $user->products()->detach($productId);
+            return response()->json(['message' => 'Product removed from customer successfully.']);
+        }
+    
+        return response()->json(['message' => 'User not found.'], 404);
+        return response()->json([
+            'message' => $request->all()
+        ]);
     }
     
 
