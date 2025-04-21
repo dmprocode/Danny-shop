@@ -120,9 +120,17 @@ $(document).on('click','#sell-product-button', function(e){
             sellingPrice:sellingPrice,
         },
         success:function(res){
-            
-            
-            Swal.fire({
+            if (res.status === 400) {
+                Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: res.message,
+                });
+                setTimeout(() => {
+                    location.reload()
+                }, 2000);
+            }else{
+                Swal.fire({
             position: "top-end",
             icon: "success",
             title: res.message,
@@ -131,7 +139,10 @@ $(document).on('click','#sell-product-button', function(e){
             });
             setTimeout(() => {
                 location.reload();
-            }, 150);
+            }, 1500);
+            }
+        
+           
 
             
         },
@@ -238,7 +249,10 @@ $(document).on('click','#delete_products_sell',function(e){
             title: res.message,
             showConfirmButton: false,
             timer: 1500
-            });
+            });    
+            setTimeout(() => {
+                location.reload()
+            }, 1500);     
             
         },
         error:function(error){

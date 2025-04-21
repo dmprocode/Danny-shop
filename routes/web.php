@@ -6,6 +6,8 @@ use App\Http\Controllers\ShopkeeperController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CapitalModelController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ParchassesController;
+
 
 
 
@@ -70,6 +72,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/sellProduct',[ProductsController::class,'sellProducts'])->name('add-product-sold');
     Route::post('/admin/updateProducts',[ProductsController::class,'updateProductsSell'])->name('update-products-sales');
     Route::post('/admin/deleteProducts',[ProductsController::class,'deleteSellProducts'])->name('delete-products');
+   
+
+    //======================Route Parchasses===================
+    Route::get('/admin/parchassesIndex',[ParchassesController::class,'parchassesIndex'])->name('parchasses-index');
+    Route::post('/admin/find-price',[ParchassesController::class,'productParchassesPrice'])->name('products-parchasses-price');
+    Route::post('/admin/add-parchasses',[ParchassesController::class,'addParchasses'])->name('add-parchasses');
 
 
 });

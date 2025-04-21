@@ -94,5 +94,9 @@ class Product extends Model
                     ->withPivot('selling_price','product_quantity','pieceSellingPrice') 
                     ->withTimestamps(); 
     }
+
+    public function parchasses(){
+        return $this->hasMany(Purchase::class,'product_id','id');
+    }
     
 }

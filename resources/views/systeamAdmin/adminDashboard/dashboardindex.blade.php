@@ -129,8 +129,9 @@
 
                             <!-- Footer Info -->
                             <p class="mb-0 text-muted d-flex justify-content-center ">
-                                <span class="text-nowrap h6 bg-info text-light px-3 py-1 rounded-pill shadow-sm" style="cursor:pointer">
+                                <a href="{{route('parchasses-index')}}"><span class="text-nowrap h6 bg-info text-light px-3 py-1 rounded-pill shadow-sm" style="cursor:pointer">
                                     View More </span>
+                                </a>
                             </p>
                         </div> <!-- end card-body -->
                     </div> <!-- end card -->

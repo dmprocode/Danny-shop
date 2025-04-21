@@ -45,7 +45,9 @@
 
                             </div>
                         </div><!-- end col-->
-
+                        @if($adminComponents['productsSales']->isEmpty())
+                          <i class="text-danger fw-bold">No sales available on this Day {{ date('l-m-Y') }}</i>
+                        @else
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
@@ -99,6 +101,7 @@
                                 </tr>
                                 @endforeach
                                 @endforeach
+                                @endif
                                 
                             </tbody>
                         </table>
@@ -124,7 +127,10 @@
                             <a href="javascript: void(0);" class="btn btn-info">Submit</a>
                         </div>
 
-                        <div class="watermark-print"> CSD - Management Information Systems (MIS) </div>
+                        <div class="watermark-print"> CSD - Management Information Systems (MIS)
+                            
+                        <i>Phone : 0712-343043</i>
+                        </div>
 
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->

@@ -205,7 +205,9 @@ class ProductsController extends Controller
                 'customers' => $customer,
             ];
             return view('systeamAdmin.productsSales.CustmerIndex',compact('adminComponents'));
-        }
+        }       
+         return redirect()->route('unathorized');
+
     }
 
     public function addCustomer(Request $request){
@@ -283,6 +285,23 @@ class ProductsController extends Controller
             'message' => 'Same thing went wrong'
         ]);
     }
+
+    $customerId =  User::with('products')->find($request->customer_id);
+        if ($customerId) {
+            $purchaseQuantity = $request->customer_quantity;
+            $productId = $request->product_id;
+            $product = Product::find($productId);
+            if ($product && $product->number_pieces >= $purchaseQuantity ) {
+                $product->number_pieces -= $purchaseQuantity;
+                $product->save();
+            }else {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Not enough stock available!',
+                    'available_quantity' => $product ? $product->number_pieces : 0
+                ]);
+            }
+        }
         
     }
 
