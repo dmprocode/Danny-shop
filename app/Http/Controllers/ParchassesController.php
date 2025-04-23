@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\CustomerProduct;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\Purchase;
+use App\Models\Purchase;   
+use Carbon\Carbon;
+
+
 
 
 class ParchassesController extends Controller
@@ -15,9 +18,15 @@ class ParchassesController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $productsLists =  Product::latest()->get();
-            $adminComponents =[
+
+            $todayParchasses = Purchase::with('products')
+                                ->whereDate('created_at', Carbon::today())
+                                ->latest()
+                                ->get();
+                    $adminComponents =[
                 'user'=> $user,
-                'productsList' => $productsLists
+                'productsList' => $productsLists,
+                'todayParchasses' => $todayParchasses
             ];
             return view('systeamAdmin.parchasess.parchassesIndex',compact('adminComponents'));
         }       
@@ -83,6 +92,40 @@ class ParchassesController extends Controller
             'data'    => $purchase,
         ]);
         
-                                                                                                                 
+                          
+        
+
+    }
+
+
+    public function updatePachasses(Request $request){
+
+        $parchassess_id = Purchase::find($request->id);
+        if ($parchassess_id) {
+
+            $parchassess_id->update([
+                'buying_price' => $request->buying_price,
+                'number_catton'=> $request->up_catton,
+                'number_picess'=> $request->parchasses_picess,
+                'sales_point'=> $request->salePoint
+            ]);
+
+            $parchassess_id->products->update([
+                'name' => $request->productsname
+            ]);
+            return response()->json([
+                'message' => 'Parchasses Updated Successfully'
+            ]);     
+        
+        }
+        
+    }
+
+
+    public function deleteParchasses(Request $request){
+        $deleteId = Purchase::find($request->delete_id)->delete();
+        return response()->json([
+            'message' => 'Parchasses Deleted Successfully'
+        ]);
     }
 }

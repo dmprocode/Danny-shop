@@ -78,6 +78,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/parchassesIndex',[ParchassesController::class,'parchassesIndex'])->name('parchasses-index');
     Route::post('/admin/find-price',[ParchassesController::class,'productParchassesPrice'])->name('products-parchasses-price');
     Route::post('/admin/add-parchasses',[ParchassesController::class,'addParchasses'])->name('add-parchasses');
+    Route::post('/admin/update-parchasses',[ParchassesController::class,'updatePachasses'])->name('update-parchasses');
+    Route::post('/admin/delete-parchasses',[ParchassesController::class,'deleteParchasses'])->name('delete-parchasses');
 
 
 });
