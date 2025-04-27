@@ -128,4 +128,41 @@ class ParchassesController extends Controller
             'message' => 'Parchasses Deleted Successfully'
         ]);
     }
+
+
+    public function latestParchasses(){
+
+        if (auth()->check() && auth()->user()->userRole =='admin') {
+            $user = auth()->user();
+            $parchassesList = Purchase::with('products')->latest()->get();
+             $adminComponents =[
+                'user'=> $user,
+                'parchassesList' => $parchassesList
+            ];
+            return view('systeamAdmin.parchasess.latestParchasses',compact('adminComponents'));
+        }       
+         return redirect()->route('unathorized');
+    }
+
+
+    public function viewMoreParchasses($product_id){
+
+        if (auth()->check() && auth()->user()->userRole =='admin') {
+            $user = auth()->user();
+            $parchassesWithProducts = Purchase::with('products')->where('id',$product_id)->get();
+            $viewMoreParchasses = Purchase::where('id', $product_id)->sum('buying_price');
+            
+             $adminComponents =[
+                'user'=> $user,
+                'parchassesWithProduct' => $parchassesWithProducts,
+                'viewMoreParchasses' => $viewMoreParchasses
+
+            ];
+            return view('systeamAdmin.parchasess.viewMoreParchasses',compact('adminComponents'));
+        }       
+         return redirect()->route('unathorized');
+        
+
+       
+    }
 }

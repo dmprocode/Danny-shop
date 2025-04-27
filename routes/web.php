@@ -80,7 +80,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/add-parchasses',[ParchassesController::class,'addParchasses'])->name('add-parchasses');
     Route::post('/admin/update-parchasses',[ParchassesController::class,'updatePachasses'])->name('update-parchasses');
     Route::post('/admin/delete-parchasses',[ParchassesController::class,'deleteParchasses'])->name('delete-parchasses');
-
+    Route::get('/admin/latestParchasses',[ParchassesController::class,'latestParchasses'])->name('latest-parchasses');
+    Route::get('/admin/viewMoreParchasses/{product_id}', [ParchassesController::class, 'viewMoreParchasses'])->name('view-more-parchasses');
 
 });
 

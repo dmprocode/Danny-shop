@@ -131,16 +131,16 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
                                 <i class="uil-briefcase"></i>
-                                <span> Projects </span>
+                                <span> Parchasses </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarProjects">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-projects-list.html">List</a>
+                                        <a href="http://127.0.0.1:8000/admin/parchassesIndex">To Day Parchasses</a>
                                     </li>
                                     <li>
-                                        <a href="apps-projects-details.html">Details</a>
+                                        <a href="{{route('latest-parchasses')}}">Latest Parchasses</a>
                                     </li>
                                     <li>
                                         <a href="apps-projects-gantt.html">Gantt <span class="badge rounded-pill badge-light-lighten font-10 float-end">New</span></a>

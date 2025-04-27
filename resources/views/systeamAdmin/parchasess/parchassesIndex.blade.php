@@ -35,7 +35,7 @@
                         <div class="col-sm-5">
                             <a href="javascript:void(0);"
                                 class="btn btn-outline-info btn-sm  mb-2 make-purchases-btn"><i
-                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Make Purchases </span>
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">To day Parchasses </span>
                             </a>
                         </div>
                         <div class="col-sm-7 ">
@@ -75,7 +75,7 @@
                                     <td>{{ \Carbon\Carbon::parse($product->created_at)->diffForHumans() }}</td>
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"><i
-                                                class="mdi mdi-eye"></i></a>
+                                                class="mdi mdi-eye" id="view-more-btn" data-id="{{$product->id}}"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"><i
                                                 class="mdi mdi-square-edit-outline"
                                                  id="edit-parchasses-btn"

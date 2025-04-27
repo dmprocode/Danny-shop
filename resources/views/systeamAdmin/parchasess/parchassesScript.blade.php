@@ -19,6 +19,8 @@
             e.preventDefault()
             $('#parchasses-table').show()
             $('#make-parchasses-div').hide()
+            $('#update-parchasses-div').hide()
+
         })
 
         $(document).on('change', '#select-product-price', function (e) {
@@ -152,49 +154,60 @@
         })
 
         $(document).on('click', '.delete-btn', function (e) {
-    e.preventDefault();
-    let delete_id = $(this).data('id');
+            e.preventDefault();
+            let delete_id = $(this).data('id');
 
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "{{ route('delete-parchasses') }}",
-                method: "POST",
-                data: {
-                    delete_id: delete_id,
-                    _token: "{{ csrf_token() }}" // Ensure CSRF token is included
-                },
-                success: function (res) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: res.message,
-                        icon: "success"
-                    });
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('delete-parchasses') }}",
+                        method: "POST",
+                        data: {
+                            delete_id: delete_id,
+                            _token: "{{ csrf_token() }}" // Ensure CSRF token is included
+                        },
+                        success: function (res) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: res.message,
+                                icon: "success"
+                            });
 
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1500);
-                },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: "Error!",
-                        text: "Something went wrong. Try again.",
-                        icon: "error"
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1500);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Something went wrong. Try again.",
+                                icon: "error"
+                            });
+                        }
                     });
                 }
             });
-        }
-    });
-});
+        });
+
+
+        $(document).on('click', '#view-more-btn', function (e) {
+            e.preventDefault();
+
+            let product_id = $(this).data('id'); 
+            let url = "/admin/viewMoreParchasses/" + product_id;
+
+            window.location.href = url;
+        });
+
 
     })
 
