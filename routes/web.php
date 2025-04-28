@@ -72,7 +72,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/sellProduct',[ProductsController::class,'sellProducts'])->name('add-product-sold');
     Route::post('/admin/updateProducts',[ProductsController::class,'updateProductsSell'])->name('update-products-sales');
     Route::post('/admin/deleteProducts',[ProductsController::class,'deleteSellProducts'])->name('delete-products');
-   
+    
 
     //======================Route Parchasses===================
     Route::get('/admin/parchassesIndex',[ParchassesController::class,'parchassesIndex'])->name('parchasses-index');
@@ -82,6 +82,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/delete-parchasses',[ParchassesController::class,'deleteParchasses'])->name('delete-parchasses');
     Route::get('/admin/latestParchasses',[ParchassesController::class,'latestParchasses'])->name('latest-parchasses');
     Route::get('/admin/viewMoreParchasses/{product_id}', [ParchassesController::class, 'viewMoreParchasses'])->name('view-more-parchasses');
+    Route::post('/admin/delete-latestParchass}', [ParchassesController::class, 'deleteLatestParchasses'])->name('delete-latest-parchass');
 
 });
 

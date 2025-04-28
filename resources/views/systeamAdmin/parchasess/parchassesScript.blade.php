@@ -215,6 +215,57 @@
 
         })
 
+        $(document).on('click', '.delete-latest-parchasses', function(e) {
+    e.preventDefault();
+    let purchase_id = $(this).data('id');
+    let $button = $(this);
+    
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Show loading state
+            $button.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Deleting...');
+            
+            $.ajax({
+                url: "{{ route('delete-latest-parchass') }}",
+                method: "POST",
+                data: {
+                    purchase_id: purchase_id,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Purchase has been deleted successfully.",
+                        icon: "success"
+                    });
+                    $button.closest('tr').fadeOut();
+                    setTimeout(() => {
+                        location.reload()
+                    }, 1500);
+                },
+                error: function(error) {
+                    console.log(error);
+                    
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to delete purchase.",
+                        icon: "error"
+                    });
+                    $button.prop('disabled', false).html('Delete');
+                }
+            });
+        }
+    });
+});
+
 
     })
 

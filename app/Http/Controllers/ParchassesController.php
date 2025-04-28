@@ -173,4 +173,12 @@ class ParchassesController extends Controller
 
        
     }
+
+    public function deleteLatestParchasses(Request $request){
+        $parchasses_id =  Purchase::find($request->purchase_id)->delete();
+        return response()->json([
+            'message' => 'Parchasses Deleted  Successfully'
+        ]);
+    }
+
 }

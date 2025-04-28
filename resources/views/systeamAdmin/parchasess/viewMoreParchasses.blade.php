@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                     <div class="col-sm-5 w-25">
-                        <a href="http://127.0.0.1:8000/admin/parchassesIndex" class="btn btn-info rounded-pill mb-2 d-flex align-items-center justify-content-center" style="font-size: 15px; padding: 6px 16px;">
+                        <a href="http://127.0.0.1:8000/admin/latestParchasses" class="btn btn-info rounded-pill mb-2 d-flex align-items-center justify-content-center" style="font-size: 15px; padding: 6px 16px;">
                             <i class="mdi mdi-arrow-left-bold-circle-outline me-2" style="font-size: 18px;"></i> 
                             <span class="fw-semibold">Go Back</span>
                         </a>
@@ -71,8 +71,6 @@
                                     <td>{{\Carbon\carbon::parse($parchassess->created_at)->diffForHumans()}}</td>
                                     <td>
                                         <span class="dtr-data">
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span>
                                     </td>
 

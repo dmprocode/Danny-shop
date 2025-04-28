@@ -79,7 +79,7 @@
                                     <td>{{$parchasses->sales_point}}</td>
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"> <i
-                                                class="mdi mdi-delete"></i></a>
+                                                class="mdi mdi-delete delete-latest-parchasses" data-id="{{$parchasses->id}}"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"
                                                 id="view-more-product"
                                                 data-id= "{{$parchasses->products->id}}"></i></a>
