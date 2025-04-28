@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Purchase;   
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -23,10 +24,14 @@ class ParchassesController extends Controller
                                 ->whereDate('created_at', Carbon::today())
                                 ->latest()
                                 ->get();
-                    $adminComponents =[
+
+            $sumTodayParchasses =Purchase::whereDate('created_at',Carbon::today())->selectRaw('SUM(buying_price * number_catton) as total')->value('total');
+
+                $adminComponents =[
                 'user'=> $user,
                 'productsList' => $productsLists,
-                'todayParchasses' => $todayParchasses
+                'todayParchasses' => $todayParchasses,
+                'sumTodayParchasses' => $sumTodayParchasses
             ];
             return view('systeamAdmin.parchasess.parchassesIndex',compact('adminComponents'));
         }       
@@ -135,9 +140,11 @@ class ParchassesController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $parchassesList = Purchase::with('products')->latest()->get();
+            $totalParchasses = Purchase::selectRaw('SUM(buying_price * number_catton) as total')->value('total');
              $adminComponents =[
                 'user'=> $user,
-                'parchassesList' => $parchassesList
+                'parchassesList' => $parchassesList,
+                'totalParchasses' => $totalParchasses,
             ];
             return view('systeamAdmin.parchasess.latestParchasses',compact('adminComponents'));
         }       
@@ -149,8 +156,9 @@ class ParchassesController extends Controller
 
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
-            $parchassesWithProducts = Purchase::with('products')->where('id',$product_id)->get();
-            $viewMoreParchasses = Purchase::where('id', $product_id)->sum('buying_price');
+            $parchassesWithProducts = Purchase::with('products')->where('product_id',$product_id)->get();
+            
+            $viewMoreParchasses = Purchase::where('product_id', $product_id)->sum(DB::raw('buying_price * number_catton'));
             
              $adminComponents =[
                 'user'=> $user,

@@ -68,11 +68,13 @@
                                     <td>{{$parchassess->number_catton}}</td>
                                     <td>{{$parchassess->number_picess}}</td>
                                     <td>{{$parchassess->sales_point}}</td>
-                                    <td>{{\Carbon\carbon::parse($parchassess->created_at)->format('M-j-Y')}}</td>
-                                    <td><span class="dtr-data">
+                                    <td>{{\Carbon\carbon::parse($parchassess->created_at)->diffForHumans()}}</td>
+                                    <td>
+                                        <span class="dtr-data">
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span></td>
+                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span>
+                                    </td>
 
                                 </tr>
                                 @endforeach

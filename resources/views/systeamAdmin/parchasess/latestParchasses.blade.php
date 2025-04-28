@@ -21,7 +21,7 @@
 
                     </form>
                 </div>
-                <h4 class="page-title fw-normal" id=""> Purchase`s  List</h4>
+                <h4 class="page-title fw-normal" id=""> Purchase`s List</h4>
             </div>
         </div>
     </div>
@@ -32,10 +32,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
-                        <div class="col-sm-5">
+                        <div class="col-sm-4  my-1">
                             <a href="javascript:void(0);"
-                                class="btn btn-outline-info btn-sm  mb-2 "><i
-                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Latest Parchasses </span>
+                                class="btn btn-outline-info btn-sm rounded-pill shadow-sm fw-bold px-4 py-2 d-flex align-items-center">
+                                <span class="fs-5">Latest Purchases</span>
+                                <span class="badge bg-info text-white ms-2 px-2 py-1">New</span>
                             </a>
                         </div>
                         <div class="col-sm-7 ">
@@ -51,7 +52,7 @@
                             No Parchasses Available
                         </i>
                         @else
-                        
+
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
@@ -77,16 +78,43 @@
                                     <td>{{ \Carbon\Carbon::parse($parchasses->created_at)->diffForHumans() }}</td>
                                     <td>{{$parchasses->sales_point}}</td>
                                     <td>
-                                      <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                      <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye" id=""></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-delete"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"
+                                                id="view-more-product"
+                                                data-id= "{{$parchasses->products->id}}"></i></a>
 
                                     </td>
                                 </tr>
                                 @endforeach
-                                
+
                             </tbody>
                         </table>
                         @endif
+
+
+
+                            <!-- Buttons: Print & Submit -->
+                            <div class="d-print-none mt-4 d-flex justify-content-between align-items-center">
+                                <!-- Left-aligned button -->
+                                <div>
+                                    <button class="btn btn-primary btn-sm rounded-pill shadow-sm fw-bold text-uppercase d-flex align-items-center gap-2">
+                                        <span>🛒</span>
+                                        <span class="h6">Total Purchases</span>
+                                        <span class="badge bg-light text-dark ms-auto">{{number_format($adminComponents['totalParchasses'],2)}}</span>
+                                    </button>
+                                </div>
+                                
+                                <div>
+                                    <a href="javascript:window.print()" class="btn btn-primary btn-lg rounded-pill shadow-sm px-4">
+                                        <i class="mdi mdi-printer me-2 fs-4"></i>
+                                        <span class="fw-bold">Print Report</span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
 
 
 
@@ -202,9 +230,9 @@
 
     </div>
 
-  
+
     <!--  ======================Update Parchasses============ -->
-    
+
 
 
     <!-- container -->

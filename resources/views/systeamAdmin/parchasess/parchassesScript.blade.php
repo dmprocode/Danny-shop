@@ -204,9 +204,16 @@
 
             let product_id = $(this).data('id'); 
             let url = "/admin/viewMoreParchasses/" + product_id;
-
             window.location.href = url;
         });
+
+        $(document).on('click','#view-more-product',function(e){
+            e.preventDefault()
+            let product_id = $(this).data('id')
+            let url = "/admin/viewMoreParchasses/" + product_id;
+            window.location.href = url;
+
+        })
 
 
     })
