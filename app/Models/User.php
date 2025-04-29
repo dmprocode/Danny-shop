@@ -65,5 +65,8 @@ class User extends Authenticatable
                     ->withTimestamps(); 
     }
     
+    public function expenses(){
+        return $this->hasMany(Expenses::class,'user_id','id');
+    }
 
 }
