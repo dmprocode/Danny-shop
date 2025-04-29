@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 Use App\Models\CustomerProduct;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;  
 
 
 class ProductsController extends Controller
@@ -17,9 +18,11 @@ class ProductsController extends Controller
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $products = Product::latest()->get();
+            $totalValue = Product::sum(DB::raw('buying_price * number_carton')); 
             $adminComponents =[
                 'products' =>  $products,
                 'user'=> $user,
+                'totalValue' => $totalValue
             ];
             return view('systeamAdmin.products.productIndex',compact('adminComponents'));
         }

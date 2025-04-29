@@ -24,9 +24,7 @@
             <h4 class="page-title fw-normal">Dashboard</h4>
         </div>
     </div>
-    @if(session('message'))
-    <span class="text-danger">{{session('message')}}</span>
-    @endif
+   
 </div>
 
 <!-- end page title -->

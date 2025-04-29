@@ -75,7 +75,7 @@
                                         @foreach($adminComponents['capitalUser'] as $user)
                                         @foreach($user->capital as $key=>$capital)
                                         <tr>
-                                            <td>{{$capital->id}}</td>
+                                            <td>{{$key + 1}}</td>
                                             <td>{{number_format($capital->start_amount ,2) }}</td>
                                             @if($capital->product_profit == '')
                                             <td class="text-danger">No Value</td>
