@@ -96,7 +96,7 @@
                         </div>
                         <div class="mt-auto text-center">
                             <a href="{{route('capital-index')}}"
-                               class="btn btn-warning btn-sm rounded-pill fw-bold px-4 shadow-sm text-white">
+                               class="btn btn-warning btn-sm rounded-pill fw-bold  shadow-sm text-white">
                                 <i class="fas fa-coins me-1"></i> View Details
                             </a>
                         </div>
@@ -254,11 +254,9 @@
                             </div>
                         </div>
                         <div class="mt-auto text-center">
-                            <button class="btn btn-outline-info btn-sm rounded-pill fw-bold shadow-sm"
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#financeModal">
+                            <a href="http://127.0.0.1:8000/admin/expenses-index" class="btn btn-outline-info btn-sm rounded-pill fw-bold shadow-sm">
                                 <i class="fas fa-chart-line me-1"></i> View Details
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CapitalModelController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ParchassesController;
+use App\Http\Controllers\ExpensesController;
 
 
 
@@ -83,6 +84,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/latestParchasses',[ParchassesController::class,'latestParchasses'])->name('latest-parchasses');
     Route::get('/admin/viewMoreParchasses/{product_id}', [ParchassesController::class, 'viewMoreParchasses'])->name('view-more-parchasses');
     Route::post('/admin/delete-latestParchass}', [ParchassesController::class, 'deleteLatestParchasses'])->name('delete-latest-parchass');
+   
+
+    // ====================Route Expensess==================================
+    Route::get('/admin/expenses-index', [ExpensesController::class, 'expenseseIndex'])->name('expensses-index');
 
 });
 
