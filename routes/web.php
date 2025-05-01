@@ -88,6 +88,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // ====================Route Expensess==================================
     Route::get('/admin/expenses-index', [ExpensesController::class, 'expenseseIndex'])->name('expensses-index');
+    Route::post('/admin/add-expenses', [ExpensesController::class, 'addExpensess'])->name('add-expensess');
 
 });
 

@@ -56,24 +56,26 @@
                         </div><!-- end col-->
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                            @if($adminComponents['expenses']->isEmpty())
+                            <i class="text-danger fw-bold">No Expenses Record Available</i>
+                            @else
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Amouth</th>
                                     <th>Discription</th>
                                     <th>Date</th>
-                                    <th>User</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
+                                @foreach($adminComponents['expenses'] as $key=>$expensive)
                                 <tr>
-                                    <td>1</td>
-                                    <td>20000</td>
-                                    <td>Soda</td>
-                                    <td>17-12-2025</td>
-                                    <td>Daniel</td>
+                                    <td>{{$key + 1}}</td>
+                                    <td>{{number_format($expensive->amount,2)}}</td>
+                                    <td>{{$expensive->description}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($expensive->date)->format('F j, Y')}}</td>
                                     <td>
                                     <span class="dtr-data">
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
@@ -81,9 +83,11 @@
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a></span>
                                     </td>
                                 </tr>
+                                @endforeach
 
 
                             </tbody>
+                            @endif
                         </table>
 
 
@@ -95,8 +99,8 @@
                                 <button
                                     class="btn btn-primary btn-sm rounded-pill shadow-sm fw-bold text-uppercase d-flex align-items-center gap-2">
                                     <span>🛒</span>
-                                    <span class="h6">Total Purchases</span>
-                                    <span class="badge bg-light text-dark ms-auto">{1000}</span>
+                                    <span class="h6">Total Expenses</span>
+                                    <span class="badge bg-light text-dark ms-auto">{{number_format($adminComponents['todayTotalExpense'],2)}}</span>
                                 </button>
                             </div>
 
@@ -145,20 +149,19 @@
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Amouth:</label>
                                     <input type="text" id="parchasses-buying-price"
                                         class="form-control form-control-sm " name="amouth">
-                                    <i
-                                        class="text-danger  message amouthMSG fw-normal role font-16"></i>
+                                    <i class="text-danger message  amouthMSG fw-normal role font-16" id=""></i>
 
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="simpleinput" class="form-label fw-normal fs-16 ">Discription</label>
-                                  <input type="text" class="form-control form-contro-sm" maxlength="25" data-toggle="maxlength" name="disc">
+                                  <input type="text" class="form-control form-contro-sm" maxlength="50" data-toggle="maxlength" name="disc">
                                     <i class="text-danger dscMSG message fw-normal role font-16"></i>
 
                                 </div>
                                 <div class="mb-3 col-md-6 position-relative" id="datepicker2">
                                     <label class="form-label">Date </label>
-                                    <input type="text" class="form-control" data-provide="datepicker" data-date-autoclose="true" data-date-format="d-M-yyyy" data-date-container="#datepicker2">
+                                    <input type="text" class="form-control" name="date" data-provide="datepicker" data-date-autoclose="true" data-date-format="d-M-yyyy" data-date-container="#datepicker2">
                                     <i class="text-danger dateMSG message fw-normal role font-16"></i>
 
                                 </div>
