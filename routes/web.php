@@ -89,6 +89,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // ====================Route Expensess==================================
     Route::get('/admin/expenses-index', [ExpensesController::class, 'expenseseIndex'])->name('expensses-index');
     Route::post('/admin/add-expenses', [ExpensesController::class, 'addExpensess'])->name('add-expensess');
+    Route::post('/admin/delete-expenses', [ExpensesController::class, 'deleteExpensses'])->name('delete-expenses');
+    Route::post('/admin/update-expenses', [ExpensesController::class, 'updateExpenses'])->name('update-expeses');
+    // ======================Product Expesses================
+
+    Route::get('/admin/profit-expenses',[ExpensesController::class,'profitExpensses'])->name('profit-expenses');
 
 });
 

@@ -54,6 +54,12 @@ class CustomerProduct extends Model
 
 
     }
+
+
+    public function expenses()
+{
+    return $this->belongsToMany(Expense::class, 'customer_product_expense');
+}
     
     
 

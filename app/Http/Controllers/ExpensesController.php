@@ -46,10 +46,54 @@ class ExpensesController extends Controller
             'description' => $request->disc,
             'date' => $formattedDate
         ]);
+        
         return response()->json([
             'message' => 'Expenses Added Successfully'
         ]);
         
        
+    }
+
+    public function deleteExpensses(Request $request){
+
+        $deleteExpenses = Expenses::find($request->expenses_id)->delete();
+
+        return response()->json([
+            'message' => 'Expenses Record Deleted Successfully'
+        ]);
+    }
+
+    public function updateExpenses(request $request){
+
+        $expenses_id = Expenses::find($request->ex_Id);
+        if ($expenses_id) {
+            $expenses_id->update([
+              'amount' => $request->amouth,
+              'description' => $request->disc
+
+            ]);
+            return response()->json([
+                'message' => 'Expenses Record Updated Successfully'
+            ]);
+        }
+        
+    }
+
+    public function profitExpensses(){ 
+
+            if (auth()->check() && auth()->user()->userRole =='admin') {
+                $user = auth()->user();
+                $expenses = Expenses::latest()->get();
+                $todayTotalExpense = Expenses::whereDate('created_at', Carbon::today())->sum('amount');
+                $adminComponents =[
+                    'user'=> $user,
+                    'expenses'=>$expenses,
+                    'todayTotalExpense' => $todayTotalExpense
+                ];
+                return view('systeamAdmin.expensesses.expensesProfit',compact('adminComponents'));
+            }
+            return redirect()->route('unathorized');
+        
+    
     }
 }

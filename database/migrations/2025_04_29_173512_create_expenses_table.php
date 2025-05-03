@@ -21,7 +21,6 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->text('description');
             $table->date('date');
-            $table->timestamps();
             
             $table->index('date');
             $table->index('amount');
