@@ -36,17 +36,17 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="row">
-                        <div class="col-sm-5">
-                        <div class="col-sm-5">
-                    <a href="javascript:void(0);" 
-                        class="btn btn-outline-info btn-lg rounded-pill px-3 py-0 d-inline-flex align-items-center add-capital-btn"
-                        style="height: 28px;">
-                        
-                        <i class="mdi mdi-plus me-1 small"></i>
-                        <span class="small"> Expenses||Profits</span>
-                    </a>
-                    </div>
-                         </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-5">
+                                    <a href="javascript:void(0);"
+                                        class="btn btn-outline-info btn-lg rounded-pill px-3 py-0 d-inline-flex align-items-center add-capital-btn"
+                                        style="height: 28px;">
+
+                                        <i class="mdi mdi-plus me-1 small"></i>
+                                        <span class="small"> Expenses||Profits</span>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="col-sm-7 ">
                                 <div class="text-sm-end">
                                     <a href="http://127.0.0.1:8000/admin/dashboard"
@@ -58,7 +58,7 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-6">
                             <div class="table-responsive">
                                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                     <thead class="table-light">
@@ -75,15 +75,15 @@
 
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
-                                        
+
 
                                     </tbody>
 
 
 
-                                
+
                                 </table>
                             </div> <!-- end table-responsive-->
 
@@ -100,38 +100,47 @@
                         </div>
                         <!-- end col -->
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                <h4 class="header-title mb-3">Order Summary</h4>
+                                <h4 class="header-title mb-3">Profit Expenses Summary</h4>
 
                                 <div class="table-responsive">
-                                    <table class="table mb-0">
+                                    <table id="basic-datatable"
+                                        class="table table-hover table-bordered dt-responsive nowrap w-100 align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="text-center">#ID</th>
+                                                <th class="text-end">Expenses</th>
+                                                <th class="text-end">Profit</th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Grand Total :</td>
-                                                <td>$1571.19</td>
+                                                <td class="text-center fw-bold">1</td>
+                                                <td class="text-end text-danger">3,000</td>
+                                                <td class="text-end text-success">40,000</td>
+
                                             </tr>
-                                            <tr>
-                                                <td>Discount : </td>
-                                                <td>-$157.11</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shipping Charge :</td>
-                                                <td>$25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estimated Tax : </td>
-                                                <td>$19.22</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total :</th>
-                                                <th>$1458.3</th>
-                                            </tr>
+                                            <!-- Additional rows would go here -->
                                         </tbody>
                                     </table>
+
+                                </div>
+                                <div class="d-flex justify-content-center py-2">
+                                    <button type="button" class="btn btn-success rounded-pill px-4 py-2 shadow-sm">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-calculator fs-4 me-2"></i>
+                                            <div class="text-start">
+                                                <div class="fw-bold">Today's Net Profit: 198,000</div>
+                                                <div class="small">(200,000 - 2,000 expenses)</div>
+                                            </div>
+                                            <i class="mdi mdi-arrow-right-bold-circle-outline fs-4 ms-3"></i>
+                                        </div>
+                                    </button>
                                 </div>
                                 <!-- end table-responsive -->
                             </div>
+
 
 
 
@@ -145,7 +154,7 @@
         </div> <!-- end col -->
     </div>
 
-   
+
     <!-- container -->
     @include('systeamAdmin.capital.capital_script')
     @include('systeamAdmin.admin-templete-controller.footer')
