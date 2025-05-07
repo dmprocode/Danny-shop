@@ -108,14 +108,45 @@ class ExpensesController extends Controller
         
     
     }
-    public function addProfit( Request $request){
-        $addProfit = CapitalModel::create([
-            'product_profit'=> $request->profit
-        ]);
+    
+    
+    public function addProfit(Request $request)
+{
+    $request->validate([
+        'profit' => 'required|numeric|min:0.01',
+    ]);
+
+    $profit = $request->profit;
+
+    // Get the latest manually-entered capital (no product_profit)
+    $lastManualCapital = CapitalModel::whereNull('product_profit')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+    if (!$lastManualCapital) {
         return response()->json([
-            'message' => 'Profit Added Successfully'
-        ]);
+            'error' => 'No base capital found to add profit to.'
+        ], 422);
     }
+
+    // Add profit to the base capital
+    $newStartAmount = $lastManualCapital->start_amount + $profit;
+
+    // Insert new record
+    CapitalModel::create([
+        'start_amount'    => $newStartAmount,
+        'product_profit'  => $profit,
+        'created_at'      => now(),
+        'updated_at'      => now(),
+    ]);
+
+    return response()->json([
+        'message' => 'Profit added successfully.',
+        'new_start_amount' => $newStartAmount
+    ]);
+}
+
+    
 
 
     public function deleteProfit(Request $request){
@@ -124,4 +155,8 @@ class ExpensesController extends Controller
             'message' => 'Profit Deleted Successfully'
         ]);
     }
+
+
+
+
 }
