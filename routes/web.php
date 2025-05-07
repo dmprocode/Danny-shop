@@ -94,7 +94,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // ======================Product Expesses================
 
     Route::get('/admin/profit-expenses',[ExpensesController::class,'profitExpensses'])->name('profit-expenses');
-
+    Route::post('/admin/add-profit',[ExpensesController::class,'addProfit'])->name('add-profit');
+    Route::post('/admin/delete-pfofit',[ExpensesController::class,'deleteProfit'])->name('delete-profit');
 });
 
 // ==============Shopkeeper ==================

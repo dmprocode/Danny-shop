@@ -8,8 +8,75 @@
 
     $('#expenses-form-div').hide()
     $('#up-expenses-form-div').hide()
+    $('#profit-expenses-form-div').hide()
 
+    
+    $('#profit-expenses-form-div').hide()
+    $(document).on('click','#go-back-btn-expeses', function(e){
+      e.preventDefault()
+      $('#profit-expenses-form-div').hide()
+      $('.expesnses-profit-table').show()
+      $('.summary').show()
 
+    })
+    $(document).on('click','.add-profit-expenses-btn',function(e){
+      e.preventDefault()
+      $('#profit-expenses-form-div').show()
+      $('.expesnses-profit-table').hide()
+      $('.summary').hide()
+      
+    })
+
+    // =================Update expenses==============
+
+    $(document).on('click', '.delete-btn', function(e) {
+    e.preventDefault();
+    let $button = $(this); // Store the button reference
+    let id = $button.data('id');
+    
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Show loading state
+            Swal.showLoading();
+            
+            $.ajax({
+                url: "{{ route('delete-profit') }}",
+                method: "POST",
+                data: {
+                    id: id,
+                    _token: "{{ csrf_token() }}" // Don't forget CSRF protection
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: response.message || "Record deleted successfully",
+                        icon: "success"
+                    }).then(() => {
+                        // Optional: Refresh data or remove table row
+                        $button.closest('tr').fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                    });
+                },
+                error: function(xhr) {
+                    Swal.fire({
+                        title: "Error!",
+                        text: xhr.responseJSON.message || "Failed to delete record",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+    });
+});
 
     document.getElementById('make-expenses').addEventListener('click', function () {
       const originalContent = this.innerHTML;
@@ -34,6 +101,35 @@
 
     
 
+  })
+
+  $(document).on('click','.profit-btn', function(e){
+    e.preventDefault()
+    let profit = parseFloat($('#todayProfit').text().replace(/,/g, ''));
+   
+    $.ajax({
+      url :"{{route('add-profit')}}",
+      method:"POST",
+      data:{profit:profit},
+      success:function(res){
+        Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title:res.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {
+        location.reload()
+      }, 1500);
+        
+      },
+      error:function(error){
+        console.log(error);
+        
+      }
+    })
+    
   })
 
 
@@ -186,6 +282,7 @@ $(document).on('click','#update-expenses', function(e){
       
     }
   })
+  
 })
 
 

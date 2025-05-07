@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;  
 use App\Models\Expenses;
+use App\Models\CustomerProduct;
+use App\Models\CapitalModel;
+
 
 class ExpensesController extends Controller
 {
@@ -85,15 +88,40 @@ class ExpensesController extends Controller
                 $user = auth()->user();
                 $expenses = Expenses::latest()->get();
                 $todayTotalExpense = Expenses::whereDate('created_at', Carbon::today())->sum('amount');
+                $realExpennses = Expenses::whereDate('created_at',Carbon::today())->sum('amount');
+                $realProfit = CustomerProduct::whereDate('created_at', Carbon::today())->sum('product_profit');
+                $todayProfit = $realProfit-$realExpennses;
+                $mycapital = CapitalModel::latest()->get();
+                
                 $adminComponents =[
                     'user'=> $user,
                     'expenses'=>$expenses,
-                    'todayTotalExpense' => $todayTotalExpense
+                    'todayTotalExpense' => $todayTotalExpense,
+                    'realProfit' => $realProfit,
+                    'realExpennses' => $realExpennses,
+                    'todayProfit' => $todayProfit,
+                    'mycapital' => $mycapital
                 ];
                 return view('systeamAdmin.expensesses.expensesProfit',compact('adminComponents'));
             }
             return redirect()->route('unathorized');
         
     
+    }
+    public function addProfit( Request $request){
+        $addProfit = CapitalModel::create([
+            'product_profit'=> $request->profit
+        ]);
+        return response()->json([
+            'message' => 'Profit Added Successfully'
+        ]);
+    }
+
+
+    public function deleteProfit(Request $request){
+        $deleteProfit = CapitalModel::find($request->id)->delete();
+        return response()->json([
+            'message' => 'Profit Deleted Successfully'
+        ]);
     }
 }
