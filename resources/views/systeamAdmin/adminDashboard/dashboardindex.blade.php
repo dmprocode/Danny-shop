@@ -263,32 +263,54 @@
             </div>
 
             <!-- Revenue Card -->
-            <div class="col-sm-3 mb-4 h-50">
-                <div class="card widget-flat shadow-lg rounded-4 border-0 bg-gradient bg-secondary bg-opacity-10 h-100">
+            <div class="col-sm-3 mb-4">
+                <div class="card widget-flat shadow-lg rounded-4 border-0 bg-gradient bg-primary bg-opacity-10 h-100">
                     <div class="card-body p-4 d-flex flex-column">
+                        <!-- Header with icon -->
                         <div class="text-center mb-3">
-                            <div class="bg-secondary bg-opacity-25 p-3 rounded-circle d-inline-block">
-                                <i class="fas fa-dollar-sign text-secondary" style="font-size: 30px;"></i>
+                            <div class="bg-primary bg-opacity-25 p-3 rounded-circle d-inline-block shadow-sm">
+                                <i class="fas fa-file-alt text-primary" style="font-size: 30px;"></i>
                             </div>
                         </div>
-                        <h5 class="h4 text-center mb-3 fw-bold text-secondary">
-                            Revenue
-                            <i class="fas fa-info-circle ms-1 text-secondary text-opacity-50" 
-                               data-bs-toggle="tooltip" 
-                               data-bs-placement="top" 
-                               title="Average Revenue"></i>
+
+                        <!-- Title with tooltip -->
+                        <h5 class="h4 text-center mb-3 fw-bold text-primary">
+                            Reports
+                            <i class="fas fa-info-circle ms-1 text-primary text-opacity-75" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-placement="top" 
+                            title="Financial and operational reports"></i>
                         </h5>
+
+                        <!-- Stats -->
                         <div class="text-center my-3">
-                            <h3 class="display-5 fw-bold text-dark">$3,254</h3>
-                            <p class="mb-0 text-muted">
-                                <span class="text-danger me-2"><i class="fas fa-arrow-down me-1"></i> 7.00%</span>
-                                <span class="text-nowrap">Since last month</span>
-                            </p>
+                            <div class="d-flex justify-content-around align-items-center mb-2">
+                                <div>
+                                    <span class="badge bg-success bg-opacity-10 text-success mb-1">
+                                        <i class="fas fa-arrow-up me-1"></i> 24 New
+                                    </span>
+                                    <div class="fw-bold">15 Reports</div>
+                                </div>
+                                <div class="vr"></div>
+                                <div>
+                                    <span class="badge bg-danger bg-opacity-10 text-danger mb-1">
+                                        <i class="fas fa-clock me-1"></i> 3 Pending
+                                    </span>
+                                    <div class="fw-bold">5.2M TZS</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mt-auto text-center">
-                            <button class="btn btn-outline-secondary btn-sm rounded-pill fw-bold shadow-sm">
-                                <i class="fas fa-chart-pie me-1"></i> View Report
-                            </button>
+
+                        <!-- Footer buttons -->
+                        <div class="mt-auto">
+                            <div class="d-grid gap-2">
+                                <a href="{{route('report-index')}}" class="btn btn-primary btn-sm rounded-pill fw-bold shadow-sm">
+                                    <i class="fas fa-chart-pie me-1"></i> View Reports
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill fw-bold">
+                                    <i class="fas fa-download me-1"></i> Export All
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

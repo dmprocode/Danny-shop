@@ -192,16 +192,16 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
                                 <i class="uil-copy-alt"></i>
-                                <span> Pages </span>
+                                <span> Report </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarPages">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="pages-profile.html">Profile</a>
+                                        <a href="{{route('report-index')}}">To Day Reports</a>
                                     </li>
                                     <li>
-                                        <a href="pages-profile-2.html">Profile 2</a>
+                                        <a href="pages-profile-2.html">Latest Reports</a>
                                     </li>
                                     <li>
                                         <a href="pages-invoice.html">Invoice</a>

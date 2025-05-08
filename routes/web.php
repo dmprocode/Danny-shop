@@ -8,6 +8,7 @@ use App\Http\Controllers\CapitalModelController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ParchassesController;
 use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\ReportController;
 
 
 
@@ -96,6 +97,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/profit-expenses',[ExpensesController::class,'profitExpensses'])->name('profit-expenses');
     Route::post('/admin/add-profit',[ExpensesController::class,'addProfit'])->name('add-profit');
     Route::post('/admin/delete-pfofit',[ExpensesController::class,'deleteProfit'])->name('delete-profit');
+
+//    ========================Report Route===============================
+    Route::get('/admin/Report-index',[ReportController::class,'reportIndex'])->name('report-index');
+
 });
 
 // ==============Shopkeeper ==================
