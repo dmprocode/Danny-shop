@@ -166,6 +166,9 @@
                 <div class="col-lg-12    expesnses-profit-table">
                     <div class="table-responsive">
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                            @if($adminComponents['productsSales']->isEmpty())
+                            <i class="text-danger fw-bold">No sales record Available</i>
+                            @else
                             <thead class="table-light">
                                 <tr>
                                     <th>ID</th>
@@ -179,13 +182,20 @@
                             </thead>
 
                             <tbody>
-                                <td>1</td>
-                                <td>Sufurua</td>
-                                <td>1</td>
-                                <td>20</td>
-                                <td>20000</td>
-                                <td>Macent Dar es Salem</td>
+                            @foreach($adminComponents['productsSales'] as $user)
+                            @foreach($user->products as  $key=>$productsale)  
+                            <tr>    
+                                 <td>{{$key + 1}}</td>
+                                <td>{{$productsale->name}}</td>
+                                <td>{{$productsale->price_per_item}}</td>
+                                <td>{{$productsale->pivot->product_quantity}}</td>
+                                <td>{{$productsale->pivot->selling_price}}</td>
+                                <td>{{$productsale->pivot->product_profit}}</td>
+                            </tr> 
+                            @endforeach
+                            @endforeach
                             </tbody>
+                            @endif
 
 
 
@@ -210,7 +220,7 @@
                                 </span>
 
                                 <span class="badge bg-white text-success fs-6 px-3 py-1">
-                                    2,000,000 Tsh
+                                   {{number_format($adminComponents['todaySelling'],2)}} Tsh
                                 </span>
                             </a>
                         </div>
@@ -226,7 +236,7 @@
                                 </span>
 
                                 <span class="badge bg-white text-primary fs-6 px-3 py-1">
-                                    30,000 Tsh
+                                    {{number_format($adminComponents['todayProfit'],2)}} Tsh
                                 </span>
                             </a>
                         </div>
@@ -277,9 +287,13 @@
                             </thead>
 
                             <tbody>
-                                <td>1</td>
-                                <td>Sufurua</td>
-                                <td>1</td>
+                                @foreach($adminComponents['expenses'] as $key=>$expess)
+                                <tr>
+                                    <td>{{$key + 1}}</td>
+                                    <td>{{$expess->description}}</td>
+                                    <td>{{number_format($expess->amount,2)}}</td>
+                                </tr>
+                                @endforeach
 
                             </tbody>
 
@@ -309,7 +323,7 @@
 
                                 <!-- Value badge -->
                                 <span class="badge bg-white text-success fs-6 px-3 py-1 rounded-pill shadow-sm">
-                                    0 Tsh
+                                   {{number_format($adminComponents['todayTotalExpense'],2)}}Tsh
                                 </span>
 
                                 <!-- Shine effect -->
@@ -368,7 +382,7 @@
                                 <h6 class="mb-0 text-uppercase text-muted fw-bold">Total Expenses</h6>
                             </div>
                             <div class="d-flex justify-content-between align-items-end">
-                                <h3 class="mb-0 fw-bold">1,222,220 Tsh</h3>
+                                <h3 class="mb-0 fw-bold">{{number_format($adminComponents['todayTotalExpense'],2)}} Tsh</h3>
                                 <span class="badge bg-danger bg-opacity-10 text-danger">-12%</span>
                             </div>
                             <div class="progress mt-2" style="height: 6px;">
@@ -387,7 +401,7 @@
                                 <h6 class="mb-0 text-uppercase text-muted fw-bold">Gross Profit</h6>
                             </div>
                             <div class="d-flex justify-content-between align-items-end">
-                                <h3 class="mb-0 fw-bold">18,000,000 Tsh</h3>
+                                <h3 class="mb-0 fw-bold"> {{number_format($adminComponents['todayProfit'],2)}} Tsh</h3>
                                 <span class="badge bg-success bg-opacity-10 text-success">+24%</span>
                             </div>
                             <div class="progress mt-2" style="height: 6px;">
@@ -406,7 +420,7 @@
                                 <h6 class="mb-0 text-uppercase text-muted fw-bold">Net Profit</h6>
                             </div>
                             <div class="d-flex justify-content-between align-items-end">
-                                <h3 class="mb-0 fw-bold">16,777,780 Tsh</h3>
+                                <h3 class="mb-0 fw-bold">{{number_format($adminComponents['netprofit'])}} Tsh</h3>
                                 <span class="badge bg-primary bg-opacity-10 text-primary">+18%</span>
                             </div>
                             <div class="progress mt-2" style="height: 6px;">
@@ -422,7 +436,7 @@
 
 
 <!-- ===================My Capital================ -->
-<div class="row" id="profit-expenses-table">
+<div class="row " id="capital">
     <div class="col-12">
         <div class="card border-primary border-opacity-10 shadow">
             <div class="card-body p-4 bg-light bg-opacity-10">
@@ -451,8 +465,7 @@
                                     <h5 class="mb-0 text-uppercase text-muted fw-bold">My Capital</h5>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h2 class="fw-bold text-dark mb-0">1,222,220 Tsh</h2>
-                                    <span class="badge bg-warning bg-opacity-20 text-light text-warning">-12%</span>
+                                    <h3 class="fw-bold text-dark mb-0">{{number_format($adminComponents['my_capital'],2 )}}Tsh</h3>
                                 </div>
                                 <div class="progress mt-3" style="height: 8px;">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 65%"></div>
@@ -472,8 +485,7 @@
                                     <h5 class="mb-0 text-uppercase text-muted fw-bold">Today's Profit</h5>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h2 class="fw-bold text-dark mb-0">18,000,000 Tsh</h2>
-                                    <span class="badge bg-success bg-opacity-20 text-light text-success">+24%</span>
+                                    <h2 class="fw-bold text-dark mb-0"> {{number_format($adminComponents['netprofit'],2)}} Tsh</h2>
                                 </div>
                                 <div class="progress mt-3" style="height: 8px;">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
@@ -507,9 +519,39 @@
         </div>
     </div>
 </div>
-
-
+<!-- Your content here -->
+<div class="container my-4">
+    
+    <div class="d-print-none mt-4">
+        <div class="text-end">
+            <a href="javascript:window.print()" 
+               class="btn btn-primary rounded-pill px-4 me-3 shadow-sm d-inline-flex align-items-center">
+                <i class="mdi mdi-printer me-2"></i>
+                <span>Print Report</span>
+            </a>
+        
+        </div>
+    </div>
 </div>
+
+<!-- Watermark (only shows when printing) -->
+<div class="d-none d-print-block" 
+     style="position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            opacity: 0.08;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #cccccc;
+            pointer-events: none;
+            z-index: 1000;
+            white-space: nowrap;
+            font-family: Arial, sans-serif;">
+    CSD-Management Information System • {{ now()->format('d/m/Y') }} • Mobile: 0712343043
+</div>
+
+
 
 
 <!-- container -->

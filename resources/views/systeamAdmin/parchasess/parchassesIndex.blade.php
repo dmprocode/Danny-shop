@@ -36,7 +36,7 @@
                             <a href="javascript:void(0);"
                                 class="btn btn-primary btn-sm rounded-pill d-flex align-items-center make-purchases-btn">
                                 <i class="mdi mdi-cart-plus me-2" style="font-size: 18px;"></i>
-                                <span class="fw-semibold">Make Purchases</span>
+                                <span class="fw-semibold">Make Purchases </span>
                             </a>
                         </div>
 
@@ -70,7 +70,7 @@
                                 @foreach($adminComponents['todayParchasses'] as $key => $product)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $product->products->name ?? 'N/A' }}</td>
+                                    <td>{{ $product->product->name ?? 'N/A' }}</td>
                                     <td>{{ number_format($product->buying_price, 2) }}</td>
                                     <td>{{ $product->number_picess }}</td>
                                     <td>{{ $product->number_catton }}</td>
@@ -78,14 +78,14 @@
                                     <td>{{ \Carbon\Carbon::parse($product->created_at)->diffForHumans()}}</td>
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"><i class="mdi mdi-eye"
-                                                id="view-more-btn" data-id="{{$product->products->id}}"></i></a>
+                                                id="view-more-btn" data-id="{{$product->product->id}}"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"><i
                                                 class="mdi mdi-square-edit-outline" id="edit-parchasses-btn"
                                                 data-id="{{$product->id}}" ,
                                                 data-buying_price="{{$product->buying_price}}" ,
                                                 data-number_catton="{{$product->number_catton}}" ,
                                                 data-sales_point="{{$product->sales_point}}"
-                                                data-name="{{$product->products->name}}"
+                                                data-name="{{$product->product->name}}"
                                                 data-number_picess="{{$product->number_picess}}"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"><i
                                                 class="mdi mdi-delete delete-btn" data-id="{{$product->id}}"></i></a>

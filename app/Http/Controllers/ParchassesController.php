@@ -20,7 +20,7 @@ class ParchassesController extends Controller
             $user = auth()->user();
             $productsLists =  Product::latest()->get();
 
-            $todayParchasses = Purchase::with('products')
+            $todayParchasses = Purchase::with('product')
                                 ->whereDate('created_at', Carbon::today())
                                 ->latest()
                                 ->get();
@@ -139,7 +139,7 @@ class ParchassesController extends Controller
 
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
-            $parchassesList = Purchase::with('products')->latest()->get();
+            $parchassesList = Purchase::with('product')->latest()->get();
             $totalParchasses = Purchase::selectRaw('SUM(buying_price * number_catton) as total')->value('total');
              $adminComponents =[
                 'user'=> $user,
@@ -156,7 +156,7 @@ class ParchassesController extends Controller
 
         if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
-            $parchassesWithProducts = Purchase::with('products')->where('product_id',$product_id)->get();
+            $parchassesWithProducts = Purchase::with('product')->where('product_id',$product_id)->get();
             
             $viewMoreParchasses = Purchase::where('product_id', $product_id)->sum(DB::raw('buying_price * number_catton'));
             

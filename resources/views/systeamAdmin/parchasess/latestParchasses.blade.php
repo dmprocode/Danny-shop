@@ -71,7 +71,7 @@
                                 @foreach($adminComponents['parchassesList'] as $key=>$parchasses)
                                 <tr>
                                     <td>{{$key + 1}}</td>
-                                    <td>{{$parchasses->products->name}}</td>
+                                    <td>{{$parchasses->product->name}}</td>
                                     <td>{{number_format($parchasses->buying_price,2)}}</td>
                                     <td>{{$parchasses->number_picess}}</td>
                                     <td>{{$parchasses->number_catton}}</td>
@@ -82,7 +82,7 @@
                                                 class="mdi mdi-delete delete-latest-parchasses" data-id="{{$parchasses->id}}"></i></a>
                                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"
                                                 id="view-more-product"
-                                                data-id= "{{$parchasses->products->id}}"></i></a>
+                                                data-id= "{{$parchasses->product->id}}"></i></a>
 
                                     </td>
                                 </tr>
