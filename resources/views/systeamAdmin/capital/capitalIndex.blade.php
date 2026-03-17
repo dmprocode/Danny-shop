@@ -21,7 +21,7 @@
 
                     </form>
                 </div>
-                <h4 class="page-title fw-normal" id="">Add User`s</h4>
+                <h4 class="page-title fw-normal" id=""> My Capital</h4>
             </div>
         </div>
     </div>

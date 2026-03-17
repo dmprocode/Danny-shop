@@ -98,5 +98,10 @@ class Product extends Model
     public function parchasses(){
         return $this->hasMany(Purchase::class,'product_id','id');
     }
+
+    public function cartons()
+{
+    return $this->hasMany(ProductCarton::class,'product_id','id');
+}
     
 }

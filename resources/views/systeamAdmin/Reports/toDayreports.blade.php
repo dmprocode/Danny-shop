@@ -348,7 +348,7 @@
         <div class="card border-0 shadow-sm">
             <div class="card-body p-4">
                 <!-- Header Section -->
-                <div class="row mb-4">
+                <div class="row mb-4 d-none">
                     <div class="col-sm-8">
                         <div class="col-sm-7">
                             <a href="javascript:void(0);"
@@ -371,7 +371,7 @@
                 </div>
                 
                 <!-- Metrics Section -->
-                <div class="row g-4">
+                <div class="row g-4 d-none">
                     <!-- Expenses Card -->
                     <div class="col-sm-6 col-lg-4">
                         <div class="bg-white rounded-3 p-3 shadow-sm border border-2 border-success border-opacity-10 h-100">
@@ -436,7 +436,7 @@
 
 
 <!-- ===================My Capital================ -->
-<div class="row " id="capital">
+<div class="row d-none" id="capital">
     <div class="col-12">
         <div class="card border-primary border-opacity-10 shadow">
             <div class="card-body p-4 bg-light bg-opacity-10">

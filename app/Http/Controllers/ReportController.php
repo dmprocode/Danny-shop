@@ -21,7 +21,7 @@ class ReportController extends Controller
             // ========To day Parchasses===========
             $todayparchass = Purchase::with('product')->whereDate('created_at', Carbon::today())->get();
             $todayTotal = $todayparchass->sum(function($item) {
-                return $item->buying_price * $item->number_catton;
+                return $item->buying_price;
             });
         //==================Products Solid out=================
         $productsSales = User::where('userRole', 'customer')

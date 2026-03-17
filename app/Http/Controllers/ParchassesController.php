@@ -25,7 +25,7 @@ class ParchassesController extends Controller
                                 ->latest()
                                 ->get();
 
-            $sumTodayParchasses =Purchase::whereDate('created_at',Carbon::today())->selectRaw('SUM(buying_price * number_catton) as total')->value('total');
+            $sumTodayParchasses =Purchase::whereDate('created_at',Carbon::today())->selectRaw('SUM(buying_price ) as total')->value('total');
 
                 $adminComponents =[
                 'user'=> $user,

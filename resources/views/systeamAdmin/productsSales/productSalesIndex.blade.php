@@ -54,7 +54,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Product </th>
-                                    <th>Price</th>
+                                    <th class="d-none">Price</th>
                                     <th>Selling Price</th>
                                     <th>Total </th>
                                     <th>Profit</th>
@@ -71,7 +71,7 @@
                                 <tr>
                                     <td>{{ $row++ }}</td>
                                     <td>{{ $productsale->name }}</td>
-                                    <td>{{ number_format($productsale->price_per_item, 2) }}</td>
+                                    <td class="d-none">{{ number_format($productsale->price_per_item, 2) }}</td>
                                     <td>{{ number_format($productsale->pivot->selling_price, 2) }}</td>
                                     <td>{{number_format($productsale->pivot->pieceSellingPrice ,2)}}</td>
                                     <td>{{ number_format($productsale->pivot->product_profit, 2) }}</td>

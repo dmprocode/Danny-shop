@@ -254,7 +254,7 @@
                             </div>
                         </div>
                         <div class="mt-auto text-center">
-                            <a href="http://127.0.0.1:8000/admin/expenses-index" class="btn btn-outline-info btn-sm rounded-pill fw-bold shadow-sm">
+                            <a href="{{route('expensses-index')}}" class="btn btn-outline-info btn-sm rounded-pill fw-bold shadow-sm">
                                 <i class="fas fa-chart-line me-1"></i> View Details
                             </a>
                         </div>
