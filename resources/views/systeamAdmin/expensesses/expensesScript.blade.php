@@ -220,6 +220,7 @@ $(document).on('click', '.expenses-edit-id', function(e){
   let edit_id =  $(this).data('id');
   let amount =  $(this).data('amount');
   let description = $(this).data('description');
+  
   console.log(amount);
   
 

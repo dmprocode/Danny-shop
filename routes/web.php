@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ParchassesController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProductStoreController;
 
 
 
@@ -62,6 +63,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/products', [ProductsController::class, 'addProducts'])->name('add-products');
     Route::post('/Update/products', [ProductsController::class, 'updateProducts'])->name('update-product');
     Route::post('/delete/product',[ProductsController::class,'deleteProduct'])->name('delete-product');
+
+    // =================================Product Store================================
+    Route::get('/product/product-store',[ProductStoreController::class,'productStore'])->name('product-store');
+    Route::post('/product-store-add',[ProductStoreController::class,'addProductStore'])->name('add-product-store');
+    Route::post('/update-product-store',[ProductStoreController::class,'updateProductStore'])->name('update-product-store');
+    Route::post('/admin/delete-product-store',[ProductStoreController::class,'deleteProductStore'])->name('delete-product-store');
     // ======================Products Price================================
     Route::get('/admin/products-price',[ProductsController::class,'productsPrice'])->name('products-price');
     Route::post('/admin/set-price',[ProductsController::class,'setProductprice'])->name('set-product-price');
