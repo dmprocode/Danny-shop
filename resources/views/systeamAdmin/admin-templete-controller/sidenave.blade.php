@@ -92,10 +92,10 @@
                                         <a href="{{route('products-sales')}}">Products Sales</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-orders-details.html">Order Details</a>
+                                        <a href="{{route('product-store')}}">Product Store</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-customers.html">Customers</a>
+                                        <a href="{{route('stock-out')}}">Stock Out</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>

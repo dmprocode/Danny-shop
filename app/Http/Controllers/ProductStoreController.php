@@ -13,13 +13,19 @@ public function productStore(){
     if (auth()->check() && auth()->user()->userRole =='admin') {
             $user = auth()->user();
             $productList = Product::latest()->get();
+            $number_product_store =ProductStore::count('id');
+            $totalValue = ProductStore::with('product')->get()->sum(function($store) {
+                return $store->product->buying_price ;
+            });           
+            
 
-
-     $productStore = ProductStore::with('product')->latest()->get();
+            $productStore = ProductStore::with('product')->latest()->get();
             $adminComponents =[
                 'user'=> $user,
                 'product'=> $productList,
-                'product_store' =>$productStore
+                'product_store' =>$productStore,
+                'number_product_store' => $number_product_store,
+                'total_value' =>  $totalValue
             ];
            
             return view('systeamAdmin.products.productStoreIndex',compact('adminComponents'));
@@ -92,5 +98,52 @@ public function productStore(){
             'message'=> 'Product Deleted Successfully'
         ]);
     }
+
+
+
+    // ======================= Stock out index===================
+
+    public function productDeStock(Request $req){
+        $productStore = ProductStore::find($req->product_id);
+        if(!$productStore){
+            return  response()->json([
+                        'success' =>'false',
+                        'message'=> 'No Product avaialble in store'
+                    
+            ]);
+        }
+
+        // =========== Validate the input==============
+         
+        $validated = $req->validate([
+            'num_ctn' => 'required|integer|min:1'
+        ],[
+            'num_ctn.required'=> 'Number of carton required',
+            'num_ctn.integer' => 'Select valid number',
+            'num_ctn.min'=> 'Number of Crtoons should be at least one'
+        ]);
+
+        // ==================Check if there is enough stock available=================
+
+        if ($req->num_ctn > $productStore->number_of_cartons) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Insufficient Product Stock Available'. $productStore->number_of_cartons 
+            ]);
+            
+        }
+
+        // ===========De Duct Product Available=========
+
+        $productStore->number_of_cartons -= $req->num_ctn;
+        $productStore->save();
+
+        return response()->json([
+            'success' => 'true',
+            'message' => 'Product De stocked Succcessfully'
+        ]);
+    }
+        
+    
 
 }

@@ -68,7 +68,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/product/product-store',[ProductStoreController::class,'productStore'])->name('product-store');
     Route::post('/product-store-add',[ProductStoreController::class,'addProductStore'])->name('add-product-store');
     Route::post('/update-product-store',[ProductStoreController::class,'updateProductStore'])->name('update-product-store');
-    Route::post('/admin/delete-product-store',[ProductStoreController::class,'deleteProductStore'])->name('delete-product-store');
+     Route::post('/admin/delete-product-store',[ProductStoreController::class,'deleteProductStore'])->name('delete-product-store');
+    Route::get('/admin/delete-stock-remove',[ProductStoreController::class,'stockOutIndex'])->name('stock-out');
+    Route::post('/admin/product-de-stock',[ProductStoreController::class,'productDeStock'])->name('product-store-dettails');
     // ======================Products Price================================
     Route::get('/admin/products-price',[ProductsController::class,'productsPrice'])->name('products-price');
     Route::post('/admin/set-price',[ProductsController::class,'setProductprice'])->name('set-product-price');

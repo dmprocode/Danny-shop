@@ -56,6 +56,7 @@
                                                 <th>ID</th>
                                                 <th>Product Name</th>
                                                 <th>Number Of Cartons</th>
+                                                <th>Price</th>
                                                 <th>Date</th>
                                                 <th>Action</th>
 
@@ -70,6 +71,7 @@
                                                 <td>{{$key + 1}}</td>
                                                 <td>{{$store->product->name}}</td>
                                                 <td>{{$store->number_of_cartons}}</td>
+                                                <td>{{number_format($store->product->buying_price,2)}}</td>
                                                 <td>{{ $store->created_at->format('l, d F Y') }}</td>
                                                 <td class="table-action" style="display: none;">
                                                     <a href="javascript:void(0);" class="action-icon"> <i
@@ -81,6 +83,13 @@
                                                     <a href="javascript:void(0);" class="action-icon"> <i
                                                             class="mdi mdi-delete delete-product-store"
                                                             data-id="{{$store->id}}"></i></a>
+
+                                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-cart-remove de-stock-btn"
+                                                    data-id="{{$store->id}}"
+                                                    data-number_of_cartons= "{{$store->number_of_cartons}}"
+                                                    data-name= "{{$store->product->name}}">
+                                                </i>
+</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -100,7 +109,7 @@
                                         </div>
                                         <div>
                                             <small class="text-white text-opacity-75">Total Products</small>
-                                            <h4 class="mb-0 fw-bold">1,248</h4>
+                                            <h4 class="mb-0 fw-bold">{{number_format($adminComponents['number_product_store'])}}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +124,7 @@
                                         </div>
                                         <div>
                                             <small class="text-white text-opacity-75">Total Amount</small>
-                                            <h4 class="mb-0 fw-bold">TSh 2.5M</h4>
+                                             <h55 class="mb-0 fw-bold">{{number_format($adminComponents['total_value'])}} /= </h55>
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +310,77 @@
         </div>
     </div>
 
+<!-- ===========================De stock Product from the store============== -->
 
+ <div class="row" id="destock-product-div">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-5">
+                            <a href="javascript:void(0);" class="btn btn-outline-info btn-sm  mb-2 add-products-btn"><i
+                                    class="mdi mdi-plus-circle me-2 h4"></i> <span class="h5">Add Product Store </span>
+                            </a>
+                        </div>
+                        <div class="col-sm-7 ">
+                            <div class="text-sm-end">
+                                <a href="#" class="btn btn- mb-2 me-1  text-light root-btn"
+                                    style="background-color:rgb(24,4,24)"><i class="mdi mdi-arrow-left font-16"> Go
+                                        Back</i></a>
+
+                            </div>
+                        </div><!-- end col-->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="#" id="productsFormData">
+                                    @csrf
+
+                                    <div class="row">
+                                        <input type="hidden" class="product-id">
+                                        <div class="mb-3 col-md-6">
+                                            <label for="simpleinput" class="form-label fw-normal fs-16 "> Product
+                                                Name:</label>
+
+                                            <input type="text" class="form-control form-control-sm "
+                                                name="numset" id="name" disabled="true">
+
+
+                                        </div>
+
+
+
+                                        <div class="mb-3 col-md-6">
+                                            <label for="simpleinput" class="form-label fw-normal fs-16 "> Number of
+                                                Ctn:</label>
+                                            <input type="text" class="form-control form-control-sm"
+                                                name="numset" id="number_of_cartons">
+                                                <small class="text-danger fw-bold message" id="errorMSG"></small>
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center my-3">
+                                        <button class="btn btn-danger rounded-pill px-5 py-3 shadow-lg d-flex align-items-center justify-content-center gap-3" 
+                                                id="edit-product-store">
+                                            <i class="mdi mdi-cart-remove fs-4"></i>
+                                            <span class="fw-bold fs-5 de-stock-store-btn">De-Stock Product</span>
+                                            <i class="mdi mdi-arrow-down fs-4"></i>
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div> <!-- end col -->
+                        </div>
+
+
+
+
+
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+    </div>
 
 
 </div>

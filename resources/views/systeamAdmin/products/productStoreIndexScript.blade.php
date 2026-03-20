@@ -8,6 +8,7 @@
 });
         $('#product-store-form').hide()
         $('#update-product-div').hide()
+        $('#destock-product-div').hide()
     
    $(document).on('click', '.add-product-store', function(e) {
         e.preventDefault();
@@ -155,5 +156,53 @@ $(document).on('click', '#addProductsstore', function(e){
         }
     });
 });
+
+$(document).on('click','.de-stock-btn',function(e){
+    e.preventDefault()
+    $('#destock-product-div').show()
+    $('#products-table').hide()
+     let product_id = $(this).data('id')
+     let number_of_cartons = $(this).data('number_of_cartons');
+     let name = $(this).data('name')
+     $('.product-id').val(product_id)
+     $('#number_of_cartons').val(number_of_cartons)
+     $('#name').val(name)
+
+     $(document).on('click','.de-stock-store-btn',function(e){
+        e.preventDefault()
+        $('.message').html('')
+        let product_id = $('.product-id').val()
+        let num_ctn = $('#number_of_cartons').val()
+        let name =$('#name').val()
+
+        $.ajax({
+            url:"{{route('product-store-dettails')}}",
+            method:"POST",
+            data:{
+                product_id:product_id,
+                num_ctn:num_ctn,
+                name:name
+            },
+            success:function(res){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+                }).then(()=>{
+                    location.reload()
+                })                
+                
+            },
+            error:function(error){
+                $('#errorMSG').html(error.responseJSON.errors.num_ctn);
+                
+            }
+        })
+     })
+     
+
+})
 })
 </script>
